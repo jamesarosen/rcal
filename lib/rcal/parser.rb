@@ -1,17 +1,21 @@
 module Rcal
   
+  # All parsers inherit from Rcal::Parser::Base.
   module Parser
   
+    public
+  
+    # Strict parse compliance level
+    STRICT = :strict
+  
+    # Lax parse compliance level
+    LAX = :lax
+  
     private
+    
     @@default_compliance_level = STRICT
     
     public
-    
-    # Strict parse compliance level
-    STRICT = :strict
-    
-    # Lax parse compliance level
-    LAX = :lax
     
     # The default parse compliance level for parsers initialized without one.
     def self.default_compliance_level
