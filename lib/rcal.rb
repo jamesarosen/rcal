@@ -76,6 +76,6 @@
 #   * ical: the actual text to be parsed
 #   * parent: the context in which it is parsed
 #
-#   See Rcal::Parser[link:/rcal/parser.html] for more information on parsing.
+#   See Rcal::Parser[link:/classes/Rcal/Parser.html] for more information on parsing.
 module Rcal
 end

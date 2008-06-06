@@ -1,5 +1,5 @@
 # File to make the project act like a Rails plugin.
-# Sets Parser[link:/classes/Rcal/Parser.html]'s default_compliance_level
+# Sets Parser::default_compliance_level[link:/classes/Rcal/Parser.html]
 # to strict if RAILS_ENV is 'development' or 'test,' and to lax if RAILS_ENV
 # is 'production.'
 
