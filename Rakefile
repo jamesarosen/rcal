@@ -1,4 +1,7 @@
-PROJECT_ROOT = File.expand_path(File.dirname(__FILE__))
+unless Object.const_defined?(:PROJECT_ROOT)
+  PROJECT_ROOT = File.expand_path(File.dirname(__FILE__))
+end
+
 $: << File.join(PROJECT_ROOT, 'lib')
 
 require 'rake/rdoctask'
@@ -18,11 +21,10 @@ namespace :doc do
   Rake::RDocTask.new(:rdoc) do |rdoc|
     rdoc.rdoc_dir = rdoc_dir
     rdoc.title    = "Rcal Documentation"
-    rdoc.rdoc_files.include('lib/**/*.rb')
-    rdoc.rdoc_files.include('doc/*.rdoc')
+    rdoc.rdoc_files.include('lib/**/*.rb', 'init.rb', 'doc/*.rdoc')
     rdoc.options << '--line-numbers'
     rdoc.options << '--inline-source'
-    rdoc.options << '--main' << 'rcal.rb'
+    rdoc.options << '--main' << 'lib/rcal.rb'
   end
   
 end
