@@ -5,29 +5,29 @@
 #   
 #   The Ical standard describes three distinct layers: Components,
 #   Properties, and Parameters.  These are mapped to modules
-#   (Rcal::Component[link:/rcal/component.html],
-#   Rcal::Property[link:/rcal/property.html],
-#   and Rcal::Parameter[link:/rcal/parameter.html]) in Rcal.
+#   (Component[link:/classes/Rcal/Component.html],
+#   Property[link:/classes/Rcal/Property.html],
+#   and Parameter[link:/class/rcal/Parameter.html]) in Rcal.
 #   Components, Proprerties, and Parameters are collectively called
-#   "pieces" in this documentation (see Rcal::Piece[link:/rcal/piece.html]).
-#   All non-piece classes in Rcal are "support."
+#   "parts" in this documentation (see Part[link:/classes/Rcal/Part.html]).
+#   All non-part classes in Rcal are "support."
 #
 # * Regularity of design:
 #
-#   Each of the piece classes has a parser(compliance_level) class
-#   method and an to_ical instance method.  Each of the
-#   Rcal::Component[link:/rcal/component.html],
-#   Rcal::Property[link:/rcal/property.html],
-#   and Rcal::Parameter[link:/rcal/parameter.html] modules themselves has
-#   a parser(compliance_level) class method that returns a registry of all
-#   of the known individual parsers.  Users of the library can register
-#   additional parsers in these registries in order to add custom pieces.
+#   Each of the part classes has a <tt>parser(compliance_level)</tt> class
+#   method and a +to_ical+ instance method.  Each of the
+#   Component[link:/classes/Rcal/Component.html],
+#   Property[link:/classes/Rcal/Property.html],
+#   and Parameter[link:/classes/Rcal/Parameter.html] modules themselves has
+#   a <tt>parser(compliance_level)</tt> class method that returns a registry
+#   of all of the known individual parsers.  Users of the library can register
+#   additional parsers in these registries in order to add custom parts.
 #
 # * Real RFC-2445[link:/files/doc/RFC_2445_rdoc.html] Compliance:
 #
 #   Rcal makes it hard (though not impossible) to generate
-#   non-compliant Ical content.  Many piece classes are frozen, and most
-#   of the instances returned from parsing are immutable.  Those pieces
+#   non-compliant Ical content.  Many part classes are frozen, and most
+#   of the instances returned from parsing are immutable.  Those parts
 #   that are mutable will often raise exceptions (always noted in the rdoc)
 #   when improperly modified.
 #
@@ -39,7 +39,7 @@
 #   Parsing can be done in two modes: strict and lax.  These represent how
 #   problems are handled during parsing.  In strict mode, the following
 #   deviations from valid Ical raises an
-#   Rcal::ParseError[link:/rcal/parser/parse_error.html]:
+#   ParseError[link:/classes/Rcal/Parser/ParseError.html]:
 #   
 #   * Parameter X inside a property that only allows parameters Y and Z
 #   * Parameter X not inside a property that requires at least one X
@@ -76,6 +76,6 @@
 #   * ical: the actual text to be parsed
 #   * parent: the context in which it is parsed
 #
-#   See Rcal::Parser[link:/classes/Rcal/Parser.html] for more information on parsing.
+#   See Parser[link:/classes/Rcal/Parser.html] for more information on parsing.
 module Rcal
 end
