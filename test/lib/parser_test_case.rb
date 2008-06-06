@@ -31,7 +31,6 @@ module ParserTestCase
     values.each do |v|
       assert !is_parser_for?(v)
     end
-    assert_cannot_parse(*values)
   end
   
   def assert_parses(*values)

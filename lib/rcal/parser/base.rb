@@ -54,7 +54,7 @@ class Rcal::Parser::Base
   
   # Returns whether +compliance_level+ is lax.
   def lax?
-    !strict
+    !strict?
   end
   
   # Parses content +ical+ in the context +parent+.  Depending on the
