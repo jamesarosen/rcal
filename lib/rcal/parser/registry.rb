@@ -12,21 +12,21 @@ class Rcal::Parser::Registry < Rcal::Parser::Base
   end
   
   # Passes +ical+ and +parent+ to the first
-  # Parser[link:/classes/Rcal/Parser/Base], p in +parsers+ such that
+  # Parser[link:/classes/Rcal/Parser/Base.html], p in +parsers+ such that
   # <tt>p.is_parser_for?(ical)</tt> returns +true+.
   #
-  # Returns the value returned by the first such parser.
+  # Returns the value returned by the first suitable parser, or +nil+ if
+  # no such parser exists and +compliance_level+ is lax.
   #
-  # Raises ParseError if the found parser does.
+  # Raises ParseError if a suitable parser exists and that parser does.
   #
-  # Raises ParseError if no appropriate parser is found and strict?.
-  #
-  # Returns +nil+ if no appropriate parser is found and lax?.
+  # Raises ParseError if no suitable parser is found and +compliance_level+
+  # is strict.
   def parse(ical, parent)
     if p = @parsers.find { |p| p.is_parser_for?(ical) }
       p.parse(ical, parent)
     else
-      error!(ical, parent, "No parser registered to parse #{ical}")
+      wrong_parser!(ical, parent, "No parser registered to parse #{ical}")
     end
   end
   
