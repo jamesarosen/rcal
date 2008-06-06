@@ -28,17 +28,17 @@
 #   Rcal makes it hard (though not impossible) to generate
 #   non-compliant Ical content.  Many piece classes are frozen, and most
 #   of the instances returned from parsing are immutable.  Those pieces
-#   that are mutable will often raise exceptions (always noted in the
-#   rdoc) when improperly modified.
+#   that are mutable will often raise exceptions (always noted in the rdoc)
+#   when improperly modified.
 #
 #   A user of the library can always create a custom parser to generate
 #   mutable versions if absolutely necessary.
 #
 # * Parse modes:
 #
-#   Parsing can be done in two modes: strict and lax.  These
-#   represent how problems are handled during parsing.  In strict mode,
-#   the following deviations from valid Ical raises an
+#   Parsing can be done in two modes: strict and lax.  These represent how
+#   problems are handled during parsing.  In strict mode, the following
+#   deviations from valid Ical raises an
 #   Rcal::ParseError[link:/rcal/parser/parse_error.html]:
 #   
 #   * Parameter X inside a property that only allows parameters Y and Z
@@ -56,10 +56,10 @@
 #   a warning to be logged.
 #
 #   In general, strict is best used during testing and lax is best used for
-#   production.  For this reason, the library checks for RAILS_ENV and
-#   sets the default parse mode to strict if RAILS_ENV is 'development'
-#   or 'test', and to lax if it is 'production.'  If no RAILS_ENV is found,
-#   the default is strict.
+#   production.  For this reason, the library checks for RAILS_ENV and sets
+#   the default parse mode to strict if RAILS_ENV is 'development' or 'test',
+#   and to lax if it is 'production.'  If no RAILS_ENV is found, the default
+#   is strict.
 #
 # * Parsing and context-sensitivity:
 #
