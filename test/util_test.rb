@@ -58,4 +58,20 @@ class UtilTest < Test::Unit::TestCase
     assert_equal({:baz => 'yoo', 4 => 12}, [1, 2, 3, {:baz => 'yoo', 4 => 12}].extract_options!)
   end
   
+  def test_pluralize_singular
+    assert_equal 'boats', 'boat'.pluralize
+  end
+  
+  def test_pluralize_plural
+    assert_equal 'drinks', 'drinks'.pluralize
+  end
+  
+  def test_singularize_singular
+    assert_equal 'noun', 'noun'.singularize
+  end
+  
+  def test_singularize_plural
+    assert_equal 'noun', 'nouns'.singularize
+  end
+  
 end
