@@ -9,7 +9,7 @@
 # to DEBUG if RAILS_ENV is 'development' or 'test,' and to ERROR if RAILS_ENV
 # is 'production.'
 
-if Object.const_defined?(RAILS_ENV)
+if Object.const_defined?(:RAILS_ENV)
   require 'rcal/parser'
   require 'rcal/util/loggable'
   case RAILS_ENV
