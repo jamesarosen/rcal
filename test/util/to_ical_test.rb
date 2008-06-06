@@ -1,8 +1,8 @@
-require File.join(File.dirname(__FILE__), 'test_helper')
-require 'rcal/util'
+require File.join(File.dirname(__FILE__), '..', 'test_helper')
+require 'rcal/util/to_ical'
 
-class UtilTest < Test::Unit::TestCase
-  
+class ToIcalTest < Test::Unit::TestCase
+
   def test_nil_to_ical
     assert_nil nil.to_ical
   end
@@ -40,38 +40,6 @@ class UtilTest < Test::Unit::TestCase
   
   def test_datetime_to_ical
     assert_equal '21890131T120000', DateTime.civil(2189, 1, 31, 12).to_ical
-  end
-  
-  def test_hash_from_empty_array
-    assert_equal({}, [].extract_options!)
-  end
-  
-  def test_hash_from_array_with_no_hash
-    assert_equal({}, [1, 2, 3, 4].extract_options!)
-  end
-  
-  def test_hash_from_array_with_hash_in_middle
-    assert_equal({}, [1, {:foo => 'bar'}, 3, 4].extract_options!)
-  end
-  
-  def test_hash_from_array_with_hash_at_end
-    assert_equal({:baz => 'yoo', 4 => 12}, [1, 2, 3, {:baz => 'yoo', 4 => 12}].extract_options!)
-  end
-  
-  def test_pluralize_singular
-    assert_equal 'boats', 'boat'.pluralize
-  end
-  
-  def test_pluralize_plural
-    assert_equal 'drinks', 'drinks'.pluralize
-  end
-  
-  def test_singularize_singular
-    assert_equal 'noun', 'noun'.singularize
-  end
-  
-  def test_singularize_plural
-    assert_equal 'noun', 'nouns'.singularize
   end
   
 end
