@@ -14,6 +14,7 @@ class Rcal::Parser::Fallback < Rcal::Parser::Base
   # Raises ParseError if +compliance_level+ is strict.
   def parse(ical, parent)
     if lax?
+      warn!("Using fallback parser for #{ical} in context #{parent}")
       parse_helper(ical, parent)
     else
       wrong_parser!(ical, parent, "Fallback Parsers cannot parse in Strict mode")
