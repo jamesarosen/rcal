@@ -1,8 +1,4 @@
-
-
-
-
-
+An HTML version of this document is available at http://rfc.net/rfc2446.html
 
 Network Working Group                                     S. Silverberg
 Request for Comments: 2446                                    Microsoft

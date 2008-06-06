@@ -1,135 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="en" xml:lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
-    <meta name="robots" content="index,follow" />
-    <meta name="creator" content="rfcmarkup version 1.60" />
-    <link rel="icon" href="/images/rfc.png" type="image/png" />
-    <link rel="shortcut icon" href="/images/rfc.png" type="image/png" />
-    <title>RFC 2445 - Internet Calendaring and Scheduling Core Object Specification (iCalendar)</title>
-    
-    <style type="text/css">
-	body {
-	    margin: 0px 8px;
-            font-size: 1em;
-	}
-        h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-	    font-weight: bold;
-            line-height: 0pt;
-            display: inline;
-            white-space: pre;
-            font-family: monospace;
-            font-size: 1em;
-	    font-weight: bold;
-        }
-        pre {
-            font-size: 1em;
-        }
-	.pre {
-	    white-space: pre;
-	    font-family: monospace;
-	}
-	.header{
-	    font-weight: bold;
-	}
-        .invisible {
-            text-decoration: none;
-            color: white;
-        }
-        @media print {
-            body {
-                font-size: 10.5pt;
-            }
-            h1, h2, h3, h4, h5, h6 {
-                font-size: 10.5pt;
-            }
-        
-            a:link, a:visited {
-                color: inherit;
-                text-decoration: none;
-            }
-	    .break {
-		page-break-before: always;
-	    }
-            .noprint {
-                display: none;
-            }
-        }
-	@media screen {
-	    .grey, .grey a:link, .grey a:visited {
-		color: #777;
-	    }
-            .docinfo {
-                background-color: #EEE;
-            }
-            .top {
-                border-top: 2px solid #EEE;
-            }
-            .bgwhite  { background-color: white; }
-            .bgred    { background-color: #F44; }
-            .bggrey   { background-color: #666; }
-            .bgbrown  { background-color: #840; }            
-            .bgorange { background-color: #FA0; }
-            .bgyellow { background-color: #EE0; }
-            .bgmagenta{ background-color: #F4F; }
-            .bgblue   { background-color: #66F; }
-            .bgcyan   { background-color: #4DD; }
-            .bggreen  { background-color: #4F4; }
-
-            .legend   { font-size: 90%; }
-            .cplate   { font-size: 70%; border: solid grey 1px; }
-	}
-    </style>
-
-    <script type="text/javascript"><!--
-    function addHeaderTags() {
-	var spans = document.getElementsByTagName("span");
-	for (var i=0; i < spans.length; i++) {
-	    var elem = spans[i];
-	    if (elem) {
-		var level = elem.getAttribute("class");
-                if (level == "h1" || level == "h2" || level == "h3" || level == "h4" || level == "h5" || level == "h6") {
-                    elem.innerHTML = "<"+level+">"+elem.innerHTML+"</"+level+">";		
-                }
-	    }
-	}
-    }
-    var legend_html = "Colour legend:<br />      <table>         <tr><td>Unknown:</td>          <td><span class='cplate bgwhite'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Draft:</td>            <td><span class='cplate bgred'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Informational:</td>    <td><span class='cplate bgorange'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Experimental:</td>     <td><span class='cplate bgyellow'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Best Common Practice:</td><td><span class='cplate bgmagenta'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Proposed Standard:</td><td><span class='cplate bgblue'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Draft Standard:</td>   <td><span class='cplate bgcyan'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Standard:</td>         <td><span class='cplate bggreen'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Historic:</td>         <td><span class='cplate bggrey'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Obsolete:</td>         <td><span class='cplate bgbrown'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>     </table>";
-    function showElem(id) {
-        var elem = document.getElementById(id);
-        elem.innerHTML = eval(id+"_html");
-        elem.style.visibility='visible';
-    }
-    function hideElem(id) {
-        var elem = document.getElementById(id);
-        elem.style.visibility='hidden';        
-        elem.innerHTML = "";
-    }
-    // -->
-    </script>
-</head>
-<body onload="addHeaderTags()">
-   <div style="height: 8px;">
-      <div onmouseover="this.style.cursor='pointer';"
-         onclick="showElem('legend');"
-         onmouseout="hideElem('legend')"
-	 style="height: 6px; position: absolute;"
-         class="pre noprint docinfo bgblue"
-         title="Click for colour legend." >                                                                        </div>
-      <div id="legend"
-           class="docinfo noprint pre legend"
-           style="position:absolute; top: 4px; left: 4ex; visibility:hidden; background-color: white; padding: 4px 9px 5px 7px; border: solid #345 1px; "
-           onmouseover="showElem('legend');"
-           onmouseout="hideElem('legend');">
-      </div>
-   </div>
-
-<span class="pre noprint docinfo top">[<a href="../html/" title="Document search and retrieval page">RFCs/IDs</a>] [<a href="/rfc/rfc2445.txt" title="Plaintext version of this document">Plain Text</a>] [From <a href="draft-ietf-calsch-ical">draft-ietf-calsch-ical</a>]                   </span><br />
-<span class="pre noprint docinfo">                                                                        </span><br />
-<span class="pre noprint docinfo">                                                       PROPOSED STANDARD</span><br />
-<span class="pre noprint docinfo">                                                                  <a href="http://www.rfc-editor.org/errata_search.php?rfc=2445">Errata</a></span><br />
-<pre>
+An HTML version of this document is available at http://rfc.net/rfc2445.html
 
 Network Working Group                                         F. Dawson
 Request for Comments: 2445                                        Lotus
@@ -138,8 +7,8 @@ Category: Standards Track                                  D. Stenerson
                                                           November 1998
 
 
-     <span class="h1">Internet Calendaring and Scheduling Core Object Specification</span>
-                              <span class="h1">(iCalendar)</span>
+     Internet Calendaring and Scheduling Core Object Specification
+                              (iCalendar)
 
 Status of this Memo
 
@@ -164,7 +33,7 @@ Abstract
    Internet.
 
    This memo is formatted as a registration for a MIME media type per
-   [<a href="./rfc2048" title='"Multipurpose Internet Mail Extensions (MIME) - Part Four: Registration Procedures"'>RFC 2048</a>]. However, the format in this memo is equally applicable
+   [RFC 2048]. However, the format in this memo is equally applicable
    for use outside of a MIME message content type.
 
    The proposed media type value is 'text/calendar'. This string would
@@ -182,9 +51,9 @@ Abstract
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                     [Page 1]</span>
-<a name="page-2" id="page-2" href="#page-2" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                     [Page 1]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    addition, the content type is useful as an object for interactions
@@ -206,226 +75,179 @@ Abstract
    individual, request free or busy time, reply to a free or busy time
    request, or provide similar scheduling messages for a to-do or
    journal entry calendar component. The iCalendar Transport-indendent
-   Interoperability Protocol (iTIP) defined in [<a href="#ref-ITIP" title='"iCalendar Transport-Independent Interoperability Protocol (iTIP) : Scheduling Events, Busy Time, To-dos and Journal Entries"'>ITIP</a>] is one such
+   Interoperability Protocol (iTIP) defined in [ITIP] is one such
    scheduling protocol.
 
 Table of Contents
 
-   <a href="#section-1">1</a> Introduction.....................................................<a href="#page-5">5</a>
-   <a href="#section-2">2</a> Basic Grammar and Conventions....................................<a href="#page-6">6</a>
-
-    <a href="#section-2.1">2.1</a> Formatting Conventions .......................................<a href="#page-7">7</a>
-    <a href="#section-2.2">2.2</a> Related Memos ................................................<a href="#page-8">8</a>
-    <a href="#section-2.3">2.3</a> International Considerations .................................<a href="#page-8">8</a>
-
-   <a href="#section-3">3</a> Registration Information.........................................<a href="#page-8">8</a>
-    <a href="#section-3.1">3.1</a> Content Type .................................................<a href="#page-8">8</a>
-    <a href="#section-3.2">3.2</a> Parameters ...................................................<a href="#page-9">9</a>
-
-    <a href="#section-3.3">3.3</a> Content Header Fields .......................................<a href="#page-10">10</a>
-    <a href="#section-3.4">3.4</a> Encoding Considerations .....................................<a href="#page-10">10</a>
-    <a href="#section-3.5">3.5</a> Security Considerations .....................................<a href="#page-10">10</a>
-
-    <a href="#section-3.6">3.6</a> Interoperability Considerations .............................<a href="#page-11">11</a>
-    <a href="#section-3.7">3.7</a> Applications Which Use This Media Type ......................<a href="#page-11">11</a>
-    <a href="#section-3.8">3.8</a> Additional Information ......................................<a href="#page-11">11</a>
-
-    <a href="#section-3.9">3.9</a> Magic Numbers ...............................................<a href="#page-11">11</a>
-    <a href="#section-3.10">3.10</a> File Extensions ............................................<a href="#page-11">11</a>
-    <a href="#section-3.11">3.11</a> Contact for Further Information: ...........................<a href="#page-12">12</a>
-
-    <a href="#section-3.12">3.12</a> Intended Usage .............................................<a href="#page-12">12</a>
-    <a href="#section-3.13">3.13</a> Authors/Change Controllers .................................<a href="#page-12">12</a>
-   <a href="#section-4">4</a> iCalendar Object Specification..................................<a href="#page-13">13</a>
-
-    <a href="#section-4.1">4.1</a> Content Lines ...............................................<a href="#page-13">13</a>
-     <a href="#section-4.1.1">4.1.1</a> List and Field Separators ................................<a href="#page-16">16</a>
-     <a href="#section-4.1.2">4.1.2</a> Multiple Values ..........................................<a href="#page-16">16</a>
-
-     <a href="#section-4.1.3">4.1.3</a> Binary Content ...........................................<a href="#page-16">16</a>
+   1 Introduction.....................................................5
+   2 Basic Grammar and Conventions....................................6
+    2.1 Formatting Conventions .......................................7
+    2.2 Related Memos ................................................8
+    2.3 International Considerations .................................8
+   3 Registration Information.........................................8
+    3.1 Content Type .................................................8
+    3.2 Parameters ...................................................9
+    3.3 Content Header Fields .......................................10
+    3.4 Encoding Considerations .....................................10
+    3.5 Security Considerations .....................................10
+    3.6 Interoperability Considerations .............................11
+    3.7 Applications Which Use This Media Type ......................11
+    3.8 Additional Information ......................................11
+    3.9 Magic Numbers ...............................................11
+    3.10 File Extensions ............................................11
+    3.11 Contact for Further Information: ...........................12
+    3.12 Intended Usage .............................................12
+    3.13 Authors/Change Controllers .................................12
+   4 iCalendar Object Specification..................................13
+    4.1 Content Lines ...............................................13
+     4.1.1 List and Field Separators ................................16
+     4.1.2 Multiple Values ..........................................16
+     4.1.3 Binary Content ...........................................16
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                     [Page 2]</span>
-<a name="page-3" id="page-3" href="#page-3" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                     [Page 2]
+
+RFC 2445                       iCalendar                   November 1998
 
 
-     <a href="#section-4.1.4">4.1.4</a> Character Set ............................................<a href="#page-17">17</a>
-    <a href="#section-4.2">4.2</a> Property Parameters .........................................<a href="#page-17">17</a>
-     <a href="#section-4.2.1">4.2.1</a> Alternate Text Representation ............................<a href="#page-18">18</a>
-
-     <a href="#section-4.2.2">4.2.2</a> Common Name ..............................................<a href="#page-19">19</a>
-     <a href="#section-4.2.3">4.2.3</a> Calendar User Type .......................................<a href="#page-20">20</a>
-     <a href="#section-4.2.4">4.2.4</a> Delegators ...............................................<a href="#page-20">20</a>
-
-     <a href="#section-4.2.5">4.2.5</a> Delegatees ...............................................<a href="#page-21">21</a>
-     <a href="#section-4.2.6">4.2.6</a> Directory Entry Reference ................................<a href="#page-21">21</a>
-     <a href="#section-4.2.7">4.2.7</a> Inline Encoding ..........................................<a href="#page-22">22</a>
-
-     <a href="#section-4.2.8">4.2.8</a> Format Type ..............................................<a href="#page-23">23</a>
-     <a href="#section-4.2.9">4.2.9</a> Free/Busy Time Type ......................................<a href="#page-23">23</a>
-     <a href="#section-4.2.10">4.2.10</a> Language ................................................<a href="#page-24">24</a>
-
-     <a href="#section-4.2.11">4.2.11</a> Group or List Membership ................................<a href="#page-25">25</a>
-     <a href="#section-4.2.12">4.2.12</a> Participation Status ....................................<a href="#page-25">25</a>
-     <a href="#section-4.2.13">4.2.13</a> Recurrence Identifier Range .............................<a href="#page-27">27</a>
-
-     <a href="#section-4.2.14">4.2.14</a> Alarm Trigger Relationship ..............................<a href="#page-27">27</a>
-     <a href="#section-4.2.15">4.2.15</a> Relationship Type .......................................<a href="#page-28">28</a>
-     <a href="#section-4.2.16">4.2.16</a> Participation Role ......................................<a href="#page-29">29</a>
-
-     <a href="#section-4.2.17">4.2.17</a> RSVP Expectation ........................................<a href="#page-29">29</a>
-     <a href="#section-4.2.18">4.2.18</a> Sent By .................................................<a href="#page-30">30</a>
-     <a href="#section-4.2.19">4.2.19</a> Time Zone Identifier ....................................<a href="#page-30">30</a>
-
-     <a href="#section-4.2.20">4.2.20</a> Value Data Types ........................................<a href="#page-32">32</a>
-    <a href="#section-4.3">4.3</a> Property Value Data Types ...................................<a href="#page-32">32</a>
-     <a href="#section-4.3.1">4.3.1</a> Binary ...................................................<a href="#page-33">33</a>
-
-     <a href="#section-4.3.2">4.3.2</a> Boolean ..................................................<a href="#page-33">33</a>
-     <a href="#section-4.3.3">4.3.3</a> Calendar User Address ....................................<a href="#page-34">34</a>
-     <a href="#section-4.3.4">4.3.4</a> Date .....................................................<a href="#page-34">34</a>
-
-     <a href="#section-4.3.5">4.3.5</a> Date-Time ................................................<a href="#page-35">35</a>
-     <a href="#section-4.3.6">4.3.6</a> Duration .................................................<a href="#page-37">37</a>
-     <a href="#section-4.3.7">4.3.7</a> Float ....................................................<a href="#page-38">38</a>
-
-     <a href="#section-4.3.8">4.3.8</a> Integer ..................................................<a href="#page-38">38</a>
-     <a href="#section-4.3.9">4.3.9</a> Period of Time ...........................................<a href="#page-39">39</a>
-     <a href="#section-4.3.10">4.3.10</a> Recurrence Rule .........................................<a href="#page-40">40</a>
-
-     <a href="#section-4.3.11">4.3.11</a> Text ....................................................<a href="#page-45">45</a>
-     <a href="#section-4.3.12">4.3.12</a> Time ....................................................<a href="#page-47">47</a>
-     <a href="#section-4.3.13">4.3.13</a> URI .....................................................<a href="#page-49">49</a>
-
-     <a href="#section-4.3.14">4.3.14</a> UTC Offset ..............................................<a href="#page-49">49</a>
-    <a href="#section-4.4">4.4</a> iCalendar Object ............................................<a href="#page-50">50</a>
-    <a href="#section-4.5">4.5</a> Property ....................................................<a href="#page-51">51</a>
-
-    <a href="#section-4.6">4.6</a> Calendar Components .........................................<a href="#page-51">51</a>
-     <a href="#section-4.6.1">4.6.1</a> Event Component ..........................................<a href="#page-52">52</a>
-     <a href="#section-4.6.2">4.6.2</a> To-do Component ..........................................<a href="#page-55">55</a>
-
-     <a href="#section-4.6.3">4.6.3</a> Journal Component ........................................<a href="#page-56">56</a>
-     <a href="#section-4.6.4">4.6.4</a> Free/Busy Component ......................................<a href="#page-58">58</a>
-     <a href="#section-4.6.5">4.6.5</a> Time Zone Component ......................................<a href="#page-60">60</a>
-
-     <a href="#section-4.6.6">4.6.6</a> Alarm Component ..........................................<a href="#page-67">67</a>
-    <a href="#section-4.7">4.7</a> Calendar Properties .........................................<a href="#page-73">73</a>
-     <a href="#section-4.7.1">4.7.1</a> Calendar Scale ...........................................<a href="#page-73">73</a>
+     4.1.4 Character Set ............................................17
+    4.2 Property Parameters .........................................17
+     4.2.1 Alternate Text Representation ............................18
+     4.2.2 Common Name ..............................................19
+     4.2.3 Calendar User Type .......................................20
+     4.2.4 Delegators ...............................................20
+     4.2.5 Delegatees ...............................................21
+     4.2.6 Directory Entry Reference ................................21
+     4.2.7 Inline Encoding ..........................................22
+     4.2.8 Format Type ..............................................23
+     4.2.9 Free/Busy Time Type ......................................23
+     4.2.10 Language ................................................24
+     4.2.11 Group or List Membership ................................25
+     4.2.12 Participation Status ....................................25
+     4.2.13 Recurrence Identifier Range .............................27
+     4.2.14 Alarm Trigger Relationship ..............................27
+     4.2.15 Relationship Type .......................................28
+     4.2.16 Participation Role ......................................29
+     4.2.17 RSVP Expectation ........................................29
+     4.2.18 Sent By .................................................30
+     4.2.19 Time Zone Identifier ....................................30
+     4.2.20 Value Data Types ........................................32
+    4.3 Property Value Data Types ...................................32
+     4.3.1 Binary ...................................................33
+     4.3.2 Boolean ..................................................33
+     4.3.3 Calendar User Address ....................................34
+     4.3.4 Date .....................................................34
+     4.3.5 Date-Time ................................................35
+     4.3.6 Duration .................................................37
+     4.3.7 Float ....................................................38
+     4.3.8 Integer ..................................................38
+     4.3.9 Period of Time ...........................................39
+     4.3.10 Recurrence Rule .........................................40
+     4.3.11 Text ....................................................45
+     4.3.12 Time ....................................................47
+     4.3.13 URI .....................................................49
+     4.3.14 UTC Offset ..............................................49
+    4.4 iCalendar Object ............................................50
+    4.5 Property ....................................................51
+    4.6 Calendar Components .........................................51
+     4.6.1 Event Component ..........................................52
+     4.6.2 To-do Component ..........................................55
+     4.6.3 Journal Component ........................................56
+     4.6.4 Free/Busy Component ......................................58
+     4.6.5 Time Zone Component ......................................60
+     4.6.6 Alarm Component ..........................................67
+    4.7 Calendar Properties .........................................73
+     4.7.1 Calendar Scale ...........................................73
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                     [Page 3]</span>
-<a name="page-4" id="page-4" href="#page-4" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                     [Page 3]
+
+RFC 2445                       iCalendar                   November 1998
 
 
-     <a href="#section-4.7.2">4.7.2</a> Method ...................................................<a href="#page-74">74</a>
-
-     <a href="#section-4.7.3">4.7.3</a> Product Identifier .......................................<a href="#page-75">75</a>
-     <a href="#section-4.7.4">4.7.4</a> Version ..................................................<a href="#page-76">76</a>
-    <a href="#section-4.8">4.8</a> Component Properties ........................................<a href="#page-77">77</a>
-
-     <a href="#section-4.8.1">4.8.1</a> Descriptive Component Properties .........................<a href="#page-77">77</a>
-       <a href="#section-4.8.1.1">4.8.1.1</a> Attachment ...........................................<a href="#page-77">77</a>
-       <a href="#section-4.8.1.2">4.8.1.2</a> Categories ...........................................<a href="#page-78">78</a>
-
-       <a href="#section-4.8.1.3">4.8.1.3</a> Classification .......................................<a href="#page-79">79</a>
-       <a href="#section-4.8.1.4">4.8.1.4</a> Comment ..............................................<a href="#page-80">80</a>
-       <a href="#section-4.8.1.5">4.8.1.5</a> Description ..........................................<a href="#page-81">81</a>
-
-       <a href="#section-4.8.1.6">4.8.1.6</a> Geographic Position ..................................<a href="#page-82">82</a>
-       <a href="#section-4.8.1.7">4.8.1.7</a> Location .............................................<a href="#page-84">84</a>
-       <a href="#section-4.8.1.8">4.8.1.8</a> Percent Complete .....................................<a href="#page-85">85</a>
-
-       <a href="#section-4.8.1.9">4.8.1.9</a> Priority .............................................<a href="#page-85">85</a>
-       <a href="#section-4.8.1.10">4.8.1.10</a> Resources ...........................................<a href="#page-87">87</a>
-       <a href="#section-4.8.1.11">4.8.1.11</a> Status ..............................................<a href="#page-88">88</a>
-
-       <a href="#section-4.8.1.12">4.8.1.12</a> Summary .............................................<a href="#page-89">89</a>
-     <a href="#section-4.8.2">4.8.2</a> Date and Time Component Properties .......................<a href="#page-90">90</a>
-       <a href="#section-4.8.2.1">4.8.2.1</a> Date/Time Completed ..................................<a href="#page-90">90</a>
-
-       <a href="#section-4.8.2.2">4.8.2.2</a> Date/Time End ........................................<a href="#page-91">91</a>
-       <a href="#section-4.8.2.3">4.8.2.3</a> Date/Time Due ........................................<a href="#page-92">92</a>
-       <a href="#section-4.8.2.4">4.8.2.4</a> Date/Time Start ......................................<a href="#page-93">93</a>
-
-       <a href="#section-4.8.2.5">4.8.2.5</a> Duration .............................................<a href="#page-94">94</a>
-       <a href="#section-4.8.2.6">4.8.2.6</a> Free/Busy Time .......................................<a href="#page-95">95</a>
-       <a href="#section-4.8.2.7">4.8.2.7</a> Time Transparency ....................................<a href="#page-96">96</a>
-
-     <a href="#section-4.8.3">4.8.3</a> Time Zone Component Properties ...........................<a href="#page-97">97</a>
-       <a href="#section-4.8.3.1">4.8.3.1</a> Time Zone Identifier .................................<a href="#page-97">97</a>
-       <a href="#section-4.8.3.2">4.8.3.2</a> Time Zone Name .......................................<a href="#page-98">98</a>
-
-       <a href="#section-4.8.3.3">4.8.3.3</a> Time Zone Offset From ................................<a href="#page-99">99</a>
-       <a href="#section-4.8.3.4">4.8.3.4</a> Time Zone Offset To .................................<a href="#page-100">100</a>
-       <a href="#section-4.8.3.5">4.8.3.5</a> Time Zone URL .......................................<a href="#page-101">101</a>
-
-     <a href="#section-4.8.4">4.8.4</a> Relationship Component Properties .......................<a href="#page-102">102</a>
-       <a href="#section-4.8.4.1">4.8.4.1</a> Attendee ............................................<a href="#page-102">102</a>
-       <a href="#section-4.8.4.2">4.8.4.2</a> Contact .............................................<a href="#page-104">104</a>
-
-       <a href="#section-4.8.4.3">4.8.4.3</a> Organizer ...........................................<a href="#page-106">106</a>
-       <a href="#section-4.8.4.4">4.8.4.4</a> Recurrence ID .......................................<a href="#page-107">107</a>
-       <a href="#section-4.8.4.5">4.8.4.5</a> Related To ..........................................<a href="#page-109">109</a>
-
-       <a href="#section-4.8.4.6">4.8.4.6</a> Uniform Resource Locator ............................<a href="#page-110">110</a>
-       <a href="#section-4.8.4.7">4.8.4.7</a> Unique Identifier ...................................<a href="#page-111">111</a>
-     <a href="#section-4.8.5">4.8.5</a> Recurrence Component Properties .........................<a href="#page-112">112</a>
-
-       <a href="#section-4.8.5.1">4.8.5.1</a> Exception Date/Times ................................<a href="#page-112">112</a>
-       <a href="#section-4.8.5.2">4.8.5.2</a> Exception Rule ......................................<a href="#page-114">114</a>
-       <a href="#section-4.8.5.3">4.8.5.3</a> Recurrence Date/Times ...............................<a href="#page-115">115</a>
-
-       <a href="#section-4.8.5.4">4.8.5.4</a> Recurrence Rule .....................................<a href="#page-117">117</a>
-     <a href="#section-4.8.6">4.8.6</a> Alarm Component Properties ..............................<a href="#page-126">126</a>
-       <a href="#section-4.8.6.1">4.8.6.1</a> Action ..............................................<a href="#page-126">126</a>
-
-       <a href="#section-4.8.6.2">4.8.6.2</a> Repeat Count ........................................<a href="#page-126">126</a>
-       <a href="#section-4.8.6.3">4.8.6.3</a> Trigger .............................................<a href="#page-127">127</a>
+     4.7.2 Method ...................................................74
+     4.7.3 Product Identifier .......................................75
+     4.7.4 Version ..................................................76
+    4.8 Component Properties ........................................77
+     4.8.1 Descriptive Component Properties .........................77
+       4.8.1.1 Attachment ...........................................77
+       4.8.1.2 Categories ...........................................78
+       4.8.1.3 Classification .......................................79
+       4.8.1.4 Comment ..............................................80
+       4.8.1.5 Description ..........................................81
+       4.8.1.6 Geographic Position ..................................82
+       4.8.1.7 Location .............................................84
+       4.8.1.8 Percent Complete .....................................85
+       4.8.1.9 Priority .............................................85
+       4.8.1.10 Resources ...........................................87
+       4.8.1.11 Status ..............................................88
+       4.8.1.12 Summary .............................................89
+     4.8.2 Date and Time Component Properties .......................90
+       4.8.2.1 Date/Time Completed ..................................90
+       4.8.2.2 Date/Time End ........................................91
+       4.8.2.3 Date/Time Due ........................................92
+       4.8.2.4 Date/Time Start ......................................93
+       4.8.2.5 Duration .............................................94
+       4.8.2.6 Free/Busy Time .......................................95
+       4.8.2.7 Time Transparency ....................................96
+     4.8.3 Time Zone Component Properties ...........................97
+       4.8.3.1 Time Zone Identifier .................................97
+       4.8.3.2 Time Zone Name .......................................98
+       4.8.3.3 Time Zone Offset From ................................99
+       4.8.3.4 Time Zone Offset To .................................100
+       4.8.3.5 Time Zone URL .......................................101
+     4.8.4 Relationship Component Properties .......................102
+       4.8.4.1 Attendee ............................................102
+       4.8.4.2 Contact .............................................104
+       4.8.4.3 Organizer ...........................................106
+       4.8.4.4 Recurrence ID .......................................107
+       4.8.4.5 Related To ..........................................109
+       4.8.4.6 Uniform Resource Locator ............................110
+       4.8.4.7 Unique Identifier ...................................111
+     4.8.5 Recurrence Component Properties .........................112
+       4.8.5.1 Exception Date/Times ................................112
+       4.8.5.2 Exception Rule ......................................114
+       4.8.5.3 Recurrence Date/Times ...............................115
+       4.8.5.4 Recurrence Rule .....................................117
+     4.8.6 Alarm Component Properties ..............................126
+       4.8.6.1 Action ..............................................126
+       4.8.6.2 Repeat Count ........................................126
+       4.8.6.3 Trigger .............................................127
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                     [Page 4]</span>
+Dawson & Stenerson          Standards Track                     [Page 4]
+
+RFC 2445                       iCalendar                   November 1998
 
-<a name="page-5" id="page-5" href="#page-5" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
 
+     4.8.7 Change Management Component Properties ..................129
+       4.8.7.1 Date/Time Created ...................................129
+       4.8.7.2 Date/Time Stamp .....................................130
+       4.8.7.3 Last Modified .......................................131
+       4.8.7.4 Sequence Number .....................................131
+     4.8.8 Miscellaneous Component Properties ......................133
+       4.8.8.1 Non-standard Properties .............................133
+       4.8.8.2 Request Status ......................................134
+   5 iCalendar Object Examples......................................136
+   6 Recommended Practices..........................................140
+   7 Registration of Content Type Elements..........................141
+    7.1 Registration of New and Modified iCalendar Object Methods ..141
+    7.2 Registration of New Properties .............................141
+     7.2.1 Define the property .....................................142
+     7.2.2 Post the Property definition ............................143
+     7.2.3 Allow a comment period ..................................143
+     7.2.4 Submit the property for approval ........................143
+    7.3 Property Change Control ....................................143
+   8 References.....................................................144
+   9 Acknowledgments................................................145
+   10 Authors' and Chairs' Addresses................................146
+   11 Full Copyright Statement......................................148
 
-     <a href="#section-4.8.7">4.8.7</a> Change Management Component Properties ..................<a href="#page-129">129</a>
-       <a href="#section-4.8.7.1">4.8.7.1</a> Date/Time Created ...................................<a href="#page-129">129</a>
-
-       <a href="#section-4.8.7.2">4.8.7.2</a> Date/Time Stamp .....................................<a href="#page-130">130</a>
-       <a href="#section-4.8.7.3">4.8.7.3</a> Last Modified .......................................<a href="#page-131">131</a>
-       <a href="#section-4.8.7.4">4.8.7.4</a> Sequence Number .....................................<a href="#page-131">131</a>
-
-     <a href="#section-4.8.8">4.8.8</a> Miscellaneous Component Properties ......................<a href="#page-133">133</a>
-       <a href="#section-4.8.8.1">4.8.8.1</a> Non-standard Properties .............................<a href="#page-133">133</a>
-       <a href="#section-4.8.8.2">4.8.8.2</a> Request Status ......................................<a href="#page-134">134</a>
-
-   <a href="#section-5">5</a> iCalendar Object Examples......................................<a href="#page-136">136</a>
-   <a href="#section-6">6</a> Recommended Practices..........................................<a href="#page-140">140</a>
-   <a href="#section-7">7</a> Registration of Content Type Elements..........................<a href="#page-141">141</a>
-
-    <a href="#section-7.1">7.1</a> Registration of New and Modified iCalendar Object Methods ..<a href="#page-141">141</a>
-    <a href="#section-7.2">7.2</a> Registration of New Properties .............................<a href="#page-141">141</a>
-     <a href="#section-7.2.1">7.2.1</a> Define the property .....................................<a href="#page-142">142</a>
-
-     <a href="#section-7.2.2">7.2.2</a> Post the Property definition ............................<a href="#page-143">143</a>
-     <a href="#section-7.2.3">7.2.3</a> Allow a comment period ..................................<a href="#page-143">143</a>
-     <a href="#section-7.2.4">7.2.4</a> Submit the property for approval ........................<a href="#page-143">143</a>
-
-    <a href="#section-7.3">7.3</a> Property Change Control ....................................<a href="#page-143">143</a>
-   <a href="#section-8">8</a> References.....................................................<a href="#page-144">144</a>
-   <a href="#section-9">9</a> Acknowledgments................................................<a href="#page-145">145</a>
-
-   <a href="#section-10">10</a> Authors' and Chairs' Addresses................................<a href="#page-146">146</a>
-   <a href="#section-11">11</a> Full Copyright Statement......................................<a href="#page-148">148</a>
-
-<span class="h2"><a name="section-1">1</a> Introduction</span>
+1 Introduction
 
    The use of calendaring and scheduling has grown considerably in the
    last decade. Enterprise and inter-enterprise business has become
@@ -453,9 +275,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                     [Page 5]</span>
-<a name="page-6" id="page-6" href="#page-6" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                     [Page 5]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    unwired transport such as infrared might also be used.
@@ -468,26 +290,25 @@ Table of Contents
    other calendaring and scheduling operations such a requesting for and
    replying with free/busy time data. Such a scheduling protocol is
    defined in the iCalendar Transport-independent Interoperability
-   Protocol (iTIP) defined in [<a href="#ref-ITIP" title='"iCalendar Transport-Independent Interoperability Protocol (iTIP) : Scheduling Events, Busy Time, To-dos and Journal Entries"'>ITIP</a>].
+   Protocol (iTIP) defined in [ITIP].
 
    The memo also includes a formal grammar for the content type based on
-   the Internet ABNF defined in [<a href="./rfc2234" title='"Augmented BNF for Syntax Specifications: ABNF"'>RFC 2234</a>]. This ABNF is required for
+   the Internet ABNF defined in [RFC 2234]. This ABNF is required for
    the implementation of parsers and to serve as the definitive
    reference when ambiguities or questions arise in interpreting the
    descriptive prose definition of the memo.
 
-
-<span class="h2"><a name="section-2">2</a> Basic Grammar and Conventions</span>
+2 Basic Grammar and Conventions
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY" and
    "OPTIONAL" in this document are to be interoperated as described in
-   [<a href="./rfc2119" title='"Key words for use in RFCs to Indicate Requirement Levels"'>RFC 2119</a>].
+   [RFC 2119].
 
    This memo makes use of both a descriptive prose and a more formal
    notation for defining the calendaring and scheduling format.
 
-   The notation used in this memo is the ABNF notation of [<a href="./rfc2234" title='"Augmented BNF for Syntax Specifications: ABNF"'>RFC 2234</a>].
+   The notation used in this memo is the ABNF notation of [RFC 2234].
    Readers intending on implementing this format defined in this memo
    should be familiar with this notation in order to properly interpret
    the specifications of this memo.
@@ -510,34 +331,33 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                     [Page 6]</span>
-<a name="page-7" id="page-7" href="#page-7" class="invisible"><span class="break"> </span></a>
-
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                     [Page 6]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    The format for the iCalendar object is based on the syntax of the
-   [<a href="./rfc2425" title='"A MIME Content-Type for Directory Information"'>RFC 2425</a>] content type. While the iCalendar object is not a profile
-   of the [<a href="./rfc2425" title='"A MIME Content-Type for Directory Information"'>RFC 2425</a>] content type, it does reuse a number of the
-   elements from the [<a href="./rfc2425" title='"A MIME Content-Type for Directory Information"'>RFC 2425</a>] specification.
+   [RFC 2425] content type. While the iCalendar object is not a profile
+   of the [RFC 2425] content type, it does reuse a number of the
+   elements from the [RFC 2425] specification.
 
-<span class="h3"><a name="section-2.1">2.1</a> Formatting Conventions</span>
+2.1 Formatting Conventions
 
    The mechanisms defined in this memo are defined in prose. Many of the
    terms used to describe these have common usage that is different than
    the standards usage of this memo. In order to reference within this
    memo elements of the calendaring and scheduling model, core object
-   (this memo) or interoperability protocol [<a href="#ref-ITIP" title='"iCalendar Transport-Independent Interoperability Protocol (iTIP) : Scheduling Events, Busy Time, To-dos and Journal Entries"'>ITIP</a>] some formatting
+   (this memo) or interoperability protocol [ITIP] some formatting
    conventions have been used. Calendaring and scheduling roles are
    referred to in quoted-strings of text with the first character of
    each word in upper case. For example, "Organizer" refers to a role of
-   a "Calendar User" within the scheduling protocol defined by [<a href="#ref-ITIP" title='"iCalendar Transport-Independent Interoperability Protocol (iTIP) : Scheduling Events, Busy Time, To-dos and Journal Entries"'>ITIP</a>].
+   a "Calendar User" within the scheduling protocol defined by [ITIP].
    Calendar components defined by this memo are referred to with
    capitalized, quoted-strings of text. All calendar components start
    with the letter "V". For example, "VEVENT" refers to the event
    calendar component, "VTODO" refers to the to-do calendar component
    and "VJOURNAL" refers to the daily journal calendar component.
-   Scheduling methods defined by [<a href="#ref-ITIP" title='"iCalendar Transport-Independent Interoperability Protocol (iTIP) : Scheduling Events, Busy Time, To-dos and Journal Entries"'>ITIP</a>] are referred to with
+   Scheduling methods defined by [ITIP] are referred to with
    capitalized, quoted-strings of text. For example, "REQUEST" refers to
    the method for requesting a scheduling calendar component be created
    or modified, "REPLY" refers to the method a recipient of a request
@@ -567,31 +387,30 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                     [Page 7]</span>
-<a name="page-8" id="page-8" href="#page-8" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                     [Page 7]
+
+RFC 2445                       iCalendar                   November 1998
 
 
-<span class="h3"><a name="section-2.2">2.2</a> Related Memos</span>
+2.2 Related Memos
 
    Implementers will need to be familiar with several other memos that,
    along with this memo, form a framework for Internet calendaring and
-   scheduling standards. This memo, [<a href="#ref-ICAL">ICAL</a>], specifies a core
+   scheduling standards. This memo, [ICAL], specifies a core
    specification of objects, data types, properties and property
    parameters.
 
-   [<a name="ref-ITIP" id="ref-ITIP">ITIP</a>] - specifies an interoperability protocol for scheduling
+   [ITIP] - specifies an interoperability protocol for scheduling
    between different implementations;
 
-   [<a name="ref-IMIP" id="ref-IMIP">IMIP</a>] specifies an Internet email binding for [<a href="#ref-ITIP" title='"iCalendar Transport-Independent Interoperability Protocol (iTIP) : Scheduling Events, Busy Time, To-dos and Journal Entries"'>ITIP</a>].
+   [IMIP] specifies an Internet email binding for [ITIP].
 
    This memo does not attempt to repeat the specification of concepts or
    definitions from these other memos. Where possible, references are
    made to the memo that provides for the specification of these
    concepts or definitions.
 
-
-<span class="h3"><a name="section-2.3">2.3</a> International Considerations</span>
+2.3 International Considerations
 
    In the rest of this document, descriptions of characters are of the
    form "character name (codepoint)", where "codepoint" is from the US-
@@ -603,13 +422,13 @@ Table of Contents
    chosen instead. Use of non-US-ASCII-compatible character sets is NOT
    recommended.
 
-<span class="h2"><a name="section-3">3</a>  Registration Information</span>
+3  Registration Information
 
    The Calendaring and Scheduling Core Object Specification is intended
    for use as a MIME content type. However, the implementation of the
    memo is in no way limited solely as a MIME content type.
 
-<span class="h3"><a name="section-3.1">3.1</a> Content Type</span>
+3.1 Content Type
 
    The following text is intended to register this memo as the MIME
    content type "text/calendar".
@@ -624,18 +443,18 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                     [Page 8]</span>
-<a name="page-9" id="page-9" href="#page-9" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                     [Page 8]
+
+RFC 2445                       iCalendar                   November 1998
 
 
-<span class="h3"><a name="section-3.2">3.2</a> Parameters</span>
+3.2 Parameters
 
    Required parameters: none
 
    Optional parameters: charset, method, component and optinfo
 
-   The "charset" parameter is defined in [<a href="./rfc2046" title='" Multipurpose Internet Mail Extensions (MIME) - Part Two: Media Types"'>RFC 2046</a>] for other body
+   The "charset" parameter is defined in [RFC 2046] for other body
    parts. It is used to identify the default character set used within
    the body part.
 
@@ -680,9 +499,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                     [Page 9]</span>
-<a name="page-10" id="page-10" href="#page-10" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                     [Page 9]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    The parameter can be specified multiple times.
@@ -699,12 +518,12 @@ Table of Contents
 
         qinfovalue      = DQUOTE (infovalue) DQUOTE
 
-<span class="h3"><a name="section-3.3">3.3</a> Content Header Fields</span>
+3.3 Content Header Fields
 
    Optional content header fields: Any header fields defined by [RFC
    2045].
 
-<span class="h3"><a name="section-3.4">3.4</a> Encoding Considerations</span>
+3.4 Encoding Considerations
 
    This MIME content type can contain 8bit characters, so the use of
    quoted-printable or BASE64 MIME content-transfer-encodings might be
@@ -715,7 +534,7 @@ Table of Contents
    escapement technique. This means that content values can end up
    encoded twice.
 
-<span class="h3"><a name="section-3.5">3.5</a> Security Considerations</span>
+3.5 Security Considerations
 
    SPOOFING - - In this memo, the "Organizer" is the only person
    authorized to make changes to an existing "VEVENT", "VTODO",
@@ -736,9 +555,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 10]</span>
-<a name="page-11" id="page-11" href="#page-11" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 10]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    PROCEDURAL ALARMS - - An iCalendar object can be created that
@@ -757,33 +576,31 @@ Table of Contents
    addition, the security considerations observed by implementations of
    electronic mail systems should be followed for this memo.
 
-
-<span class="h3"><a name="section-3.6">3.6</a> Interoperability Considerations</span>
+3.6 Interoperability Considerations
 
    This MIME content type is intended to define a common format for
    conveying calendaring and scheduling information between different
-   systems. It is heavily based on the earlier [<a href="#ref-VCAL" title='"vCalendar - The Electronic Calendaring and Scheduling Exchange Format"'>VCAL</a>] industry
+   systems. It is heavily based on the earlier [VCAL] industry
    specification.
 
-<span class="h3"><a name="section-3.7">3.7</a> Applications Which Use This Media Type</span>
+3.7 Applications Which Use This Media Type
 
    This content-type is designed for widespread use by Internet
    calendaring and scheduling applications. In addition, applications in
    the workflow and document management area might find this content-
-   type applicable. The [<a href="#ref-ITIP" title='"iCalendar Transport-Independent Interoperability Protocol (iTIP) : Scheduling Events, Busy Time, To-dos and Journal Entries"'>ITIP</a>] and [<a href="#ref-IMIP" title='"iCalendar Message-based Interoperability Protocol (IMIP)"'>IMIP</a>] Internet protocols directly
+   type applicable. The [ITIP] and [IMIP] Internet protocols directly
    use this content-type also. Future work on an Internet calendar
    access protocol will utilize this content-type too.
 
-
-<span class="h3"><a name="section-3.8">3.8</a> Additional Information</span>
+3.8 Additional Information
 
    This memo defines this content-type.
 
-<span class="h3"><a name="section-3.9">3.9</a> Magic Numbers</span>
+3.9 Magic Numbers
 
    None.
 
-<span class="h3"><a name="section-3.10">3.10</a> File Extensions</span>
+3.10 File Extensions
 
    The file extension of "ics" is to be used to designate a file
    containing (an arbitrary set of) calendaring and scheduling
@@ -794,9 +611,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 11]</span>
-<a name="page-12" id="page-12" href="#page-12" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 11]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    The file extension of "ifb" is to be used to designate a file
@@ -812,8 +629,7 @@ Table of Contents
    operating system environments to designate a file containing free or
    busy time information consistent with this MIME media type.
 
-
-<span class="h3"><a name="section-3.11">3.11</a> Contact for Further Information:</span>
+3.11 Contact for Further Information:
 
    Frank Dawson
    6544 Battleford Drive
@@ -829,11 +645,11 @@ Table of Contents
    425-936-7329 (Facsimile)
    deriks@microsoft.com (Internet Mail)
 
-<span class="h3"><a name="section-3.12">3.12</a> Intended Usage</span>
+3.12 Intended Usage
 
    COMMON
 
-<span class="h3"><a name="section-3.13">3.13</a> Authors/Change Controllers</span>
+3.13 Authors/Change Controllers
 
    Frank Dawson
    6544 Battleford Drive
@@ -851,12 +667,12 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 12]</span>
-<a name="page-13" id="page-13" href="#page-13" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 12]
+
+RFC 2445                       iCalendar                   November 1998
 
 
-<span class="h2"><a name="section-4">4</a> iCalendar Object Specification</span>
+4 iCalendar Object Specification
 
    The following sections define the details of a Calendaring and
    Scheduling Core Object Specification. This information is intended to
@@ -866,7 +682,7 @@ Table of Contents
    use as a calendaring and scheduling exchange format in file-, memory-
    or network-based transport mechanisms.
 
-<span class="h3"><a name="section-4.1">4.1</a> Content Lines</span>
+4.1 Content Lines
 
    The iCalendar object is organized into individual lines of text,
    called content lines. Content lines are delimited by a line break,
@@ -907,13 +723,13 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 13]</span>
-<a name="page-14" id="page-14" href="#page-14" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 13]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    The content information associated with an iCalendar object is
-   formatted using a syntax similar to that defined by [<a href="./rfc2425" title='"A MIME Content-Type for Directory Information"'>RFC 2425</a>]. That
+   formatted using a syntax similar to that defined by [RFC 2425]. That
    is, the content information consists of CRLF-separated content lines.
 
    The following notation defines the lines of content in an iCalendar
@@ -963,9 +779,10 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 14]</span>
-<a name="page-15" id="page-15" href="#page-15" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 14]
+
+RFC 2445                       iCalendar                   November 1998
+
 
      QSAFE-CHAR = WSP / %x21 / %x23-7E / NON-US-ASCII
      ; Any character except CTLs and DQUOTE
@@ -1018,12 +835,12 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 15]</span>
-<a name="page-16" id="page-16" href="#page-16" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 15]
+
+RFC 2445                       iCalendar                   November 1998
 
 
-<span class="h4"><a name="section-4.1.1">4.1.1</a> List and Field Separators</span>
+4.1.1 List and Field Separators
 
    Some properties and parameters allow a list of values. Values in a
    list of values MUST be separated by a COMMA character (US-ASCII
@@ -1052,7 +869,7 @@ Table of Contents
 
      RDATE;VALUE=DATE:19970304,19970504,19970704,19970904
 
-<span class="h4"><a name="section-4.1.2">4.1.2</a> Multiple Values</span>
+4.1.2 Multiple Values
 
    Some properties defined in the iCalendar object can have multiple
    values. The general rule for encoding multi-valued items is to simply
@@ -1064,7 +881,7 @@ Table of Contents
    specific property allows multiple values and in which of these two
    forms.
 
-<span class="h4"><a name="section-4.1.3">4.1.3</a> Binary Content</span>
+4.1.3 Binary Content
 
    Binary content information in an iCalendar object SHOULD be
    referenced using a URI within a property value. That is the binary
@@ -1074,15 +891,14 @@ Table of Contents
 
 
 
-
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 16]</span>
-<a name="page-17" id="page-17" href="#page-17" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 16]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    can be included within an iCalendar object, but only after first
    encoding it into text using the "BASE64" encoding method defined in
-   [<a href="./rfc2045" title='" Multipurpose Internet Mail Extensions (MIME) - Part One: Format of Internet Message Bodies"'>RFC 2045</a>]. Inline binary contact SHOULD only be used in applications
+   [RFC 2045]. Inline binary contact SHOULD only be used in applications
    whose special circumstances demand that an iCalendar object be
    expressed as a single entity. A property containing inline binary
    content information MUST specify the "ENCODING" property parameter.
@@ -1100,18 +916,18 @@ Table of Contents
      ATTACH;FMTTYPE=image/basic;ENCODING=BASE64;VALUE=BINARY:
       MIICajCCAdOgAwIBAgICBEUwDQYJKoZIhvcNAQEEBQAwdzELMAkGA1U
       EBhMCVVMxLDAqBgNVBAoTI05ldHNjYXBlIENvbW11bmljYXRpb25zIE
-        &lt;...remainder of "BASE64" encoded binary data...&gt;
+        <...remainder of "BASE64" encoded binary data...>
 
-<span class="h4"><a name="section-4.1.4">4.1.4</a> Character Set</span>
+4.1.4 Character Set
 
    There is not a property parameter to declare the character set used
    in a property value. The default character set for an iCalendar
-   object is UTF-8 as defined in [<a href="./rfc2279" title='"UTF-8, a transformation format of ISO 10646"'>RFC 2279</a>].
+   object is UTF-8 as defined in [RFC 2279].
 
    The "charset" Content-Type parameter can be used in MIME transports
    to specify any other IANA registered character set.
 
-<span class="h3"><a name="section-4.2">4.2</a> Property Parameters</span>
+4.2 Property Parameters
 
    A property can have attributes associated with it. These "property
    parameters" contain meta-information about the property or the
@@ -1131,10 +947,9 @@ Table of Contents
 
 
 
-
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 17]</span>
-<a name="page-18" id="page-18" href="#page-18" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 17]
+
+RFC 2445                       iCalendar                   November 1998
 
 
      DESCRIPTION;ALTREP="http://www.wiz.org":The Fall'98 Wild Wizards
@@ -1175,7 +990,7 @@ Table of Contents
 
      xparam     =x-name "=" param-value *("," param-value)
 
-<span class="h4"><a name="section-4.2.1">4.2.1</a> Alternate Text Representation</span>
+4.2.1 Alternate Text Representation
 
    Parameter Name: ALTREP
 
@@ -1188,9 +1003,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 18]</span>
-<a name="page-19" id="page-19" href="#page-19" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 18]
+
+RFC 2445                       iCalendar                   November 1998
 
 
      altrepparam        = "ALTREP" "=" DQUOTE uri DQUOTE
@@ -1203,7 +1018,7 @@ Table of Contents
 
    Example:
 
-     DESCRIPTION;ALTREP="CID:&lt;part3.msg.970415T083000@host.com&gt;":Project
+     DESCRIPTION;ALTREP="CID:<part3.msg.970415T083000@host.com>":Project
        XYZ Review Meeting will include the following agenda items: (a)
        Market Overview, (b) Finances, (c) Project Management
 
@@ -1211,16 +1026,15 @@ Table of Contents
    content portion.
 
      Content-Type:text/html
-     Content-Id:&lt;part3.msg.970415T083000@host.com&gt;
+     Content-Id:<part3.msg.970415T083000@host.com>
 
-     &lt;html&gt;&lt;body&gt;
-     &lt;p&gt;&lt;b&gt;Project XYZ Review Meeting&lt;/b&gt; will include the following
-     agenda items:&lt;ol&gt;&lt;li&gt;Market
-     Overview&lt;/li&gt;&lt;li&gt;Finances&lt;/li&gt;&lt;li&gt;Project Management&lt;/li&gt;&lt;/ol&gt;&lt;/p&gt;
+     <html><body>
+     <p><b>Project XYZ Review Meeting</b> will include the following
+     agenda items:<ol><li>Market
+     Overview</li><li>Finances</li><li>Project Management</li></ol></p>
+     </body></html>
 
-     &lt;/body&gt;&lt;/html&gt;
-
-<span class="h4"><a name="section-4.2.2">4.2.2</a> Common Name</span>
+4.2.2 Common Name
 
    Parameter Name: CN
 
@@ -1245,17 +1059,16 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 19]</span>
-<a name="page-20" id="page-20" href="#page-20" class="invisible"><span class="break"> </span></a>
-
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 19]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    Example:
 
      ORGANIZER;CN="John Smith":MAILTO:jsmith@host.com
 
-<span class="h4"><a name="section-4.2.3">4.2.3</a> Calendar User Type</span>
+4.2.3 Calendar User Type
 
    Parameter Name: CUTYPE
 
@@ -1285,7 +1098,7 @@ Table of Contents
 
      ATTENDEE;CUTYPE=GROUP:MAILTO:ietf-calsch@imc.org
 
-<span class="h4"><a name="section-4.2.4">4.2.4</a> Delegators</span>
+4.2.4 Delegators
 
    Parameter Name: DELEGATED-FROM
 
@@ -1302,9 +1115,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 20]</span>
-<a name="page-21" id="page-21" href="#page-21" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 20]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    Description: This parameter can be specified on properties with a
@@ -1312,7 +1125,7 @@ Table of Contents
    that has a value type of calendar address. This parameter specifies
    those calendar uses that have delegated their participation in a
    group scheduled event or to-do to the calendar user specified by the
-   property. The value MUST be a MAILTO URI as defined in [<a href="./rfc1738" title='"Uniform Resource Locators (URL)"'>RFC 1738</a>].
+   property. The value MUST be a MAILTO URI as defined in [RFC 1738].
    The individual calendar address parameter values MUST each be
    specified in a quoted-string.
 
@@ -1321,8 +1134,7 @@ Table of Contents
      ATTENDEE;DELEGATED-FROM="MAILTO:jsmith@host.com":MAILTO:
       jdoe@host.com
 
-
-<span class="h4"><a name="section-4.2.5">4.2.5</a> Delegatees</span>
+4.2.5 Delegatees
 
    Parameter Name: DELEGATED-TO
 
@@ -1339,7 +1151,7 @@ Table of Contents
    CAL-ADDRESS value type. This parameter specifies those calendar users
    whom have been delegated participation in a group scheduled event or
    to-do by the calendar user specified by the property. The value MUST
-   be a MAILTO URI as defined in [<a href="./rfc1738" title='"Uniform Resource Locators (URL)"'>RFC 1738</a>]. The individual calendar
+   be a MAILTO URI as defined in [RFC 1738]. The individual calendar
    address parameter values MUST each be specified in a quoted-string.
 
    Example:
@@ -1347,7 +1159,7 @@ Table of Contents
      ATTENDEE;DELEGATED-TO="MAILTO:jdoe@host.com","MAILTO:jqpublic@
       host.com":MAILTO:jsmith@host.com
 
-<span class="h4"><a name="section-4.2.6">4.2.6</a> Directory Entry Reference</span>
+4.2.6 Directory Entry Reference
 
    Parameter Name: DIR
 
@@ -1359,10 +1171,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 21]</span>
-
-<a name="page-22" id="page-22" href="#page-22" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 21]
+
+RFC 2445                       iCalendar                   November 1998
 
 
      dirparam   = "DIR" "=" DQUOTE uri DQUOTE
@@ -1378,7 +1189,7 @@ Table of Contents
      ORGANIZER;DIR="ldap://host.com:6666/o=eDABC%20Industries,c=3DUS??
       (cn=3DBJim%20Dolittle)":MAILTO:jimdo@host1.com
 
-<span class="h4"><a name="section-4.2.7">4.2.7</a> Inline Encoding</span>
+4.2.7 Inline Encoding
 
    Parameter Name: ENCODING
 
@@ -1390,9 +1201,9 @@ Table of Contents
 
      encodingparam      = "ENCODING" "="
                           ("8BIT"
-        ; "8bit" text encoding is defined in [<a href="./rfc2045" title='" Multipurpose Internet Mail Extensions (MIME) - Part One: Format of Internet Message Bodies"'>RFC 2045</a>]
+        ; "8bit" text encoding is defined in [RFC 2045]
                         / "BASE64"
-        ; "BASE64" binary encoding format is defined in [<a href="./rfc2045" title='" Multipurpose Internet Mail Extensions (MIME) - Part One: Format of Internet Message Bodies"'>RFC 2045</a>]
+        ; "BASE64" binary encoding format is defined in [RFC 2045]
                         / iana-token
         ; Some other IANA registered iCalendar encoding type
                         / x-name)
@@ -1402,7 +1213,7 @@ Table of Contents
    used in a property value. The default encoding is "8BIT",
    corresponding to a property value consisting of text. The "BASE64"
    encoding type corresponds to a property value encoded using the
-   "BASE64" encoding defined in [<a href="./rfc2045" title='" Multipurpose Internet Mail Extensions (MIME) - Part One: Format of Internet Message Bodies"'>RFC 2045</a>].
+   "BASE64" encoding defined in [RFC 2045].
 
    If the value type parameter is ";VALUE=BINARY", then the inline
    encoding parameter MUST be specified with the value
@@ -1416,10 +1227,9 @@ Table of Contents
 
 
 
-
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 22]</span>
-<a name="page-23" id="page-23" href="#page-23" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 22]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    Example:
@@ -1427,9 +1237,9 @@ Table of Contents
      ATTACH;FMTYPE=IMAGE/JPEG;ENCODING=BASE64;VALUE=BINARY:MIICajC
       CAdOgAwIBAgICBEUwDQYJKoZIhvcNAQEEBQAwdzELMAkGA1UEBhMCVVMxLDA
       qBgNVBAoTI05ldHNjYXBlIENvbW11bmljYXRpb25zIENvcnBvcmF0aW9uMRw
-      &lt;...remainder of "BASE64" encoded binary data...&gt;
+      <...remainder of "BASE64" encoded binary data...>
 
-<span class="h4"><a name="section-4.2.8">4.2.8</a> Format Type</span>
+4.2.8 Format Type
 
    Parameter Name: FMTTYPE
 
@@ -1456,7 +1266,7 @@ Table of Contents
       ATTACH;FMTTYPE=application/binary:ftp://domain.com/pub/docs/
        agenda.doc
 
-<span class="h4"><a name="section-4.2.9">4.2.9</a> Free/Busy Time Type</span>
+4.2.9 Free/Busy Time Type
 
    Parameter Name: FBTYPE
 
@@ -1473,10 +1283,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 23]</span>
-
-<a name="page-24" id="page-24" href="#page-24" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 23]
+
+RFC 2445                       iCalendar                   November 1998
 
 
         ; Some other IANA registered iCalendar data type.
@@ -1496,7 +1305,7 @@ Table of Contents
 
      FREEBUSY;FBTYPE=BUSY:19980415T133000Z/19980415T170000Z
 
-<span class="h4"><a name="section-4.2.10">4.2.10</a> Language</span>
+4.2.10 Language
 
    Parameter Name: LANGUAGE
 
@@ -1508,12 +1317,12 @@ Table of Contents
 
      languageparam =    "LANGUAGE" "=" language
 
-     language = &lt;Text identifying a language, as defined in [<a href="./rfc1766" title='"Tags for the Identification of Languages"'>RFC 1766</a>]&gt;
+     language = <Text identifying a language, as defined in [RFC 1766]>
 
    Description: This parameter can be specified on properties with a
    text value type. The parameter identifies the language of the text in
    the property or property parameter value. The value of the "language"
-   property parameter is that defined in [<a href="./rfc1766" title='"Tags for the Identification of Languages"'>RFC 1766</a>].
+   property parameter is that defined in [RFC 1766].
 
    For transport in a MIME entity, the Content-Language header field can
    be used to set the default language for the entire body part.
@@ -1530,9 +1339,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 24]</span>
-<a name="page-25" id="page-25" href="#page-25" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 24]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    The following example makes use of the Quoted-Printable encoding in
@@ -1541,7 +1350,7 @@ Table of Contents
      LOCATION;LANGUAGE=da:K=F8benhavn
      LOCATION;LANGUAGE=en:Copenhagen
 
-<span class="h4"><a name="section-4.2.11">4.2.11</a>  Group or List Membership</span>
+4.2.11  Group or List Membership
 
    Parameter Name: MEMBER
 
@@ -1569,7 +1378,7 @@ Table of Contents
      ATTENDEE;MEMBER="MAILTO:projectA@host.com","MAILTO:projectB@host.
       com":MAILTO:janedoe@host.com
 
-<span class="h4"><a name="section-4.2.12">4.2.12</a> Participation Status</span>
+4.2.12 Participation Status
 
    Parameter Name: PARTSTAT
 
@@ -1586,10 +1395,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 25]</span>
-
-<a name="page-26" id="page-26" href="#page-26" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 25]
+
+RFC 2445                       iCalendar                   November 1998
 
 
                         / "TENTATIVE"           ; Event tentatively
@@ -1643,12 +1451,12 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 26]</span>
-<a name="page-27" id="page-27" href="#page-27" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 26]
+
+RFC 2445                       iCalendar                   November 1998
 
 
-<span class="h4"><a name="section-4.2.13">4.2.13</a>  Recurrence Identifier Range</span>
+4.2.13  Recurrence Identifier Range
 
    Parameter Name: RANGE
 
@@ -1682,7 +1490,7 @@ Table of Contents
 
      RECURRENCE-ID;RANGE=THISANDPRIOR:19980401T133000Z
 
-<span class="h4"><a name="section-4.2.14">4.2.14</a> Alarm Trigger Relationship</span>
+4.2.14 Alarm Trigger Relationship
 
    Parameter Name: RELATED
 
@@ -1699,10 +1507,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 27]</span>
-
-<a name="page-28" id="page-28" href="#page-28" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 27]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    Description: The parameter can be specified on properties that
@@ -1718,7 +1525,7 @@ Table of Contents
 
      TRIGGER;RELATED=END:PT5M
 
-<span class="h4"><a name="section-4.2.15">4.2.15</a> Relationship Type</span>
+4.2.15 Relationship Type
 
    Parameter Name: RELTYPE
 
@@ -1750,18 +1557,18 @@ Table of Contents
 
    Example:
 
-     RELATED-TO;RELTYPE=SIBLING:&lt;19960401-080045-4000F192713@host.com&gt;
+     RELATED-TO;RELTYPE=SIBLING:<19960401-080045-4000F192713@host.com>
 
 
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 28]</span>
-<a name="page-29" id="page-29" href="#page-29" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 28]
+
+RFC 2445                       iCalendar                   November 1998
 
 
-<span class="h4"><a name="section-4.2.16">4.2.16</a> Participation Role</span>
+4.2.16 Participation Role
 
    Parameter Name: ROLE
 
@@ -1795,7 +1602,7 @@ Table of Contents
 
      ATTENDEE;ROLE=CHAIR:MAILTO:mrbig@host.com
 
-<span class="h4"><a name="section-4.2.17">4.2.17</a>  RSVP Expectation</span>
+4.2.17  RSVP Expectation
 
    Parameter Name: RSVP
 
@@ -1812,10 +1619,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 29]</span>
-
-<a name="page-30" id="page-30" href="#page-30" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 29]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    Description: This parameter can be specified on properties with a
@@ -1830,7 +1636,7 @@ Table of Contents
 
      ATTENDEE;RSVP=TRUE:MAILTO:jsmith@host.com
 
-<span class="h4"><a name="section-4.2.18">4.2.18</a>  Sent By</span>
+4.2.18  Sent By
 
    Parameter Name: SENT-BY
 
@@ -1853,8 +1659,7 @@ Table of Contents
 
      ORGANIZER;SENT-BY:"MAILTO:sray@host.com":MAILTO:jsmith@host.com
 
-
-<span class="h4"><a name="section-4.2.19">4.2.19</a> Time Zone Identifier</span>
+4.2.19 Time Zone Identifier
 
    Parameter Name: TZID
 
@@ -1864,15 +1669,15 @@ Table of Contents
    Format Definition: This property parameter is defined by the
    following notation:
 
-     tzidparam  = "TZID" "=" [<a href="#ref-tzidprefix">tzidprefix</a>] paramtext CRLF
+     tzidparam  = "TZID" "=" [tzidprefix] paramtext CRLF
 
      tzidprefix = "/"
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 30]</span>
-<a name="page-31" id="page-31" href="#page-31" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 30]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    Description: The parameter MUST be specified on the "DTSTART",
@@ -1898,7 +1703,7 @@ Table of Contents
         Note: This document does not define a naming convention for time
         zone identifiers. Implementers may want to use the naming
         conventions defined in existing time zone specifications such as
-        the public-domain Olson database [<a href="#ref-TZ" title='"ftp://elsie.nci.nih.gov/pub/"'>TZ</a>]. The specification of
+        the public-domain Olson database [TZ]. The specification of
         globally unique time zone identifiers is not addressed by this
         document and is left for future study.
 
@@ -1926,11 +1731,12 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 31]</span>
-<a name="page-32" id="page-32" href="#page-32" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 31]
+
+RFC 2445                       iCalendar                   November 1998
 
-<span class="h4"><a name="section-4.2.20">4.2.20</a> Value Data Types</span>
+
+4.2.20 Value Data Types
 
    Parameter Name: VALUE
 
@@ -1971,7 +1777,7 @@ Table of Contents
    value type is overridden by some other allowable value type, then
    this parameter MUST be specified.
 
-<span class="h3"><a name="section-4.3">4.3</a> Property Value Data Types</span>
+4.3 Property Value Data Types
 
    The properties in an iCalendar object are strongly typed. The
    definition of each property restricts the value to be one of the
@@ -1981,17 +1787,16 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 32]</span>
-
-<a name="page-33" id="page-33" href="#page-33" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 32]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    parameter. If the value type of a property is one of the alternate
    valid types, then it MUST be explicitly specified with the "VALUE"
    parameter.
 
-<span class="h4"><a name="section-4.3.1">4.3.1</a>   Binary</span>
+4.3.1   Binary
 
    Value Name: BINARY
 
@@ -2003,8 +1808,8 @@ Table of Contents
    Formal Definition: The value type is defined by the following
    notation:
 
-     binary     = *(4b-char) [<a href="#ref-b-end">b-end</a>]
-     ; A "BASE64" encoded character string, as defined by [<a href="./rfc2045" title='" Multipurpose Internet Mail Extensions (MIME) - Part One: Format of Internet Message Bodies"'>RFC 2045</a>].
+     binary     = *(4b-char) [b-end]
+     ; A "BASE64" encoded character string, as defined by [RFC 2045].
 
      b-end      = (2b-char "==") / (3b-char "=")
 
@@ -2013,7 +1818,7 @@ Table of Contents
    Description: Property values with this value type MUST also include
    the inline encoding parameter sequence of ";ENCODING=BASE64". That
    is, all inline binary data MUST first be character encoded using the
-   "BASE64" encoding method defined in [<a href="./rfc2045" title='" Multipurpose Internet Mail Extensions (MIME) - Part One: Format of Internet Message Bodies"'>RFC 2045</a>]. No additional content
+   "BASE64" encoding method defined in [RFC 2045]. No additional content
    value encoding (i.e., BACKSLASH character encoding) is defined for
    this value type.
 
@@ -2023,9 +1828,9 @@ Table of Contents
      ATTACH;VALUE=BINARY;ENCODING=BASE64:MIICajCCAdOgAwIBAgICBEUwDQY
       JKoZIhvcNAQEEBQAwdzELMAkGA1UEBhMCVVMxLDAqBgNVBAoTI05ldHNjYXBlI
       ENvbW11bmljYXRpb25zIENvcnBvcmF0aW9uMRwwGgYDVQQLExNJbmZv
-        &lt;...remainder of "BASE64" encoded binary data...&gt;
+        <...remainder of "BASE64" encoded binary data...>
 
-<span class="h4"><a name="section-4.3.2">4.3.2</a>   Boolean</span>
+4.3.2   Boolean
 
    Value Name: BOOLEAN
 
@@ -2038,9 +1843,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 33]</span>
-<a name="page-34" id="page-34" href="#page-34" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 33]
+
+RFC 2445                       iCalendar                   November 1998
 
 
      boolean    = "TRUE" / "FALSE"
@@ -2054,7 +1859,7 @@ Table of Contents
 
    GIBBERISH:TRUE
 
-<span class="h4"><a name="section-4.3.3">4.3.3</a>   Calendar User Address</span>
+4.3.3   Calendar User Address
 
    Value Name: CAL-ADDRESS
 
@@ -2066,10 +1871,10 @@ Table of Contents
 
      cal-address        = uri
 
-   Description: The value is a URI as defined by [<a href="./rfc1738" title='"Uniform Resource Locators (URL)"'>RFC 1738</a>] or any other
+   Description: The value is a URI as defined by [RFC 1738] or any other
    IANA registered form for a URI. When used to address an Internet
    email transport address for a calendar user, the value MUST be a
-   MAILTO URI, as defined by [<a href="./rfc1738" title='"Uniform Resource Locators (URL)"'>RFC 1738</a>]. No additional content value
+   MAILTO URI, as defined by [RFC 1738]. No additional content value
    encoding (i.e., BACKSLASH character encoding) is defined for this
    value type.
 
@@ -2077,7 +1882,7 @@ Table of Contents
 
      ATTENDEE:MAILTO:jane_doe@host.com
 
-<span class="h4"><a name="section-4.3.4">4.3.4</a> Date</span>
+4.3.4 Date
 
    Value Name: DATE
 
@@ -2094,9 +1899,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 34]</span>
-<a name="page-35" id="page-35" href="#page-35" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 34]
+
+RFC 2445                       iCalendar                   November 1998
 
 
      date-month         = 2DIGIT        ;01-12
@@ -2118,8 +1923,7 @@ Table of Contents
 
      19970714
 
-
-<span class="h4"><a name="section-4.3.5">4.3.5</a>   Date-Time</span>
+4.3.5   Date-Time
 
    Value Name: DATE-TIME
 
@@ -2151,9 +1955,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 35]</span>
-<a name="page-36" id="page-36" href="#page-36" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 35]
+
+RFC 2445                       iCalendar                   November 1998
 
 
      DTSTART:19980119T230000-0800       ;Invalid time format
@@ -2207,9 +2011,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 36]</span>
-<a name="page-37" id="page-37" href="#page-37" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 36]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    The date and local time with reference to time zone information is
@@ -2234,8 +2038,7 @@ Table of Contents
 
      COMPLETED:19970630T235960Z
 
-
-<span class="h4"><a name="section-4.3.6">4.3.6</a>   Duration</span>
+4.3.6   Duration
 
    Value Name: DURATION
 
@@ -2247,11 +2050,11 @@ Table of Contents
 
      dur-value  = (["+"] / "-") "P" (dur-date / dur-time / dur-week)
 
-     dur-date   = dur-day [<a href="#ref-dur-time">dur-time</a>]
+     dur-date   = dur-day [dur-time]
      dur-time   = "T" (dur-hour / dur-minute / dur-second)
      dur-week   = 1*DIGIT "W"
-     dur-hour   = 1*DIGIT "H" [<a href="#ref-dur-minute">dur-minute</a>]
-     dur-minute = 1*DIGIT "M" [<a href="#ref-dur-second">dur-second</a>]
+     dur-hour   = 1*DIGIT "H" [dur-minute]
+     dur-minute = 1*DIGIT "M" [dur-second]
      dur-second = 1*DIGIT "S"
      dur-day    = 1*DIGIT "D"
 
@@ -2264,10 +2067,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 37]</span>
-
-<a name="page-38" id="page-38" href="#page-38" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 37]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    No additional content value encoding (i.e., BACKSLASH character
@@ -2281,7 +2083,7 @@ Table of Contents
 
      P7W
 
-<span class="h4"><a name="section-4.3.7">4.3.7</a>   Float</span>
+4.3.7   Float
 
    Value Name: FLOAT
 
@@ -2306,8 +2108,7 @@ Table of Contents
      1.333
      -3.14
 
-
-<span class="h4"><a name="section-4.3.8">4.3.8</a> Integer</span>
+4.3.8 Integer
 
      Value Name:INTEGER
 
@@ -2322,9 +2123,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 38]</span>
-<a name="page-39" id="page-39" href="#page-39" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 38]
+
+RFC 2445                       iCalendar                   November 1998
 
 
      Description: If the property permits, multiple "integer" values are
@@ -2343,7 +2144,7 @@ Table of Contents
      +1234567890
      432109876
 
-<span class="h4"><a name="section-4.3.9">4.3.9</a> Period of Time</span>
+4.3.9 Period of Time
 
    Value Name: PERIOD
 
@@ -2378,10 +2179,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 39]</span>
-<a name="page-40" id="page-40" href="#page-40" class="invisible"><span class="break"> </span></a>
-
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 39]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    the period, followed by a SOLIDUS character (US-ASCII decimal 47),
@@ -2400,7 +2200,7 @@ Table of Contents
    No additional content value encoding (i.e., BACKSLASH character
    encoding) is defined for this value type.
 
-<span class="h4"><a name="section-4.3.10">4.3.10</a> Recurrence Rule</span>
+4.3.10 Recurrence Rule
 
    Value Name: RECUR
 
@@ -2435,10 +2235,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 40]</span>
-
-<a name="page-41" id="page-41" href="#page-41" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 40]
+
+RFC 2445                       iCalendar                   November 1998
 
 
                 ( ";" x-name "=" text )
@@ -2464,7 +2263,7 @@ Table of Contents
 
      bywdaylist = weekdaynum / ( weekdaynum *("," weekdaynum) )
 
-     weekdaynum = [([<a href="#ref-plus">plus</a>] ordwk / minus ordwk)] weekday
+     weekdaynum = [([plus] ordwk / minus ordwk)] weekday
 
      plus       = "+"
 
@@ -2478,13 +2277,13 @@ Table of Contents
 
      bymodaylist = monthdaynum / ( monthdaynum *("," monthdaynum) )
 
-     monthdaynum = ([<a href="#ref-plus">plus</a>] ordmoday) / (minus ordmoday)
+     monthdaynum = ([plus] ordmoday) / (minus ordmoday)
 
      ordmoday   = 1DIGIT / 2DIGIT       ;1 to 31
 
      byyrdaylist = yeardaynum / ( yeardaynum *("," yeardaynum) )
 
-     yeardaynum = ([<a href="#ref-plus">plus</a>] ordyrday) / (minus ordyrday)
+     yeardaynum = ([plus] ordyrday) / (minus ordyrday)
 
      ordyrday   = 1DIGIT / 2DIGIT / 3DIGIT      ;1 to 366
 
@@ -2492,13 +2291,12 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 41]</span>
+Dawson & Stenerson          Standards Track                    [Page 41]
+
+RFC 2445                       iCalendar                   November 1998
 
-<a name="page-42" id="page-42" href="#page-42" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
 
-
-     weeknum    = ([<a href="#ref-plus">plus</a>] ordwk) / (minus ordwk)
+     weeknum    = ([plus] ordwk) / (minus ordwk)
 
      bymolist   = monthnum / ( monthnum *("," monthnum) )
 
@@ -2549,10 +2347,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 42]</span>
-<a name="page-43" id="page-43" href="#page-43" class="invisible"><span class="break"> </span></a>
-
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 42]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    specified, counts as the first occurrence.
@@ -2606,9 +2403,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 43]</span>
-<a name="page-44" id="page-44" href="#page-44" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 43]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    The BYMONTH rule part specifies a COMMA character (US-ASCII decimal
@@ -2662,9 +2459,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 44]</span>
-<a name="page-45" id="page-45" href="#page-45" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 44]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    Here is an example of evaluating multiple BYxxx rule parts.
@@ -2697,8 +2494,7 @@ Table of Contents
 
    There are other examples specified in the "RRULE" specification.
 
-
-<span class="h4"><a name="section-4.3.11">4.3.11</a> Text</span>
+4.3.11 Text
 
    Value Name: TEXT
 
@@ -2719,9 +2515,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 45]</span>
-<a name="page-46" id="page-46" href="#page-46" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 45]
+
+RFC 2445                       iCalendar                   November 1998
 
 
      TSAFE-CHAR = %x20-21 / %x23-2B / %x2D-39 / %x3C-5B
@@ -2775,12 +2571,12 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 46]</span>
-<a name="page-47" id="page-47" href="#page-47" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 46]
+
+RFC 2445                       iCalendar                   November 1998
 
 
-<span class="h4"><a name="section-4.3.12">4.3.12</a> Time</span>
+4.3.12 Time
 
    Value Name: TIME
 
@@ -2790,7 +2586,7 @@ Table of Contents
    Formal Definition: The data type is defined by the following
    notation:
 
-     time               = time-hour time-minute time-second [<a href="#ref-time-utc">time-utc</a>]
+     time               = time-hour time-minute time-second [time-utc]
 
      time-hour          = 2DIGIT        ;00-23
      time-minute        = 2DIGIT        ;00-59
@@ -2831,9 +2627,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 47]</span>
-<a name="page-48" id="page-48" href="#page-48" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 47]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    Time values of this type are said to be "floating" and are not bound
@@ -2887,9 +2683,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 48]</span>
-<a name="page-49" id="page-49" href="#page-49" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 48]
+
+RFC 2445                       iCalendar                   November 1998
 
 
      X-TIMEOFDAY:083000
@@ -2898,7 +2694,7 @@ Table of Contents
 
      X-TIMEOFDAY;TZID=US-Eastern:083000
 
-<span class="h4"><a name="section-4.3.13">4.3.13</a> URI</span>
+4.3.13 URI
 
    Value Name: URI
 
@@ -2909,17 +2705,17 @@ Table of Contents
    Formal Definition: The data type is defined by the following
    notation:
 
-     uri        = &lt;As defined by any IETF RFC&gt;
+     uri        = <As defined by any IETF RFC>
 
    Description: This data type might be used to reference binary
    information, for values that are large, or otherwise undesirable to
    include directly in the iCalendar object.
 
-   The URI value formats in <a href="./rfc1738">RFC 1738</a>, <a href="./rfc2111">RFC 2111</a> and any other IETF
+   The URI value formats in RFC 1738, RFC 2111 and any other IETF
    registered value format can be specified.
 
    Any IANA registered URI format can be used. These include, but are
-   not limited to, those defined in <a href="./rfc1738">RFC 1738</a> and <a href="./rfc2111">RFC 2111</a>.
+   not limited to, those defined in RFC 1738 and RFC 2111.
 
    When a property parameter value is a URI value type, the URI MUST be
    specified as a quoted-string value.
@@ -2929,9 +2725,9 @@ Table of Contents
 
    Example: The following is a URI for a network file:
 
-     <a href="http://host1.com/my-report.txt">http://host1.com/my-report.txt</a>
+     http://host1.com/my-report.txt
 
-<span class="h4"><a name="section-4.3.14">4.3.14</a> UTC Offset</span>
+4.3.14 UTC Offset
 
    Value Name: UTC-OFFSET
 
@@ -2943,9 +2739,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 49]</span>
-<a name="page-50" id="page-50" href="#page-50" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 49]
+
+RFC 2445                       iCalendar                   November 1998
 
 
      utc-offset = time-numzone  ;As defined above in time data type
@@ -2968,7 +2764,7 @@ Table of Contents
 
      +0100
 
-<span class="h3"><a name="section-4.4">4.4</a> iCalendar Object</span>
+4.4 iCalendar Object
 
    The Calendaring and Scheduling Core Object is a collection of
    calendaring and scheduling information. Typically, this information
@@ -2999,17 +2795,16 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 50]</span>
-<a name="page-51" id="page-51" href="#page-51" class="invisible"><span class="break"> </span></a>
+Dawson & Stenerson          Standards Track                    [Page 50]
+
+RFC 2445                       iCalendar                   November 1998
 
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
 
-
-<span class="h3"><a name="section-4.5">4.5</a> Property</span>
+4.5 Property
 
    A property is the definition of an individual attribute describing a
    calendar or a calendar component. A property takes the form defined
-   by the "contentline" notation defined in <a href="#section-4.1.1">section 4.1.1</a>.
+   by the "contentline" notation defined in section 4.1.1.
 
    The following is an example of a property:
 
@@ -3023,7 +2818,7 @@ Table of Contents
    "due" and "Due", DTSTART;TZID=US-Eastern:19980714T120000 is the same
    as DtStart;TzID=US-Eastern:19980714T120000.
 
-<span class="h3"><a name="section-4.6">4.6</a> Calendar Components</span>
+4.6 Calendar Components
 
    The body of the iCalendar object consists of a sequence of calendar
    properties and one or more calendar components. The calendar
@@ -3056,9 +2851,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 51]</span>
-<a name="page-52" id="page-52" href="#page-52" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 51]
+
+RFC 2445                       iCalendar                   November 1998
 
 
                 )
@@ -3089,8 +2884,7 @@ Table of Contents
    iCalendar object will consist of just a single "VEVENT", "VTODO" or
    "VJOURNAL" calendar component.
 
-
-<span class="h4"><a name="section-4.6.1">4.6.1</a> Event Component</span>
+4.6.1 Event Component
 
    Component Name: "VEVENT"
 
@@ -3113,9 +2907,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 52]</span>
-<a name="page-53" id="page-53" href="#page-53" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 52]
+
+RFC 2445                       iCalendar                   November 1998
 
 
                 last-mod / location / organizer / priority /
@@ -3169,9 +2963,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 53]</span>
-<a name="page-54" id="page-54" href="#page-54" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 53]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    The "VEVENT" calendar component cannot be nested within another
@@ -3225,13 +3019,12 @@ Table of Contents
 
 
 
+Dawson & Stenerson          Standards Track                    [Page 54]
+
+RFC 2445                       iCalendar                   November 1998
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 54]</span>
-<a name="page-55" id="page-55" href="#page-55" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
 
-
-<span class="h4"><a name="section-4.6.2">4.6.2</a> To-do Component</span>
+4.6.2 To-do Component
 
    Component Name: VTODO
 
@@ -3282,9 +3075,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 55]</span>
-<a name="page-56" id="page-56" href="#page-56" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 55]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    A "VTODO" calendar component without the "DTSTART" and "DUE" (or
@@ -3305,7 +3098,7 @@ Table of Contents
      STATUS:NEEDS-ACTION
      END:VTODO
 
-<span class="h4"><a name="section-4.6.3">4.6.3</a> Journal Component</span>
+4.6.3 Journal Component
 
    Component Name: VJOURNAL
 
@@ -3338,9 +3131,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 56]</span>
-<a name="page-57" id="page-57" href="#page-57" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 56]
+
+RFC 2445                       iCalendar                   November 1998
 
 
                 )
@@ -3394,13 +3187,12 @@ Table of Contents
 
 
 
+Dawson & Stenerson          Standards Track                    [Page 57]
+
+RFC 2445                       iCalendar                   November 1998
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 57]</span>
-<a name="page-58" id="page-58" href="#page-58" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
 
-
-<span class="h4"><a name="section-4.6.4">4.6.4</a> Free/Busy Component</span>
+4.6.4 Free/Busy Component
 
    Component Name: VFREEBUSY
 
@@ -3451,9 +3243,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 58]</span>
-<a name="page-59" id="page-59" href="#page-59" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 58]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    "UID" and "DTSTAMP" properties are specified to assist in proper
@@ -3507,10 +3299,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 59]</span>
-
-<a name="page-60" id="page-60" href="#page-60" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 59]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    The following is an example of a "VFREEBUSY" calendar component used
@@ -3540,7 +3331,7 @@ Table of Contents
      URL:http://www.host.com/calendar/busytime/jsmith.ifb
      END:VFREEBUSY
 
-<span class="h4"><a name="section-4.6.5">4.6.5</a> Time Zone Component</span>
+4.6.5 Time Zone Component
 
    Component Name: VTIMEZONE
 
@@ -3564,10 +3355,9 @@ Table of Contents
 
 
 
-
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 60]</span>
-<a name="page-61" id="page-61" href="#page-61" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 60]
+
+RFC 2445                       iCalendar                   November 1998
 
 
                 last-mod / tzurl /
@@ -3621,10 +3411,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 61]</span>
-
-<a name="page-62" id="page-62" href="#page-62" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 61]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    daylight hours, often referred to as Daylight  Saving Time. Some
@@ -3653,7 +3442,7 @@ Table of Contents
 
         Note: The specification of a global time zone registry is not
         addressed by this document and is left for future study.
-        However, implementers may find the Olson time zone database [<a href="#ref-TZ" title='"ftp://elsie.nci.nih.gov/pub/"'>TZ</a>]
+        However, implementers may find the Olson time zone database [TZ]
         a useful reference. It is an informal, public-domain collection
         of time zone information, which is currently being maintained by
         volunteer Internet participants, and is used in several
@@ -3678,10 +3467,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 62]</span>
-<a name="page-63" id="page-63" href="#page-63" class="invisible"><span class="break"> </span></a>
-
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 62]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    time zone definition. This is necessary for some classes of events,
@@ -3735,9 +3523,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 63]</span>
-<a name="page-64" id="page-64" href="#page-64" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 63]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    observance.
@@ -3791,9 +3579,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 64]</span>
-<a name="page-65" id="page-65" href="#page-65" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 64]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    observance specified is always in effect.
@@ -3847,10 +3635,9 @@ Table of Contents
 
 
 
-
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 65]</span>
-<a name="page-66" id="page-66" href="#page-66" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 65]
+
+RFC 2445                       iCalendar                   November 1998
 
 
      RDATE:19970406T020000
@@ -3904,10 +3691,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 66]</span>
-
-<a name="page-67" id="page-67" href="#page-67" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 66]
+
+RFC 2445                       iCalendar                   November 1998
 
 
      BEGIN:DAYLIGHT
@@ -3950,7 +3736,7 @@ Table of Contents
      END:DAYLIGHT
      END:VTIMEZONE
 
-<span class="h4"><a name="section-4.6.6">4.6.6</a> Alarm Component</span>
+4.6.6 Alarm Component
 
    Component Name: VALARM
 
@@ -3961,10 +3747,9 @@ Table of Contents
 
 
 
-
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 67]</span>
-<a name="page-68" id="page-68" href="#page-68" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 67]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    Formal Definition: A "VALARM" calendar component is defined by the
@@ -4018,10 +3803,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 68]</span>
-
-<a name="page-69" id="page-69" href="#page-69" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 68]
+
+RFC 2445                       iCalendar                   November 1998
 
 
                 ; and MAY occur more than once
@@ -4075,9 +3859,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 69]</span>
-<a name="page-70" id="page-70" href="#page-70" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 69]
+
+RFC 2445                       iCalendar                   November 1998
 
 
                 ; 'description' is optional,
@@ -4131,9 +3915,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 70]</span>
-<a name="page-71" id="page-71" href="#page-71" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 70]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    The "TRIGGER" property specifies when the alarm will be triggered.
@@ -4187,10 +3971,9 @@ Table of Contents
 
 
 
-
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 71]</span>
-<a name="page-72" id="page-72" href="#page-72" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 71]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    action, such as playing a built-in default sound, or playing no sound
@@ -4244,10 +4027,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 72]</span>
-
-<a name="page-73" id="page-73" href="#page-73" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 72]
+
+RFC 2445                       iCalendar                   November 1998
 
 
      DESCRIPTION:Breakfast meeting with executive\n
@@ -4285,15 +4067,14 @@ Table of Contents
       procs/felizano.exe
      END:VALARM
 
-<span class="h3"><a name="section-4.7">4.7</a> Calendar Properties</span>
+4.7 Calendar Properties
 
    The Calendar Properties are attributes that apply to the iCalendar
    object, as a whole. These properties do not appear within a calendar
    component. They SHOULD be specified after the "BEGIN:VCALENDAR"
    property and prior to any calendar component.
 
-
-<span class="h4"><a name="section-4.7.1">4.7.1</a> Calendar Scale</span>
+4.7.1 Calendar Scale
 
    Property Name: CALSCALE
 
@@ -4302,9 +4083,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 73]</span>
-<a name="page-74" id="page-74" href="#page-74" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 73]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    Value Type: TEXT
@@ -4333,7 +4114,7 @@ Table of Contents
 
      CALSCALE:GREGORIAN
 
-<span class="h4"><a name="section-4.7.2">4.7.2</a> Method</span>
+4.7.2 Method
 
    Property Name: METHOD
 
@@ -4358,13 +4139,12 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 74]</span>
-<a name="page-75" id="page-75" href="#page-75" class="invisible"><span class="break"> </span></a>
+Dawson & Stenerson          Standards Track                    [Page 74]
+
+RFC 2445                       iCalendar                   November 1998
 
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
 
-
-   Interoperability Protocol (iTIP) defined by [<a href="#ref-ITIP" title='"iCalendar Transport-Independent Interoperability Protocol (iTIP) : Scheduling Events, Busy Time, To-dos and Journal Entries"'>ITIP</a>].
+   Interoperability Protocol (iTIP) defined by [ITIP].
 
    If this property is not present in the iCalendar object, then a
    scheduling transaction MUST NOT be assumed. In such cases, the
@@ -4385,7 +4165,7 @@ Table of Contents
 
      METHOD:REQUEST
 
-<span class="h4"><a name="section-4.7.3">4.7.3</a> Product Identifier</span>
+4.7.3 Product Identifier
 
    Property Name: PRODID
 
@@ -4415,10 +4195,9 @@ Table of Contents
 
 
 
-
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 75]</span>
-<a name="page-76" id="page-76" href="#page-76" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 75]
+
+RFC 2445                       iCalendar                   November 1998
 
 
      pidparam   = *(";" xparam)
@@ -4432,7 +4211,7 @@ Table of Contents
 
      PRODID:-//ABC Corporation//NONSGML My Product//EN
 
-<span class="h4"><a name="section-4.7.4">4.7.4</a> Version</span>
+4.7.4 Version
 
    Property Name: VERSION
 
@@ -4461,10 +4240,10 @@ Table of Contents
                 / maxver
                 / (minver ";" maxver)
 
-     minver     = &lt;A IANA registered iCalendar version identifier&gt;
+     minver     = <A IANA registered iCalendar version identifier>
      ;Minimum iCalendar version needed to parse the iCalendar object
 
-     maxver     = &lt;A IANA registered iCalendar version identifier&gt;
+     maxver     = <A IANA registered iCalendar version identifier>
      ;Maximum iCalendar version needed to parse the iCalendar object
 
    Example: The following is an example of this property:
@@ -4472,25 +4251,24 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 76]</span>
-<a name="page-77" id="page-77" href="#page-77" class="invisible"><span class="break"> </span></a>
-
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 76]
+
+RFC 2445                       iCalendar                   November 1998
 
 
      VERSION:2.0
 
-<span class="h3"><a name="section-4.8">4.8</a> Component Properties</span>
+4.8 Component Properties
 
    The following properties can appear within calendar components, as
    specified by each component property definition.
 
-<span class="h4"><a name="section-4.8.1">4.8.1</a> Descriptive Component Properties</span>
+4.8.1 Descriptive Component Properties
 
    The following properties specify descriptive information about
    calendar components.
 
-<span class="h5"><a name="section-4.8.1.1">4.8.1.1</a> Attachment</span>
+4.8.1.1 Attachment
 
    Property Name: ATTACH
 
@@ -4529,9 +4307,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 77]</span>
-<a name="page-78" id="page-78" href="#page-78" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 77]
+
+RFC 2445                       iCalendar                   November 1998
 
 
                 ; the following is optional,
@@ -4548,7 +4326,7 @@ Table of Contents
      ATTACH;FMTTYPE=application/postscript:ftp://xyzCorp.com/pub/
       reports/r-960812.ps
 
-<span class="h5"><a name="section-4.8.1.2">4.8.1.2</a> Categories</span>
+4.8.1.2 Categories
 
    Property Name: CATEGORIES
 
@@ -4585,10 +4363,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 78]</span>
-<a name="page-79" id="page-79" href="#page-79" class="invisible"><span class="break"> </span></a>
-
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 78]
+
+RFC 2445                       iCalendar                   November 1998
 
 
                 ; the following is optional,
@@ -4604,7 +4381,7 @@ Table of Contents
 
      CATEGORIES:MEETING
 
-<span class="h5"><a name="section-4.8.1.3">4.8.1.3</a> Classification</span>
+4.8.1.3 Classification
 
    Property Name: CLASS
 
@@ -4642,10 +4419,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 79]</span>
-
-<a name="page-80" id="page-80" href="#page-80" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 79]
+
+RFC 2445                       iCalendar                   November 1998
 
 
      classvalue = "PUBLIC" / "PRIVATE" / "CONFIDENTIAL" / iana-token
@@ -4656,7 +4432,7 @@ Table of Contents
 
      CLASS:PUBLIC
 
-<span class="h5"><a name="section-4.8.1.4">4.8.1.4</a> Comment</span>
+4.8.1.4 Comment
 
    Property Name: COMMENT
 
@@ -4699,17 +4475,16 @@ Table of Contents
 
 
 
-
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 80]</span>
-<a name="page-81" id="page-81" href="#page-81" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 80]
+
+RFC 2445                       iCalendar                   November 1998
 
 
        their site. - - John
 
    The data type for this property is TEXT.
 
-<span class="h5"><a name="section-4.8.1.5">4.8.1.5</a> Description</span>
+4.8.1.5 Description
 
    Property Name: DESCRIPTION
 
@@ -4756,9 +4531,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 81]</span>
-<a name="page-82" id="page-82" href="#page-82" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 81]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    Example: The following is an example of the property with formatted
@@ -4774,8 +4549,7 @@ Table of Contents
      DESCRIPTION:Last draft of the new novel is to be completed
        for the editor's proof today.
 
-
-<span class="h5"><a name="section-4.8.1.6">4.8.1.6</a> Geographic Position</span>
+4.8.1.6 Geographic Position
 
    Property Name: GEO
 
@@ -4813,9 +4587,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 82]</span>
-<a name="page-83" id="page-83" href="#page-83" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 82]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    Latitudes north of the equator shall be specified by a plus sign (+),
@@ -4869,12 +4643,12 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 83]</span>
-<a name="page-84" id="page-84" href="#page-84" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 83]
+
+RFC 2445                       iCalendar                   November 1998
 
 
-<span class="h5"><a name="section-4.8.1.7">4.8.1.7</a> Location</span>
+4.8.1.7 Location
 
    Property Name: LOCATION
 
@@ -4895,7 +4669,7 @@ Table of Contents
    directory information with more structured specification of the
    location. For example, the alternate representation may specify
    either an LDAP URI pointing to an LDAP server entry or a CID URI
-   pointing to a MIME body part containing a vCard [<a href="./rfc2426" title='"vCard MIME Directory Profile"'>RFC 2426</a>] for the
+   pointing to a MIME body part containing a vCard [RFC 2426] for the
    location.
 
    Format Definition: The property is defined by the following notation:
@@ -4925,12 +4699,12 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 84]</span>
-<a name="page-85" id="page-85" href="#page-85" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 84]
+
+RFC 2445                       iCalendar                   November 1998
 
 
-<span class="h5"><a name="section-4.8.1.8">4.8.1.8</a> Percent Complete</span>
+4.8.1.8 Percent Complete
 
    Property Name: PERCENT-COMPLETE
 
@@ -4970,7 +4744,7 @@ Table of Contents
 
      PERCENT-COMPLETE:39
 
-<span class="h5"><a name="section-4.8.1.9">4.8.1.9</a> Priority</span>
+4.8.1.9 Priority
 
    Property Name: PRIORITY
 
@@ -4981,10 +4755,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 85]</span>
-
-<a name="page-86" id="page-86" href="#page-86" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 85]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    Property Parameters: Non-standard property parameters can be
@@ -5033,15 +4806,14 @@ Table of Contents
 
      prioparam  = *(";" xparam)
 
-     privalue   = integer       ;Must be in the range [<a href="#ref-0..9">0..9</a>]
+     privalue   = integer       ;Must be in the range [0..9]
         ; All other values are reserved for future use
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 86]</span>
-<a name="page-87" id="page-87" href="#page-87" class="invisible"><span class="break"> </span></a>
-
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 86]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    The following is an example of a property with the highest priority:
@@ -5058,7 +4830,7 @@ Table of Contents
 
      PRIORITY:0
 
-<span class="h5"><a name="section-4.8.1.10">4.8.1.10</a> Resources</span>
+4.8.1.10 Resources
 
    Property Name: RESOURCES
 
@@ -5095,10 +4867,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 87]</span>
-
-<a name="page-88" id="page-88" href="#page-88" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 87]
+
+RFC 2445                       iCalendar                   November 1998
 
 
                 (";" xparam)
@@ -5111,7 +4882,7 @@ Table of Contents
 
      RESOURCES;LANGUAGE=fr:1 raton-laveur
 
-<span class="h5"><a name="section-4.8.1.11">4.8.1.11</a> Status</span>
+4.8.1.11 Status
 
    Property Name: STATUS
 
@@ -5152,10 +4923,9 @@ Table of Contents
 
 
 
-
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 88]</span>
-<a name="page-89" id="page-89" href="#page-89" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 88]
+
+RFC 2445                       iCalendar                   November 1998
 
 
      statvalue  =/ "NEEDS-ACTION"       ;Indicates to-do needs action.
@@ -5184,7 +4954,7 @@ Table of Contents
 
      STATUS:DRAFT
 
-<span class="h5"><a name="section-4.8.1.12">4.8.1.12</a> Summary</span>
+4.8.1.12 Summary
 
    Property Name: SUMMARY
 
@@ -5209,9 +4979,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 89]</span>
-<a name="page-90" id="page-90" href="#page-90" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 89]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    Format Definition: The property is defined by the following notation:
@@ -5236,13 +5006,12 @@ Table of Contents
 
      SUMMARY:Department Party
 
-
-<span class="h4"><a name="section-4.8.2">4.8.2</a> Date and Time Component Properties</span>
+4.8.2 Date and Time Component Properties
 
    The following properties specify date and time related information in
    calendar components.
 
-<span class="h5"><a name="section-4.8.2.1">4.8.2.1</a> Date/Time Completed</span>
+4.8.2.1 Date/Time Completed
 
    Property Name: COMPLETED
 
@@ -5266,10 +5035,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 90]</span>
-
-<a name="page-91" id="page-91" href="#page-91" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 90]
+
+RFC 2445                       iCalendar                   November 1998
 
 
      compparam  = *(";" xparam)
@@ -5278,7 +5046,7 @@ Table of Contents
 
      COMPLETED:19960401T235959Z
 
-<span class="h5"><a name="section-4.8.2.2">4.8.2.2</a> Date/Time End</span>
+4.8.2.2 Date/Time End
 
    Property Name: DTEND
 
@@ -5323,10 +5091,9 @@ Table of Contents
 
 
 
-
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 91]</span>
-<a name="page-92" id="page-92" href="#page-92" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 91]
+
+RFC 2445                       iCalendar                   November 1998
 
 
                 (";" xparam)
@@ -5344,7 +5111,7 @@ Table of Contents
 
      DTEND;VALUE=DATE:19980704
 
-<span class="h5"><a name="section-4.8.2.3">4.8.2.3</a> Date/Time Due</span>
+4.8.2.3 Date/Time Due
 
    Property Name: DUE
 
@@ -5380,9 +5147,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 92]</span>
-<a name="page-93" id="page-93" href="#page-93" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 92]
+
+RFC 2445                       iCalendar                   November 1998
 
 
                   *(";" xparam)
@@ -5398,8 +5165,7 @@ Table of Contents
 
      DUE:19980430T235959Z
 
-
-<span class="h5"><a name="section-4.8.2.4">4.8.2.4</a> Date/Time Start</span>
+4.8.2.4 Date/Time Start
 
    Property Name: DTSTART
 
@@ -5437,9 +5203,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 93]</span>
-<a name="page-94" id="page-94" href="#page-94" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 93]
+
+RFC 2445                       iCalendar                   November 1998
 
 
      dtstparam  = *(
@@ -5466,7 +5232,7 @@ Table of Contents
 
      DTSTART:19980118T073000Z
 
-<span class="h5"><a name="section-4.8.2.5">4.8.2.5</a> Duration</span>
+4.8.2.5 Duration
 
    Property Name: DURATION
 
@@ -5493,10 +5259,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 94]</span>
-<a name="page-95" id="page-95" href="#page-95" class="invisible"><span class="break"> </span></a>
-
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 94]
+
+RFC 2445                       iCalendar                   November 1998
 
 
      duration   = "DURATION" durparam ":" dur-value CRLF
@@ -5514,7 +5279,7 @@ Table of Contents
 
      DURATION:PT15M
 
-<span class="h5"><a name="section-4.8.2.6">4.8.2.6</a> Free/Busy Time</span>
+4.8.2.6 Free/Busy Time
 
    Property Name: FREEBUSY
 
@@ -5550,10 +5315,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 95]</span>
-
-<a name="page-96" id="page-96" href="#page-96" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 95]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    Format Definition: The property is defined by the following notation:
@@ -5586,7 +5350,7 @@ Table of Contents
      FREEBUSY;FBTYPE=FREE:19970308T160000Z/PT3H,19970308T200000Z/PT1H,
       19970308T230000Z/19970309T000000Z
 
-<span class="h5"><a name="section-4.8.2.7">4.8.2.7</a> Time Transparency</span>
+4.8.2.7 Time Transparency
 
    Property Name: TRANSP
 
@@ -5607,10 +5371,9 @@ Table of Contents
 
 
 
-
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 96]</span>
-<a name="page-97" id="page-97" href="#page-97" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 96]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    with the calendar SHOULD be recorded as OPAQUE, allowing them to be
@@ -5639,12 +5402,12 @@ Table of Contents
 
      TRANSP:OPAQUE
 
-<span class="h4"><a name="section-4.8.3">4.8.3</a> Time Zone Component Properties</span>
+4.8.3 Time Zone Component Properties
 
    The following properties specify time zone information in calendar
    components.
 
-<span class="h5"><a name="section-4.8.3.1">4.8.3.1</a> Time Zone Identifier</span>
+4.8.3.1 Time Zone Identifier
 
    Property Name: TZID
 
@@ -5664,9 +5427,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 97]</span>
-<a name="page-98" id="page-98" href="#page-98" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 97]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    Description: This is the label by which a time zone calendar
@@ -5680,14 +5443,14 @@ Table of Contents
         Note: This document does not define a naming convention for time
         zone identifiers. Implementers may want to use the naming
         conventions defined in existing time zone specifications such as
-        the public-domain Olson database [<a href="#ref-TZ" title='"ftp://elsie.nci.nih.gov/pub/"'>TZ</a>]. The specification of
+        the public-domain Olson database [TZ]. The specification of
         globally unique time zone identifiers is not addressed by this
         document and is left for future study.
 
    Format Definition: This property is defined by the following
    notation:
 
-     tzid       = "TZID" tzidpropparam ":" [<a href="#ref-tzidprefix">tzidprefix</a>] text CRLF
+     tzid       = "TZID" tzidpropparam ":" [tzidprefix] text CRLF
 
      tzidpropparam      = *(";" xparam)
 
@@ -5706,7 +5469,7 @@ Table of Contents
 
      TZID:/US-New_York-New_York
 
-<span class="h5"><a name="section-4.8.3.2">4.8.3.2</a> Time Zone Name</span>
+4.8.3.2 Time Zone Name
 
    Property Name: TZNAME
 
@@ -5720,10 +5483,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 98]</span>
-
-<a name="page-99" id="page-99" href="#page-99" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 98]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    Conformance: This property can be specified in a "VTIMEZONE" calendar
@@ -5761,7 +5523,7 @@ Table of Contents
      TZNAME;LANGUAGE=en:EST
      TZNAME;LANGUAGE=fr-CA:HNE
 
-<span class="h5"><a name="section-4.8.3.3">4.8.3.3</a> Time Zone Offset From</span>
+4.8.3.3 Time Zone Offset From
 
    Property Name: TZOFFSETFROM
 
@@ -5777,10 +5539,9 @@ Table of Contents
 
 
 
-
-<span class="grey">Dawson &amp; Stenerson          Standards Track                    [Page 99]</span>
-<a name="page-100" id="page-100" href="#page-100" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                    [Page 99]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    Conformance: This property MUST be specified in a "VTIMEZONE"
@@ -5809,7 +5570,7 @@ Table of Contents
 
      TZOFFSETFROM:+1345
 
-<span class="h5"><a name="section-4.8.3.4">4.8.3.4</a> Time Zone Offset To</span>
+4.8.3.4 Time Zone Offset To
 
    Property Name: TZOFFSETTO
 
@@ -5834,9 +5595,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 100]</span>
-<a name="page-101" id="page-101" href="#page-101" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 100]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    Format Definition: The property is defined by the following notation:
@@ -5851,8 +5612,7 @@ Table of Contents
 
      TZOFFSETTO:+1245
 
-
-<span class="h5"><a name="section-4.8.3.5">4.8.3.5</a> Time Zone URL</span>
+4.8.3.5 Time Zone URL
 
    Property Name: TZURL
 
@@ -5891,17 +5651,17 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 101]</span>
-<a name="page-102" id="page-102" href="#page-102" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 101]
+
+RFC 2445                       iCalendar                   November 1998
 
 
-<span class="h4"><a name="section-4.8.4">4.8.4</a> Relationship Component Properties</span>
+4.8.4 Relationship Component Properties
 
    The following properties specify relationship information in calendar
    components.
 
-<span class="h5"><a name="section-4.8.4.1">4.8.4.1</a> Attendee</span>
+4.8.4.1 Attendee
 
    Property Name: ATTENDEE
 
@@ -5947,10 +5707,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 102]</span>
-
-<a name="page-103" id="page-103" href="#page-103" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 102]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    property in either a "VEVENT", "VTODO" or "VJOURNAL" calendar
@@ -6004,9 +5763,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 103]</span>
-<a name="page-104" id="page-104" href="#page-104" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 103]
+
+RFC 2445                       iCalendar                   November 1998
 
 
      ORGANIZER:MAILTO:jsmith@host1.com
@@ -6041,7 +5800,7 @@ Table of Contents
      ATTENDEE;SENT-BY=MAILTO:jan_doe@host1.com;CN=John Smith:MAILTO:
       jsmith@host1.com
 
-<span class="h5"><a name="section-4.8.4.2">4.8.4.2</a> Contact</span>
+4.8.4.2 Contact
 
    Property Name: CONTACT
 
@@ -6060,16 +5819,15 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 104]</span>
-<a name="page-105" id="page-105" href="#page-105" class="invisible"><span class="break"> </span></a>
-
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 104]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    Description: The property value consists of textual contact
    information. An alternative representation for the property value can
    also be specified that refers to a URI pointing to an alternate form,
-   such as a vCard [<a href="./rfc2426" title='"vCard MIME Directory Profile"'>RFC 2426</a>], for the contact information.
+   such as a vCard [RFC 2426], for the contact information.
 
    Format Definition: The property is defined by the following notation:
 
@@ -6103,30 +5861,29 @@ Table of Contents
 
    The following is an example of this property with an alternate
    representation of a MIME body part containing the contact
-   information, such as a vCard [<a href="./rfc2426" title='"vCard MIME Directory Profile"'>RFC 2426</a>] embedded in a [<a href="#ref-MIME-DIR">MIME-DIR</a>]
+   information, such as a vCard [RFC 2426] embedded in a [MIME-DIR]
    content-type:
 
-     CONTACT;ALTREP="CID=&lt;part3.msg970930T083000SILVER@host.com&gt;":Jim
+     CONTACT;ALTREP="CID=<part3.msg970930T083000SILVER@host.com>":Jim
        Dolittle\, ABC Industries\, +1-919-555-1234
 
    The following is an example of this property referencing a network
-   resource, such as a vCard [<a href="./rfc2426" title='"vCard MIME Directory Profile"'>RFC 2426</a>] object containing the contact
+   resource, such as a vCard [RFC 2426] object containing the contact
    information:
 
 
 
 
 
-
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 105]</span>
-<a name="page-106" id="page-106" href="#page-106" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 105]
+
+RFC 2445                       iCalendar                   November 1998
 
 
      CONTACT;ALTREP="http://host.com/pdi/jdoe.vcf":Jim
        Dolittle\, ABC Industries\, +1-919-555-1234
 
-<span class="h5"><a name="section-4.8.4.3">4.8.4.3</a> Organizer</span>
+4.8.4.3 Organizer
 
    Property Name: ORGANIZER
 
@@ -6174,9 +5931,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 106]</span>
-<a name="page-107" id="page-107" href="#page-107" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 106]
+
+RFC 2445                       iCalendar                   November 1998
 
 
                 ; but MUST NOT occur more than once
@@ -6209,8 +5966,7 @@ Table of Contents
      ORGANIZER;SENT-BY="MAILTO:jane_doe@host.com":
       MAILTO:jsmith@host1.com
 
-
-<span class="h5"><a name="section-4.8.4.4">4.8.4.4</a> Recurrence ID</span>
+4.8.4.4 Recurrence ID
 
    Property Name: RECURRENCE-ID
 
@@ -6231,9 +5987,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 107]</span>
-<a name="page-108" id="page-108" href="#page-108" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 107]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    Property Parameters: Non-standard property, value data type, time
@@ -6287,9 +6043,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 108]</span>
-<a name="page-109" id="page-109" href="#page-109" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 108]
+
+RFC 2445                       iCalendar                   November 1998
 
 
                 ; the following is optional,
@@ -6308,8 +6064,7 @@ Table of Contents
 
      RECURRENCE-ID;RANGE=THISANDFUTURE:19960120T120000Z
 
-
-<span class="h5"><a name="section-4.8.4.5">4.8.4.5</a> Related To</span>
+4.8.4.5 Related To
 
    Property Name: RELATED-TO
 
@@ -6344,9 +6099,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 109]</span>
-<a name="page-110" id="page-110" href="#page-110" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 109]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    Changes to a calendar component referenced by this property can have
@@ -6362,7 +6117,7 @@ Table of Contents
 
    Format Definition: The property is defined by the following notation:
 
-     related    = "RELATED-TO" [<a href="#ref-relparam">relparam</a>] ":" text CRLF
+     related    = "RELATED-TO" [relparam] ":" text CRLF
 
      relparam   = *(
 
@@ -6380,11 +6135,11 @@ Table of Contents
 
    The following is an example of this property:
 
-     RELATED-TO:&lt;jsmith.part7.19960817T083000.xyzMail@host3.com&gt;
+     RELATED-TO:<jsmith.part7.19960817T083000.xyzMail@host3.com>
 
-     RELATED-TO:&lt;19960401-080045-4000F192713-0052@host1.com&gt;
+     RELATED-TO:<19960401-080045-4000F192713-0052@host1.com>
 
-<span class="h5"><a name="section-4.8.4.6">4.8.4.6</a> Uniform Resource Locator</span>
+4.8.4.6 Uniform Resource Locator
 
    Property Name: URL
 
@@ -6400,9 +6155,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 110]</span>
-<a name="page-111" id="page-111" href="#page-111" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 110]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    Conformance: This property can be specified once in the "VEVENT",
@@ -6426,8 +6181,7 @@ Table of Contents
 
      URL:http://abc.com/pub/calendars/jsmith/mytime.ics
 
-
-<span class="h5"><a name="section-4.8.4.7">4.8.4.7</a> Unique Identifier</span>
+4.8.4.7 Unique Identifier
 
    Property Name: UID
 
@@ -6446,7 +6200,7 @@ Table of Contents
    generator of the identifier MUST guarantee that the identifier is
    unique. There are several algorithms that can be used to accomplish
    this. The identifier is RECOMMENDED to be the identical syntax to the
-   [<a href="./rfc822" title='"Standard for the Format of ARPA Internet Text Messages"'>RFC 822</a>] addr-spec. A good method to assure uniqueness is to put the
+   [RFC 822] addr-spec. A good method to assure uniqueness is to put the
    domain name or a domain literal IP address of the host on which the
    identifier was created on the right hand side of the "@", and on the
    left hand side, put a combination of the current calendar date and
@@ -6457,9 +6211,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 111]</span>
-<a name="page-112" id="page-112" href="#page-112" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 111]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    the right hand side makes it possible to guarantee uniqueness since
@@ -6500,12 +6254,12 @@ Table of Contents
 
      UID:19960401T080045Z-4000F192713-0052@host1.com
 
-<span class="h4"><a name="section-4.8.5">4.8.5</a> Recurrence Component Properties</span>
+4.8.5 Recurrence Component Properties
 
    The following properties specify recurrence information in calendar
    components.
 
-<span class="h5"><a name="section-4.8.5.1">4.8.5.1</a> Exception Date/Times</span>
+4.8.5.1 Exception Date/Times
 
    Property Name: EXDATE
 
@@ -6513,10 +6267,9 @@ Table of Contents
 
 
 
-
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 112]</span>
-<a name="page-113" id="page-113" href="#page-113" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 112]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    Purpose: This property defines the list of date/time exceptions for a
@@ -6570,10 +6323,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 113]</span>
-
-<a name="page-114" id="page-114" href="#page-114" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 113]
+
+RFC 2445                       iCalendar                   November 1998
 
 
                 (";" tzidparam) /
@@ -6592,7 +6344,7 @@ Table of Contents
 
      EXDATE:19960402T010000Z,19960403T010000Z,19960404T010000Z
 
-<span class="h5"><a name="section-4.8.5.2">4.8.5.2</a> Exception Rule</span>
+4.8.5.2 Exception Rule
 
    Property Name: EXRULE
 
@@ -6627,10 +6379,9 @@ Table of Contents
 
 
 
-
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 114]</span>
-<a name="page-115" id="page-115" href="#page-115" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 114]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    properties (i.e., "RDATE" and "RRULE"). Where duplicate instances are
@@ -6662,7 +6413,7 @@ Table of Contents
 
      EXRULE:FREQ=YEARLY;COUNT=8;BYMONTH=6,7
 
-<span class="h5"><a name="section-4.8.5.3">4.8.5.3</a> Recurrence Date/Times</span>
+4.8.5.3 Recurrence Date/Times
 
    Property Name: RDATE
 
@@ -6684,9 +6435,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 115]</span>
-<a name="page-116" id="page-116" href="#page-116" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 115]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    Description: This property can appear along with the "RRULE" property
@@ -6740,10 +6491,9 @@ Table of Contents
 
 
 
-
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 116]</span>
-<a name="page-117" id="page-117" href="#page-117" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 116]
+
+RFC 2445                       iCalendar                   November 1998
 
 
      RDATE:19970714T123000Z
@@ -6756,7 +6506,7 @@ Table of Contents
      RDATE;VALUE=DATE:19970101,19970120,19970217,19970421
       19970526,19970704,19970901,19971014,19971128,19971129,19971225
 
-<span class="h5"><a name="section-4.8.5.4">4.8.5.4</a> Recurrence Rule</span>
+4.8.5.4 Recurrence Rule
 
    Property Name: RRULE
 
@@ -6797,9 +6547,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 117]</span>
-<a name="page-118" id="page-118" href="#page-118" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 117]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    The "DTSTART" and "DTEND" property pair or "DTSTART" and "DURATION"
@@ -6829,21 +6579,21 @@ Table of Contents
      DTSTART;TZID=US-Eastern:19970902T090000
      RRULE:FREQ=DAILY;COUNT=10
 
-     ==&gt; (1997 9:00 AM EDT)September 2-11
+     ==> (1997 9:00 AM EDT)September 2-11
 
    Daily until December 24, 1997:
 
      DTSTART;TZID=US-Eastern:19970902T090000
      RRULE:FREQ=DAILY;UNTIL=19971224T000000Z
 
-     ==&gt; (1997 9:00 AM EDT)September 2-30;October 1-25
+     ==> (1997 9:00 AM EDT)September 2-30;October 1-25
          (1997 9:00 AM EST)October 26-31;November 1-30;December 1-23
 
    Every other day - forever:
 
      DTSTART;TZID=US-Eastern:19970902T090000
      RRULE:FREQ=DAILY;INTERVAL=2
-     ==&gt; (1997 9:00 AM EDT)September2,4,6,8...24,26,28,30;
+     ==> (1997 9:00 AM EDT)September2,4,6,8...24,26,28,30;
           October 2,4,6...20,22,24
          (1997 9:00 AM EST)October 26,28,30;November 1,3,5,7...25,27,29;
           Dec 1,3,...
@@ -6853,16 +6603,15 @@ Table of Contents
 
 
 
-
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 118]</span>
-<a name="page-119" id="page-119" href="#page-119" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 118]
+
+RFC 2445                       iCalendar                   November 1998
 
 
      DTSTART;TZID=US-Eastern:19970902T090000
      RRULE:FREQ=DAILY;INTERVAL=10;COUNT=5
 
-     ==&gt; (1997 9:00 AM EDT)September 2,12,22;October 2,12
+     ==> (1997 9:00 AM EDT)September 2,12,22;October 2,12
 
    Everyday in January, for 3 years:
 
@@ -6872,7 +6621,7 @@ Table of Contents
      or
      RRULE:FREQ=DAILY;UNTIL=20000131T090000Z;BYMONTH=1
 
-     ==&gt; (1998 9:00 AM EDT)January 1-31
+     ==> (1998 9:00 AM EDT)January 1-31
          (1999 9:00 AM EDT)January 1-31
          (2000 9:00 AM EDT)January 1-31
 
@@ -6881,7 +6630,7 @@ Table of Contents
      DTSTART;TZID=US-Eastern:19970902T090000
      RRULE:FREQ=WEEKLY;COUNT=10
 
-     ==&gt; (1997 9:00 AM EDT)September 2,9,16,23,30;October 7,14,21
+     ==> (1997 9:00 AM EDT)September 2,9,16,23,30;October 7,14,21
          (1997 9:00 AM EST)October 28;November 4
 
    Weekly until December 24, 1997
@@ -6889,7 +6638,7 @@ Table of Contents
      DTSTART;TZID=US-Eastern:19970902T090000
      RRULE:FREQ=WEEKLY;UNTIL=19971224T000000Z
 
-     ==&gt; (1997 9:00 AM EDT)September 2,9,16,23,30;October 7,14,21
+     ==> (1997 9:00 AM EDT)September 2,9,16,23,30;October 7,14,21
          (1997 9:00 AM EST)October 28;November 4,11,18,25;
                            December 2,9,16,23
    Every other week - forever:
@@ -6897,7 +6646,7 @@ Table of Contents
      DTSTART;TZID=US-Eastern:19970902T090000
      RRULE:FREQ=WEEKLY;INTERVAL=2;WKST=SU
 
-     ==&gt; (1997 9:00 AM EDT)September 2,16,30;October 14
+     ==> (1997 9:00 AM EDT)September 2,16,30;October 14
          (1997 9:00 AM EST)October 28;November 11,25;December 9,23
          (1998 9:00 AM EST)January 6,20;February
      ...
@@ -6910,15 +6659,14 @@ Table of Contents
 
 
 
-
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 119]</span>
-<a name="page-120" id="page-120" href="#page-120" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 119]
+
+RFC 2445                       iCalendar                   November 1998
 
 
     RRULE:FREQ=WEEKLY;COUNT=10;WKST=SU;BYDAY=TU,TH
 
-    ==&gt; (1997 9:00 AM EDT)September 2,4,9,11,16,18,23,25,30;October 2
+    ==> (1997 9:00 AM EDT)September 2,4,9,11,16,18,23,25,30;October 2
 
    Every other week on Monday, Wednesday and Friday until December 24,
    1997, but starting on Tuesday, September 2, 1997:
@@ -6926,7 +6674,7 @@ Table of Contents
      DTSTART;TZID=US-Eastern:19970902T090000
      RRULE:FREQ=WEEKLY;INTERVAL=2;UNTIL=19971224T000000Z;WKST=SU;
       BYDAY=MO,WE,FR
-     ==&gt; (1997 9:00 AM EDT)September 2,3,5,15,17,19,29;October
+     ==> (1997 9:00 AM EDT)September 2,3,5,15,17,19,29;October
      1,3,13,15,17
          (1997 9:00 AM EST)October 27,29,31;November 10,12,14,24,26,28;
                            December 8,10,12,22
@@ -6936,14 +6684,14 @@ Table of Contents
      DTSTART;TZID=US-Eastern:19970902T090000
      RRULE:FREQ=WEEKLY;INTERVAL=2;COUNT=8;WKST=SU;BYDAY=TU,TH
 
-     ==&gt; (1997 9:00 AM EDT)September 2,4,16,18,30;October 2,14,16
+     ==> (1997 9:00 AM EDT)September 2,4,16,18,30;October 2,14,16
 
    Monthly on the 1st Friday for ten occurrences:
 
      DTSTART;TZID=US-Eastern:19970905T090000
      RRULE:FREQ=MONTHLY;COUNT=10;BYDAY=1FR
 
-     ==&gt; (1997 9:00 AM EDT)September 5;October 3
+     ==> (1997 9:00 AM EDT)September 5;October 3
          (1997 9:00 AM EST)November 7;Dec 5
          (1998 9:00 AM EST)January 2;February 6;March 6;April 3
          (1998 9:00 AM EDT)May 1;June 5
@@ -6953,7 +6701,7 @@ Table of Contents
      DTSTART;TZID=US-Eastern:19970905T090000
      RRULE:FREQ=MONTHLY;UNTIL=19971224T000000Z;BYDAY=1FR
 
-     ==&gt; (1997 9:00 AM EDT)September 5;October 3
+     ==> (1997 9:00 AM EDT)September 5;October 3
          (1997 9:00 AM EST)November 7;December 5
 
    Every other month on the 1st and last Sunday of the month for 10
@@ -6962,15 +6710,14 @@ Table of Contents
      DTSTART;TZID=US-Eastern:19970907T090000
      RRULE:FREQ=MONTHLY;INTERVAL=2;COUNT=10;BYDAY=1SU,-1SU
 
-     ==&gt; (1997 9:00 AM EDT)September 7,28
+     ==> (1997 9:00 AM EDT)September 7,28
          (1997 9:00 AM EST)November 2,30
 
 
 
-
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 120]</span>
-<a name="page-121" id="page-121" href="#page-121" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 120]
+
+RFC 2445                       iCalendar                   November 1998
 
 
          (1998 9:00 AM EST)January 4,25;March 1,29
@@ -6981,7 +6728,7 @@ Table of Contents
      DTSTART;TZID=US-Eastern:19970922T090000
      RRULE:FREQ=MONTHLY;COUNT=6;BYDAY=-2MO
 
-     ==&gt; (1997 9:00 AM EDT)September 22;October 20
+     ==> (1997 9:00 AM EDT)September 22;October 20
          (1997 9:00 AM EST)November 17;December 22
          (1998 9:00 AM EST)January 19;February 16
 
@@ -6990,7 +6737,7 @@ Table of Contents
      DTSTART;TZID=US-Eastern:19970928T090000
      RRULE:FREQ=MONTHLY;BYMONTHDAY=-3
 
-     ==&gt; (1997 9:00 AM EDT)September 28
+     ==> (1997 9:00 AM EDT)September 28
          (1997 9:00 AM EST)October 29;November 28;December 29
          (1998 9:00 AM EST)January 29;February 26
      ...
@@ -7000,7 +6747,7 @@ Table of Contents
      DTSTART;TZID=US-Eastern:19970902T090000
      RRULE:FREQ=MONTHLY;COUNT=10;BYMONTHDAY=2,15
 
-     ==&gt; (1997 9:00 AM EDT)September 2,15;October 2,15
+     ==> (1997 9:00 AM EDT)September 2,15;October 2,15
          (1997 9:00 AM EST)November 2,15;December 2,15
          (1998 9:00 AM EST)January 2,15
 
@@ -7009,7 +6756,7 @@ Table of Contents
      DTSTART;TZID=US-Eastern:19970930T090000
      RRULE:FREQ=MONTHLY;COUNT=10;BYMONTHDAY=1,-1
 
-     ==&gt; (1997 9:00 AM EDT)September 30;October 1
+     ==> (1997 9:00 AM EDT)September 30;October 1
          (1997 9:00 AM EST)October 31;November 1,30;December 1,31
          (1998 9:00 AM EST)January 1,31;February 1
 
@@ -7020,14 +6767,13 @@ Table of Contents
      RRULE:FREQ=MONTHLY;INTERVAL=18;COUNT=10;BYMONTHDAY=10,11,12,13,14,
       15
 
-     ==&gt; (1997 9:00 AM EDT)September 10,11,12,13,14,15
+     ==> (1997 9:00 AM EDT)September 10,11,12,13,14,15
 
 
 
-
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 121]</span>
-<a name="page-122" id="page-122" href="#page-122" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 121]
+
+RFC 2445                       iCalendar                   November 1998
 
 
          (1999 9:00 AM EST)March 10,11,12,13
@@ -7037,7 +6783,7 @@ Table of Contents
      DTSTART;TZID=US-Eastern:19970902T090000
      RRULE:FREQ=MONTHLY;INTERVAL=2;BYDAY=TU
 
-     ==&gt; (1997 9:00 AM EDT)September 2,9,16,23,30
+     ==> (1997 9:00 AM EDT)September 2,9,16,23,30
          (1997 9:00 AM EST)November 4,11,18,25
          (1998 9:00 AM EST)January 6,13,20,27;March 3,10,17,24,31
      ...
@@ -7046,7 +6792,7 @@ Table of Contents
 
      DTSTART;TZID=US-Eastern:19970610T090000
      RRULE:FREQ=YEARLY;COUNT=10;BYMONTH=6,7
-     ==&gt; (1997 9:00 AM EDT)June 10;July 10
+     ==> (1997 9:00 AM EDT)June 10;July 10
          (1998 9:00 AM EDT)June 10;July 10
          (1999 9:00 AM EDT)June 10;July 10
          (2000 9:00 AM EDT)June 10;July 10
@@ -7059,7 +6805,7 @@ Table of Contents
      DTSTART;TZID=US-Eastern:19970310T090000
      RRULE:FREQ=YEARLY;INTERVAL=2;COUNT=10;BYMONTH=1,2,3
 
-     ==&gt; (1997 9:00 AM EST)March 10
+     ==> (1997 9:00 AM EST)March 10
          (1999 9:00 AM EST)January 10;February 10;March 10
          (2001 9:00 AM EST)January 10;February 10;March 10
          (2003 9:00 AM EST)January 10;February 10;March 10
@@ -7069,7 +6815,7 @@ Table of Contents
      DTSTART;TZID=US-Eastern:19970101T090000
      RRULE:FREQ=YEARLY;INTERVAL=3;COUNT=10;BYYEARDAY=1,100,200
 
-     ==&gt; (1997 9:00 AM EST)January 1
+     ==> (1997 9:00 AM EST)January 1
          (1997 9:00 AM EDT)April 10;July 19
          (2000 9:00 AM EST)January 1
          (2000 9:00 AM EDT)April 9;July 18
@@ -7081,16 +6827,15 @@ Table of Contents
 
 
 
-
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 122]</span>
-<a name="page-123" id="page-123" href="#page-123" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 122]
+
+RFC 2445                       iCalendar                   November 1998
 
 
      DTSTART;TZID=US-Eastern:19970519T090000
      RRULE:FREQ=YEARLY;BYDAY=20MO
 
-     ==&gt; (1997 9:00 AM EDT)May 19
+     ==> (1997 9:00 AM EDT)May 19
          (1998 9:00 AM EDT)May 18
          (1999 9:00 AM EDT)May 17
      ...
@@ -7101,7 +6846,7 @@ Table of Contents
      DTSTART;TZID=US-Eastern:19970512T090000
      RRULE:FREQ=YEARLY;BYWEEKNO=20;BYDAY=MO
 
-     ==&gt; (1997 9:00 AM EDT)May 12
+     ==> (1997 9:00 AM EDT)May 12
          (1998 9:00 AM EDT)May 11
          (1999 9:00 AM EDT)May 17
      ...
@@ -7111,7 +6856,7 @@ Table of Contents
      DTSTART;TZID=US-Eastern:19970313T090000
      RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=TH
 
-     ==&gt; (1997 9:00 AM EST)March 13,20,27
+     ==> (1997 9:00 AM EST)March 13,20,27
          (1998 9:00 AM EST)March 5,12,19,26
          (1999 9:00 AM EST)March 4,11,18,25
      ...
@@ -7121,7 +6866,7 @@ Table of Contents
      DTSTART;TZID=US-Eastern:19970605T090000
      RRULE:FREQ=YEARLY;BYDAY=TH;BYMONTH=6,7,8
 
-     ==&gt; (1997 9:00 AM EDT)June 5,12,19,26;July 3,10,17,24,31;
+     ==> (1997 9:00 AM EDT)June 5,12,19,26;July 3,10,17,24,31;
                        August 7,14,21,28
          (1998 9:00 AM EDT)June 4,11,18,25;July 2,9,16,23,30;
                        August 6,13,20,27
@@ -7138,13 +6883,12 @@ Table of Contents
 
 
 
+Dawson & Stenerson          Standards Track                   [Page 123]
+
+RFC 2445                       iCalendar                   November 1998
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 123]</span>
-<a name="page-124" id="page-124" href="#page-124" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
 
-
-     ==&gt; (1998 9:00 AM EST)February 13;March 13;November 13
+     ==> (1998 9:00 AM EST)February 13;March 13;November 13
          (1999 9:00 AM EDT)August 13
          (2000 9:00 AM EDT)October 13
      ...
@@ -7155,7 +6899,7 @@ Table of Contents
      DTSTART;TZID=US-Eastern:19970913T090000
      RRULE:FREQ=MONTHLY;BYDAY=SA;BYMONTHDAY=7,8,9,10,11,12,13
 
-     ==&gt; (1997 9:00 AM EDT)September 13;October 11
+     ==> (1997 9:00 AM EDT)September 13;October 11
          (1997 9:00 AM EST)November 8;December 13
          (1998 9:00 AM EST)January 10;February 7;March 7
          (1998 9:00 AM EDT)April 11;May 9;June 13...
@@ -7168,7 +6912,7 @@ Table of Contents
      RRULE:FREQ=YEARLY;INTERVAL=4;BYMONTH=11;BYDAY=TU;BYMONTHDAY=2,3,4,
       5,6,7,8
 
-     ==&gt; (1996 9:00 AM EST)November 5
+     ==> (1996 9:00 AM EST)November 5
          (2000 9:00 AM EST)November 7
          (2004 9:00 AM EST)November 2
      ...
@@ -7179,7 +6923,7 @@ Table of Contents
      DTSTART;TZID=US-Eastern:19970904T090000
      RRULE:FREQ=MONTHLY;COUNT=3;BYDAY=TU,WE,TH;BYSETPOS=3
 
-     ==&gt; (1997 9:00 AM EDT)September 4;October 7
+     ==> (1997 9:00 AM EDT)September 4;October 7
          (1997 9:00 AM EST)November 6
 
    The 2nd to last weekday of the month:
@@ -7187,7 +6931,7 @@ Table of Contents
      DTSTART;TZID=US-Eastern:19970929T090000
      RRULE:FREQ=MONTHLY;BYDAY=MO,TU,WE,TH,FR;BYSETPOS=-2
 
-     ==&gt; (1997 9:00 AM EDT)September 29
+     ==> (1997 9:00 AM EDT)September 29
          (1997 9:00 AM EST)October 30;November 27;December 30
          (1998 9:00 AM EST)January 29;February 26;March 30
      ...
@@ -7195,10 +6939,9 @@ Table of Contents
 
 
 
-
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 124]</span>
-<a name="page-125" id="page-125" href="#page-125" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 124]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    Every 3 hours from 9:00 AM to 5:00 PM on a specific day:
@@ -7206,21 +6949,21 @@ Table of Contents
      DTSTART;TZID=US-Eastern:19970902T090000
      RRULE:FREQ=HOURLY;INTERVAL=3;UNTIL=19970902T170000Z
 
-     ==&gt; (September 2, 1997 EDT)09:00,12:00,15:00
+     ==> (September 2, 1997 EDT)09:00,12:00,15:00
 
    Every 15 minutes for 6 occurrences:
 
      DTSTART;TZID=US-Eastern:19970902T090000
      RRULE:FREQ=MINUTELY;INTERVAL=15;COUNT=6
 
-     ==&gt; (September 2, 1997 EDT)09:00,09:15,09:30,09:45,10:00,10:15
+     ==> (September 2, 1997 EDT)09:00,09:15,09:30,09:45,10:00,10:15
 
    Every hour and a half for 4 occurrences:
 
      DTSTART;TZID=US-Eastern:19970902T090000
      RRULE:FREQ=MINUTELY;INTERVAL=90;COUNT=4
 
-     ==&gt; (September 2, 1997 EDT)09:00,10:30;12:00;13:30
+     ==> (September 2, 1997 EDT)09:00,10:30;12:00;13:30
 
    Every 20 minutes from 9:00 AM to 4:40 PM every day:
 
@@ -7229,7 +6972,7 @@ Table of Contents
      or
      RRULE:FREQ=MINUTELY;INTERVAL=20;BYHOUR=9,10,11,12,13,14,15,16
 
-     ==&gt; (September 2, 1997 EDT)9:00,9:20,9:40,10:00,10:20,
+     ==> (September 2, 1997 EDT)9:00,9:20,9:40,10:00,10:20,
                                 ... 16:00,16:20,16:40
          (September 3, 1997 EDT)9:00,9:20,9:40,10:00,10:20,
                                ...16:00,16:20,16:40
@@ -7241,29 +6984,28 @@ Table of Contents
      DTSTART;TZID=US-Eastern:19970805T090000
      RRULE:FREQ=WEEKLY;INTERVAL=2;COUNT=4;BYDAY=TU,SU;WKST=MO
 
-     ==&gt; (1997 EDT)Aug 5,10,19,24
+     ==> (1997 EDT)Aug 5,10,19,24
 
      changing only WKST from MO to SU, yields different results...
 
      DTSTART;TZID=US-Eastern:19970805T090000
      RRULE:FREQ=WEEKLY;INTERVAL=2;COUNT=4;BYDAY=TU,SU;WKST=SU
-     ==&gt; (1997 EDT)August 5,17,19,31
+     ==> (1997 EDT)August 5,17,19,31
 
 
 
 
+Dawson & Stenerson          Standards Track                   [Page 125]
+
+RFC 2445                       iCalendar                   November 1998
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 125]</span>
-<a name="page-126" id="page-126" href="#page-126" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
 
-
-<span class="h4"><a name="section-4.8.6">4.8.6</a> Alarm Component Properties</span>
+4.8.6 Alarm Component Properties
 
    The following properties specify alarm information in calendar
    components.
 
-<span class="h5"><a name="section-4.8.6.1">4.8.6.1</a> Action</span>
+4.8.6.1 Action
 
    Property Name: ACTION
 
@@ -7300,7 +7042,7 @@ Table of Contents
 
      ACTION:PROCEDURE
 
-<span class="h5"><a name="section-4.8.6.2">4.8.6.2</a> Repeat Count</span>
+4.8.6.2 Repeat Count
 
    Property Name: REPEAT
 
@@ -7309,10 +7051,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 126]</span>
-
-<a name="page-127" id="page-127" href="#page-127" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 126]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    Value Type: INTEGER
@@ -7340,7 +7081,7 @@ Table of Contents
      REPEAT:4
      DURATION:PT5M
 
-<span class="h5"><a name="section-4.8.6.3">4.8.6.3</a> Trigger</span>
+4.8.6.3 Trigger
 
    Property Name: TRIGGER
 
@@ -7366,10 +7107,9 @@ Table of Contents
 
 
 
-
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 127]</span>
-<a name="page-128" id="page-128" href="#page-128" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 127]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    to trigger from either the end or the start of the associated event
@@ -7423,10 +7163,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 128]</span>
-
-<a name="page-129" id="page-129" href="#page-129" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 128]
+
+RFC 2445                       iCalendar                   November 1998
 
 
                 ; and MAY occur more than once
@@ -7461,13 +7200,12 @@ Table of Contents
 
      TRIGGER;VALUE=DATE-TIME:19980101T050000Z
 
-<span class="h4"><a name="section-4.8.7">4.8.7</a> Change Management Component Properties</span>
+4.8.7 Change Management Component Properties
 
    The following properties specify change management information in
    calendar components.
 
-
-<span class="h5"><a name="section-4.8.7.1">4.8.7.1</a> Date/Time Created</span>
+4.8.7.1 Date/Time Created
 
    Property Name: CREATED
 
@@ -7481,9 +7219,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 129]</span>
-<a name="page-130" id="page-130" href="#page-130" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 129]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    Value Type: DATE-TIME
@@ -7506,7 +7244,7 @@ Table of Contents
 
      CREATED:19960329T133000Z
 
-<span class="h5"><a name="section-4.8.7.2">4.8.7.2</a> Date/Time Stamp</span>
+4.8.7.2 Date/Time Stamp
 
    Property Name: DTSTAMP
 
@@ -7523,7 +7261,7 @@ Table of Contents
 
    Description: The value MUST be specified in the UTC time format.
 
-   This property is also useful to protocols such as [<a href="#ref-IMIP" title='"iCalendar Message-based Interoperability Protocol (IMIP)"'>IMIP</a>] that have
+   This property is also useful to protocols such as [IMIP] that have
    inherent latency issues with the delivery of content. This property
    will assist in the proper sequencing of messages containing iCalendar
    objects.
@@ -7537,10 +7275,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 130]</span>
-
-<a name="page-131" id="page-131" href="#page-131" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 130]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    Format Definition: The property is defined by the following notation:
@@ -7553,7 +7290,7 @@ Table of Contents
 
      DTSTAMP:19971210T080000Z
 
-<span class="h5"><a name="section-4.8.7.3">4.8.7.3</a> Last Modified</span>
+4.8.7.3 Last Modified
 
    Property Name: LAST-MODIFIED
 
@@ -7585,8 +7322,7 @@ Table of Contents
 
      LAST-MODIFIED:19960817T133000Z
 
-
-<span class="h5"><a name="section-4.8.7.4">4.8.7.4</a> Sequence Number</span>
+4.8.7.4 Sequence Number
 
    Property Name: SEQUENCE
 
@@ -7595,9 +7331,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 131]</span>
-<a name="page-132" id="page-132" href="#page-132" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 131]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    Value Type: integer
@@ -7651,9 +7387,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 132]</span>
-<a name="page-133" id="page-133" href="#page-133" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 132]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    A change to the sequence number is not the mechanism that an
@@ -7680,13 +7416,12 @@ Table of Contents
 
      SEQUENCE:2
 
-
-<span class="h4"><a name="section-4.8.8">4.8.8</a> Miscellaneous Component Properties</span>
+4.8.8 Miscellaneous Component Properties
 
    The following properties specify information about a number of
    miscellaneous features of calendar components.
 
-<span class="h5"><a name="section-4.8.8.1">4.8.8.1</a> Non-standard Properties</span>
+4.8.8.1 Non-standard Properties
 
    Property Name: Any property name with a "X-" prefix
 
@@ -7708,10 +7443,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 133]</span>
-
-<a name="page-134" id="page-134" href="#page-134" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 133]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    specified by property and/or property parameter names that have the
@@ -7739,7 +7473,7 @@ Table of Contents
 
      X-ABC-MMSUBJ;X-ABC-MMSUBJTYPE=wave:http://load.noise.org/mysubj.wav
 
-<span class="h5"><a name="section-4.8.8.2">4.8.8.2</a> Request Status</span>
+4.8.8.2 Request Status
 
    Property Name: REQUEST-STATUS
 
@@ -7765,10 +7499,9 @@ Table of Contents
 
 
 
-
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 134]</span>
-<a name="page-135" id="page-135" href="#page-135" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 134]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    The short return status is a PERIOD character (US-ASCII decimal 46)
@@ -7822,10 +7555,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 135]</span>
-
-<a name="page-136" id="page-136" href="#page-136" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 135]
+
+RFC 2445                       iCalendar                   November 1998
 
 
                 (";" languageparm) /
@@ -7863,7 +7595,7 @@ Table of Contents
      REQUEST-STATUS:3.7;Invalid calendar user;ATTENDEE:
       MAILTO:jsmith@host.com
 
-<span class="h2"><a name="section-5">5</a> iCalendar Object Examples</span>
+5 iCalendar Object Examples
 
    The following examples are provided as an informational source of
    illustrative iCalendar objects consistent with this content type.
@@ -7879,10 +7611,9 @@ Table of Contents
 
 
 
-
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 136]</span>
-<a name="page-137" id="page-137" href="#page-137" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 136]
+
+RFC 2445                       iCalendar                   November 1998
 
 
      CATEGORIES:CONFERENCE SUMMARY:Networld+Interop Conference
@@ -7936,10 +7667,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 137]</span>
-
-<a name="page-138" id="page-138" href="#page-138" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 137]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    The following is an example of an iCalendar object passed in a MIME
@@ -7949,7 +7679,7 @@ Table of Contents
      TO:jsmith@host1.com
      FROM:jdoe@host1.com
      MIME-VERSION:1.0
-     MESSAGE-ID:&lt;id3@host1.com&gt;
+     MESSAGE-ID:<id3@host1.com>
      CONTENT-TYPE:text/calendar
 
      BEGIN:VCALENDAR
@@ -7967,7 +7697,7 @@ Table of Contents
      CATEGORIES:MEETING,PROJECT
      CLASS:PUBLIC
      SUMMARY:Calendaring Interoperability Planning Meeting
-     DESCRIPTION:Discuss how we can test c&amp;s interoperability\n
+     DESCRIPTION:Discuss how we can test c&s interoperability\n
       using iCalendar and other IETF standards.
      LOCATION:LDB Lobby
      ATTACH;FMTTYPE=application/postscript:ftp://xyzCorp.com/pub/
@@ -7993,10 +7723,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 138]</span>
-
-<a name="page-139" id="page-139" href="#page-139" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 138]
+
+RFC 2445                       iCalendar                   November 1998
 
 
      DUE:19980415T235959
@@ -8050,9 +7779,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 139]</span>
-<a name="page-140" id="page-140" href="#page-140" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 139]
+
+RFC 2445                       iCalendar                   November 1998
 
 
      ORGANIZER:MAILTO:jsmith@host.com
@@ -8065,7 +7794,7 @@ Table of Contents
      END:VFREEBUSY
      END:VCALENDAR
 
-<span class="h2"><a name="section-6">6</a> Recommended Practices</span>
+6 Recommended Practices
 
    These recommended practices should be followed in order to assure
    consistent handling of the following cases for an iCalendar object.
@@ -8106,10 +7835,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 140]</span>
-
-<a name="page-141" id="page-141" href="#page-141" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 140]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    7.  If seconds of the minute are not supported by an implementation,
@@ -8136,21 +7864,20 @@ Table of Contents
         PHONE", "VEHICLE". Resources can be specified in any registered
         language.
 
-<span class="h2"><a name="section-7">7</a> Registration of Content Type Elements</span>
+7 Registration of Content Type Elements
 
    This section provides the process for registration of MIME
    Calendaring and Scheduling Content Type iCalendar object methods and
    new or modified properties.
 
-
-<span class="h3"><a name="section-7.1">7.1</a> Registration of New and Modified iCalendar Object Methods</span>
+7.1 Registration of New and Modified iCalendar Object Methods
 
    New MIME Calendaring and Scheduling Content Type iCalendar object
    methods are registered by the publication of an IETF Request for
    Comments (RFC). Changes to an iCalendar object method are registered
    by the publication of a revision of the RFC defining the method.
 
-<span class="h3"><a name="section-7.2">7.2</a> Registration of New Properties</span>
+7.2 Registration of New Properties
 
    This section defines procedures by which new properties or enumerated
    property values for the MIME Calendaring and Scheduling Content Type
@@ -8164,16 +7891,15 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 141]</span>
-
-<a name="page-142" id="page-142" href="#page-142" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 141]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    Registration of a new property is accomplished by the following
    steps.
 
-<span class="h4"><a name="section-7.2.1">7.2.1</a> Define the property</span>
+7.2.1 Define the property
 
    A property is defined by completing the following template.
 
@@ -8221,10 +7947,9 @@ Table of Contents
 
 
 
-
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 142]</span>
-<a name="page-143" id="page-143" href="#page-143" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 142]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    Description: Any special notes about the property, how it is to be
@@ -8236,18 +7961,18 @@ Table of Contents
    Examples: One or more examples of instances of the property needs to
    be specified.
 
-<span class="h4"><a name="section-7.2.2">7.2.2</a> Post the Property definition</span>
+7.2.2 Post the Property definition
 
    The property description MUST be posted to the new property
    discussion list, ietf-calendar@imc.org.
 
-<span class="h4"><a name="section-7.2.3">7.2.3</a>   Allow a comment period</span>
+7.2.3   Allow a comment period
 
    Discussion on the new property MUST be allowed to take place on the
    list for a minimum of two weeks. Consensus MUST be reached on the
    property before proceeding to the next step.
 
-<span class="h4"><a name="section-7.2.4">7.2.4</a> Submit the property for approval</span>
+7.2.4 Submit the property for approval
 
    Once the two-week comment period has elapsed, and the proposer is
    convinced consensus has been reached on the property, the
@@ -8263,8 +7988,7 @@ Table of Contents
    appealed by the proposer to the IESG, or the objections raised can be
    addressed by the proposer and the property resubmitted.
 
-
-<span class="h3"><a name="section-7.3">7.3</a> Property Change Control</span>
+7.3 Property Change Control
 
    Existing properties can be changed using the same process by which
    they were registered.
@@ -8279,9 +8003,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 143]</span>
-<a name="page-144" id="page-144" href="#page-144" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 143]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    Note that the original author or any other interested party can
@@ -8294,16 +8018,16 @@ Table of Contents
    properties which are no longer believed to be useful can be declared
    OBSOLETE by a change to their "intended use" field.
 
-<span class="h2"><a name="section-8">8</a> References</span>
+8 References
 
-   [<a name="ref-IMIP" id="ref-IMIP">IMIP</a>]     Dawson, F., Mansour, S. and S. Silverberg, "iCalendar
-              Message-based Interoperability Protocol (IMIP)", <a href="./rfc2447">RFC 2447</a>,
+   [IMIP]     Dawson, F., Mansour, S. and S. Silverberg, "iCalendar
+              Message-based Interoperability Protocol (IMIP)", RFC 2447,
               November 1998.
 
-   [<a name="ref-ITIP" id="ref-ITIP">ITIP</a>]     Silverberg, S., Mansour, S., Dawson, F. and R. Hopson,
+   [ITIP]     Silverberg, S., Mansour, S., Dawson, F. and R. Hopson,
               "iCalendar Transport-Independent Interoperability Protocol
               (iTIP) : Scheduling Events, Busy Time, To-dos and Journal
-              Entries", <a href="./rfc2446">RFC 2446</a>, November 1998.
+              Entries", RFC 2446, November 1998.
 
    [ISO 8601] ISO 8601, "Data elements and interchange formats-
               Information interchange--Representation of dates and
@@ -8315,60 +8039,58 @@ Table of Contents
               Identifiers", Second Edition, International Organization
               for Standardization, April 1991.
 
-   [<a name="ref-RFC 822" id="ref-RFC 822">RFC 822</a>]  Crocker, D., "Standard for the Format of ARPA Internet
-              Text Messages", STD 11, <a href="./rfc822">RFC 822</a>, August 1982.
+   [RFC 822]  Crocker, D., "Standard for the Format of ARPA Internet
+              Text Messages", STD 11, RFC 822, August 1982.
 
-   [<a name="ref-RFC 1738" id="ref-RFC 1738">RFC 1738</a>] Berners-Lee, T., Masinter, L. and M. McCahill, "Uniform
-              Resource Locators (URL)", <a href="./rfc1738">RFC 1738</a>, December 1994.
+   [RFC 1738] Berners-Lee, T., Masinter, L. and M. McCahill, "Uniform
+              Resource Locators (URL)", RFC 1738, December 1994.
 
-   [<a name="ref-RFC 1766" id="ref-RFC 1766">RFC 1766</a>] Alvestrand, H., "Tags for the Identification of
-              Languages", <a href="./rfc1766">RFC 1766</a>, March 1995.
+   [RFC 1766] Alvestrand, H., "Tags for the Identification of
+              Languages", RFC 1766, March 1995.
 
-   [<a name="ref-RFC 2045" id="ref-RFC 2045">RFC 2045</a>] Freed, N. and N. Borenstein, " Multipurpose Internet Mail
+   [RFC 2045] Freed, N. and N. Borenstein, " Multipurpose Internet Mail
               Extensions (MIME) - Part One: Format of Internet Message
-              Bodies", <a href="./rfc2045">RFC 2045</a>, November 1996.
+              Bodies", RFC 2045, November 1996.
 
-   [<a name="ref-RFC 2046" id="ref-RFC 2046">RFC 2046</a>] Freed, N. and N. Borenstein, " Multipurpose Internet Mail
-              Extensions (MIME) - Part Two: Media Types", <a href="./rfc2046">RFC 2046</a>,
+   [RFC 2046] Freed, N. and N. Borenstein, " Multipurpose Internet Mail
+              Extensions (MIME) - Part Two: Media Types", RFC 2046,
               November 1996.
 
 
 
 
+Dawson & Stenerson          Standards Track                   [Page 144]
+
+RFC 2445                       iCalendar                   November 1998
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 144]</span>
-<a name="page-145" id="page-145" href="#page-145" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
 
-
-   [<a name="ref-RFC 2048" id="ref-RFC 2048">RFC 2048</a>] Freed, N., Klensin, J. and J. Postel, "Multipurpose
+   [RFC 2048] Freed, N., Klensin, J. and J. Postel, "Multipurpose
               Internet Mail Extensions (MIME) - Part Four: Registration
-              Procedures", <a href="./rfc2048">RFC 2048</a>, January 1997.
+              Procedures", RFC 2048, January 1997.
 
-   [<a name="ref-RFC 2119" id="ref-RFC 2119">RFC 2119</a>] Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", <a href="./bcp14">BCP 14</a>, <a href="./rfc2119">RFC 2119</a>, March 1997.
+   [RFC 2119] Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119, March 1997.
 
-   [<a name="ref-RFC 2234" id="ref-RFC 2234">RFC 2234</a>] Crocker, D. and P. Overell, "Augmented BNF for Syntax
-              Specifications: ABNF", <a href="./rfc2234">RFC 2234</a>, November 1997.
+   [RFC 2234] Crocker, D. and P. Overell, "Augmented BNF for Syntax
+              Specifications: ABNF", RFC 2234, November 1997.
 
-   [<a name="ref-RFC 2279" id="ref-RFC 2279">RFC 2279</a>] Yergeau, F., "UTF-8, a transformation format of ISO
-              10646", <a href="./rfc2279">RFC 2279</a>, January 1998.
+   [RFC 2279] Yergeau, F., "UTF-8, a transformation format of ISO
+              10646", RFC 2279, January 1998.
 
-   [<a name="ref-RFC 2425" id="ref-RFC 2425">RFC 2425</a>] Howes, T., Smith, M. and F. Dawson, "A MIME Content-Type
-              for Directory Information", <a href="./rfc2425">RFC 2425</a>, September 1998.
+   [RFC 2425] Howes, T., Smith, M. and F. Dawson, "A MIME Content-Type
+              for Directory Information", RFC 2425, September 1998.
 
-   [<a name="ref-RFC 2426" id="ref-RFC 2426">RFC 2426</a>] Dawson, F. and T. Howes, "vCard MIME Directory Profile",
-              <a href="./rfc2426">RFC 2426</a>, September 1998.
+   [RFC 2426] Dawson, F. and T. Howes, "vCard MIME Directory Profile",
+              RFC 2426, September 1998.
 
-   [<a name="ref-TZ" id="ref-TZ">TZ</a>]       Olson, A.D., et al, Time zone code and data,
-              <a href="ftp://elsie.nci.nih.gov/pub/">ftp://elsie.nci.nih.gov/pub/</a>, updated periodically.
+   [TZ]       Olson, A.D., et al, Time zone code and data,
+              ftp://elsie.nci.nih.gov/pub/, updated periodically.
 
-   [<a name="ref-VCAL" id="ref-VCAL">VCAL</a>]     Internet Mail Consortium, "vCalendar - The Electronic
+   [VCAL]     Internet Mail Consortium, "vCalendar - The Electronic
               Calendaring and Scheduling Exchange Format",
-              <a href="http://www.imc.org/pdi/vcal-10.txt">http://www.imc.org/pdi/vcal-10.txt</a>, September 18, 1996.
+              http://www.imc.org/pdi/vcal-10.txt, September 18, 1996.
 
-
-<span class="h2"><a name="section-9">9</a> Acknowledgments</span>
+9 Acknowledgments
 
    A hearty thanks to the IETF Calendaring and Scheduling Working Group
    and also the following individuals who have participated in the
@@ -8393,12 +8115,12 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 145]</span>
-<a name="page-146" id="page-146" href="#page-146" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 145]
+
+RFC 2445                       iCalendar                   November 1998
 
 
-<span class="h2"><a name="section-10">10</a> Authors' and Chairs' Addresses</span>
+10 Authors' and Chairs' Addresses
 
    The following address information is provided in a MIME-VCARD,
    Electronic Business Card, format.
@@ -8449,9 +8171,9 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 146]</span>
-<a name="page-147" id="page-147" href="#page-147" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 146]
+
+RFC 2445                       iCalendar                   November 1998
 
 
    The co-chairman of that working group is:
@@ -8505,12 +8227,12 @@ Table of Contents
 
 
 
-<span class="grey">Dawson &amp; Stenerson          Standards Track                   [Page 147]</span>
-<a name="page-148" id="page-148" href="#page-148" class="invisible"><span class="break"> </span></a>
-<span class="grey"><a href="./rfc2445">RFC 2445</a>                       iCalendar                   November 1998</span>
+Dawson & Stenerson          Standards Track                   [Page 147]
+
+RFC 2445                       iCalendar                   November 1998
 
 
-<span class="h2"><a name="section-11">11</a>.  Full Copyright Statement</span>
+11.  Full Copyright Statement
 
    Copyright (C) The Internet Society (1998).  All Rights Reserved.
 
@@ -8561,11 +8283,4 @@ Table of Contents
 
 
 
-Dawson &amp; Stenerson          Standards Track                   [Page 148]
-<span class="break"> </span>
-
-</pre><br />
-<span class="noprint"><small><small>Html markup produced by rfcmarkup 1.60, available from
-<a href="http://tools.ietf.org/tools/rfcmarkup/">http://tools.ietf.org/tools/rfcmarkup/</a>
-</small></small></span>
-</body></html>
+Dawson & Stenerson          Standards Track                   [Page 148]

@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: rcal.rb</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>rcal.rb</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>lib/rcal.rb
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Fri Jun 06 13:48:52 -0400 2008</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+<a href="../../classes/Rcal.html">Rcal</a> provides Ical parsing and
+generation in Ruby. It is built with the following in mind:
+</p>
+<ul>
+<li>Follow the structure of Ical:
+
+<p>
+The Ical standard describes three distinct layers: Components, Properties,
+and Parameters. These are mapped to modules (<a
+href="../../rcal/component.html">Rcal::Component</a>, <a
+href="../../rcal/property.html">Rcal::Property</a>, and <a
+href="../../rcal/parameter.html">Rcal::Parameter</a>) in <a
+href="../../classes/Rcal.html">Rcal</a>. Components, Proprerties, and
+Parameters are collectively called &quot;pieces&quot; in this documentation
+(see <a href="../../rcal/piece.html">Rcal::Piece</a>). All non-piece
+classes in <a href="../../classes/Rcal.html">Rcal</a> are
+&quot;support.&quot;
+</p>
+</li>
+<li>Regularity of design:
+
+<p>
+Each of the piece classes has a parser(compliance_level) class method and
+an to_ical instance method. Each of the <a
+href="../../rcal/component.html">Rcal::Component</a>, <a
+href="../../rcal/property.html">Rcal::Property</a>, and <a
+href="../../rcal/parameter.html">Rcal::Parameter</a> modules themselves has
+a parser(compliance_level) class method that returns a registry of all of
+the known individual parsers. Users of the library can register additional
+parsers in these registries in order to add custom pieces.
+</p>
+</li>
+<li>Real <a href="../../files/doc/RFC_2445_rdoc.html">RFC-2445</a> Compliance:
+
+<p>
+<a href="../../classes/Rcal.html">Rcal</a> makes it hard (though not
+impossible) to generate non-compliant Ical content. Many piece classes are
+frozen, and most of the instances returned from parsing are immutable.
+Those pieces that are mutable will often raise exceptions (always noted in
+the rdoc) when improperly modified.
+</p>
+<p>
+A user of the library can always create a custom parser to generate mutable
+versions if absolutely necessary.
+</p>
+</li>
+<li>Parse modes:
+
+<p>
+Parsing can be done in two modes: strict and lax. These represent how
+problems are handled during parsing. In strict mode, the following
+deviations from valid Ical raises an <a
+href="../../rcal/parser/parse_error.html">Rcal::ParseError</a>:
+</p>
+<ul>
+<li>Parameter X inside a property that only allows parameters Y and Z
+
+</li>
+<li>Parameter X not inside a property that requires at least one X
+
+</li>
+<li>Property X inside a component that only allows properties Y and Z
+
+</li>
+<li>No parser found for some Ical content (usually caused by improper
+formatting)
+
+</li>
+<li>A BEGIN:Vxxx without a matching END:Vxxx
+
+</li>
+<li>Any deviation from a &quot;MUST&quot; or &quot;MUST NOT&quot; in RFC 2445
+
+</li>
+</ul>
+<p>
+In lax mode, the above deviations will cause an error to be logged, and the
+parser will return nil.
+</p>
+<p>
+In both modes, any deviations from &quot;SHOULD&quot; or &quot;SHOULD
+NOT&quot; will cause a warning to be logged.
+</p>
+<p>
+In general, strict is best used during testing and lax is best used for
+production. For this reason, the library checks for RAILS_ENV and sets the
+default parse mode to strict if RAILS_ENV is &#8216;development&#8217; or
+&#8216;test&#8217;, and to lax if it is &#8216;production.&#8217; If no
+RAILS_ENV is found, the default is strict.
+</p>
+</li>
+<li>Parsing and context-sensitivity:
+
+<p>
+Much of the Ical spec is context-sensitive. Certain values for the PARTSTAT
+parameter are valid only within certain components. Certain properties can
+exist only in certain components. A date-type property that doesn&#8216;t
+end in &#8216;Z&#8217; (for UTC) has a very different meaning depending on
+whether the property has a TZID parameter attached to it . . . and the TZID
+parameter itself refers to a VTIMEZONE - a completely separate component,
+found only by traveling up and then back down the component tree. Because
+parsing is so context-sensitive, parsing methods take two arguments:
+</p>
+<ul>
+<li>ical: the actual text to be parsed
+
+</li>
+<li>parent: the context in which it is parsed
+
+</li>
+</ul>
+<p>
+See <a href="../../rcal/parser.html">Rcal::Parser</a> for more information
+on parsing.
+</p>
+</li>
+</ul>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

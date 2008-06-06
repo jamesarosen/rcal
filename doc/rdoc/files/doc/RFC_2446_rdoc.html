@@ -1,0 +1,946 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: RFC_2446.rdoc</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>RFC_2446.rdoc</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>doc/RFC_2446.rdoc
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Fri Jun 06 13:46:46 -0400 2008</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+An HTML version of this document is available at <a
+href="http://rfc.net/rfc2446.html">rfc.net/rfc2446.html</a>
+</p>
+<p>
+Network Working Group S. Silverberg Request for Comments: 2446 Microsoft
+Category: Standards Track S. Mansour
+</p>
+<pre>
+                                                               Netscape
+                                                              F. Dawson
+                                                                  Lotus
+                                                              R. Hopson
+                                                        ON Technologies
+                                                          November 1998
+
+       iCalendar Transport-Independent Interoperability Protocol
+                                 (iTIP)
+        Scheduling Events, BusyTime, To-dos and Journal Entries
+</pre>
+<p>
+Status of this Memo
+</p>
+<pre>
+   This document specifies an Internet standards track protocol for the
+   Internet community, and requests discussion and suggestions for
+   improvements.  Please refer to the current edition of the &quot;Internet
+   Official Protocol Standards&quot; (STD 1) for the standardization state
+   and status of this protocol.  Distribution of this memo is unlimited.
+</pre>
+<p>
+Copyright Notice
+</p>
+<pre>
+   Copyright (C) The Internet Society (1998).  All Rights Reserved.
+</pre>
+<p>
+Abstract
+</p>
+<pre>
+   This document specifies how calendaring systems use iCalendar objects
+   to interoperate with other calendar systems. It does so in a general
+   way so as to allow multiple methods of communication between systems.
+   Subsequent documents specify interoperable methods of communications
+   between systems that use this protocol.
+
+   The document outlines a model for calendar exchange that defines both
+   static and dynamic event, to-do, journal and free/busy objects.
+   Static objects are used to transmit information from one entity to
+   another without the expectation of continuity or referential
+   integrity with the original item. Dynamic objects are a superset of
+   static objects and will gracefully degrade to their static
+   counterparts for clients that only support static objects.
+
+   This document specifies an Internet protocol based on the iCalendar
+   object specification that provides scheduling interoperability
+   between different calendar systems. The Internet protocol is called
+   the &quot;iCalendar Transport-Independent Interoperability Protocol
+   (iTIP)&quot;.
+</pre>
+<p>
+Silverberg, et. al. Standards Track [Page 1]
+</p>
+<p>
+RFC 2446 iTIP November 1998
+</p>
+<pre>
+   iTIP complements the iCalendar object specification by adding
+   semantics for group scheduling methods commonly available in current
+   calendar systems. These scheduling methods permit two or more
+   calendar systems to perform transactions such as publish, schedule,
+   reschedule, respond to scheduling requests, negotiation of changes or
+   cancel iCalendar-based calendar components.
+
+   iTIP is defined independent of the particular transport used to
+   transmit the scheduling information. Companion memos to iTIP provide
+   bindings of the interoperability protocol to a number of Internet
+   protocols.
+</pre>
+<p>
+Table of Contents
+</p>
+<pre>
+   1 INTRODUCTION...................................................5
+    1.1 FORMATTING CONVENTIONS .....................................5
+    1.2 RELATED DOCUMENTS ..........................................6
+    1.3 ITIP ROLES AND TRANSACTIONS ................................6
+   2 INTEROPERABILITY MODELS........................................8
+    2.1 APPLICATION PROTOCOL .......................................9
+      2.1.1 Calendar Entry State ...................................9
+      2.1.2 Delegation .............................................9
+      2.1.3 Acting on Behalf of other Calendar Users ..............10
+      2.1.4 Component Revisions ...................................10
+      2.1.5 Message Sequencing ....................................11
+   3 APPLICATION PROTOCOL ELEMENTS.................................12
+    3.1 COMMON COMPONENT RESTRICTION TABLES .......................13
+    3.2 METHODS FOR VEVENT CALENDAR COMPONENTS ....................14
+      3.2.1 PUBLISH ...............................................15
+      3.2.2 REQUEST ...............................................17
+        3.2.2.1 Rescheduling an Event..............................19
+        3.2.2.2 Updating or Reconfirmation of an Event.............19
+        3.2.2.3 Delegating an Event to another CU..................19
+        3.2.2.4 Changing the Organizer.............................20
+        3.2.2.5 Sending on Behalf of the Organizer.................20
+        3.2.2.6 Forwarding to An Uninvited CU......................20
+        3.2.2.7 Updating Attendee Status...........................21
+      3.2.3 REPLY .................................................21
+      3.2.4 ADD ...................................................23
+      3.2.5 CANCEL ................................................25
+      3.2.6 REFRESH ...............................................26
+      3.2.7 COUNTER ...............................................28
+      3.2.8 DECLINECOUNTER ........................................29
+    3.3 METHODS FOR VFREEBUSY COMPONENTS ..........................31
+      3.3.1 PUBLISH ...............................................32
+      3.3.2 REQUEST ...............................................33
+      3.3.3 REPLY .................................................34
+    3.4 METHODS FOR VTODO COMPONENTS ..............................35
+</pre>
+<p>
+Silverberg, et. al. Standards Track [Page 2]
+</p>
+<p>
+RFC 2446 iTIP November 1998
+</p>
+<pre>
+      3.4.1 PUBLISH ...............................................35
+      3.4.2 REQUEST ...............................................37
+        3.4.2.1 REQUEST for Rescheduling a VTODO...................39
+        3.4.2.2 REQUEST for Update or Reconfirmation of a VTODO....39
+        3.4.2.3 REQUEST for Delegating a VTODO.....................40
+        3.4.2.4 REQUEST Forwarded To An Uninvited Calendar User....40
+        3.4.2.5 REQUEST Updated Attendee Status....................41
+      3.4.3 REPLY .................................................41
+      3.4.4 ADD ...................................................43
+      3.4.5 CANCEL ................................................44
+      3.4.6 REFRESH ...............................................46
+      3.4.7 COUNTER ...............................................48
+      3.4.8 DECLINECOUNTER ........................................49
+    3.5 METHODS FOR VJOURNAL COMPONENTS ...........................50
+      3.5.1 PUBLISH ...............................................51
+      3.5.2 ADD ...................................................52
+      3.5.3 CANCEL ................................................53
+    3.6 STATUS REPLIES ............................................55
+    3.7 IMPLEMENTATION CONSIDERATIONS .............................57
+      3.7.1 Working With Recurrence Instances .....................57
+      3.7.2 Attendee Property Considerations ......................58
+      3.7.3 X-Tokens ..............................................59
+   4 EXAMPLES......................................................59
+    4.1 PUBLISHED EVENT EXAMPLES ..................................59
+      4.1.1 A Minimal Published Event .............................60
+      4.1.2 Changing A Published Event ............................60
+      4.1.3 Canceling A Published Event ...........................61
+      4.1.4 A Rich Published Event ................................62
+      4.1.5 Anniversaries or Events attached to entire days .......63
+    4.2 GROUP EVENT EXAMPLES ......................................63
+      4.2.1 A Group Event Request .................................64
+      4.2.2 Reply To A Group Event Request ........................65
+      4.2.3 Update An Event .......................................65
+      4.2.4 Countering an Event Proposal ..........................66
+      4.2.5 Delegating an Event ...................................68
+      4.2.6 Delegate Accepts the Meeting ..........................70
+      4.2.7 Delegate Declines the Meeting .........................71
+      4.2.8 Forwarding an Event Request ...........................72
+      4.2.9 Cancel A Group Event ..................................72
+      4.2.10 Removing Attendees ...................................74
+      4.2.11 Replacing the Organizer ..............................75
+    4.3 BUSY TIME EXAMPLES ........................................76
+      4.3.1 Request Busy Time .....................................77
+      4.3.2 Reply To A Busy Time Request ..........................77
+    4.4 RECURRING EVENT AND TIME ZONE EXAMPLES ....................78
+      4.4.1 A Recurring Event Spanning Time Zones .................78
+      4.4.2 Modify A Recurring Instance ...........................79
+      4.4.3 Cancel an Instance ....................................81
+</pre>
+<p>
+Silverberg, et. al. Standards Track [Page 3]
+</p>
+<p>
+RFC 2446 iTIP November 1998
+</p>
+<pre>
+      4.4.4 Cancel Recurring Event ................................81
+      4.4.5 Change All Future Instances ...........................82
+      4.4.6 Add A New Instance To A Recurring Event ...............82
+      4.4.7 Add A New Series of Instances To A Recurring Event ....83
+      4.4.8 Counter An Instance Of A Recurring Event ..............87
+      4.4.9 Error Reply To A Request ..............................88
+    4.5 GROUP TO-DO EXAMPLES ......................................89
+      4.5.1 A VTODO Request .......................................90
+      4.5.2 A VTODO Reply .........................................90
+      4.5.3 A VTODO Request for Updated Status ....................91
+      4.5.4 A Reply: Percent-Complete .............................91
+      4.5.5 A Reply: Completed ....................................92
+      4.5.6 An Updated VTODO Request ..............................92
+      4.5.7 Recurring VTODOs ......................................92
+        4.5.7.1 Request for a Recurring VTODO......................93
+        4.5.7.2 Calculating due dates in recurring VTODOs..........93
+        4.5.7.3 Replying to an instance of a recurring VTODO.......93
+    4.6 JOURNAL EXAMPLES ..........................................94
+    4.7 OTHER EXAMPLES ............................................94
+      4.7.1 Event Refresh .........................................94
+      4.7.2 Bad RECURRENCE-ID .....................................95
+   5 APPLICATION PROTOCOL FALLBACKS................................97
+    5.1 PARTIAL IMPLEMENTATION ....................................97
+      5.1.1 Event-Related Fallbacks ...............................97
+      5.1.2 Free/Busy-Related Fallbacks ...........................99
+      5.1.3 To-Do-Related Fallbacks ...............................99
+      5.1.4 Journal-Related Fallbacks ............................101
+    5.2 LATENCY ISSUES ...........................................102
+      5.2.1 Cancellation of an Unknown Calendar Component. .......102
+      5.2.2 Unexpected Reply from an Unknown Delegate ............103
+    5.3 SEQUENCE NUMBER ..........................................103
+   6 SECURITY CONSIDERATIONS......................................103
+    6.1 SECURITY THREATS .........................................103
+      6.1.1 Spoofing the &quot;Organizer&quot; .............................103
+      6.1.2 Spoofing the &quot;Attendee&quot; ..............................103
+      6.1.3 Unauthorized Replacement of the Organizer ............104
+      6.1.4 Eavesdropping ........................................104
+      6.1.5 Flooding a Calendar ..................................104
+      6.1.6 Procedural Alarms ....................................104
+      6.1.7 Unauthorized REFRESH Requests ........................104
+    6.2 RECOMMENDATIONS ..........................................104
+      6.2.1 Use of [RFC-1847] to secure iTIP transactions ........105
+      6.2.2 Implementation Controls ..............................105
+   7 ACKNOWLEDGMENTS..............................................106
+   8 BIBLIOGRAPHY.................................................106
+   9 AUTHORS' ADDRESSES...........................................107
+   10 FULL COPYRIGHT STATEMENT....................................109
+</pre>
+<p>
+Silverberg, et. al. Standards Track [Page 4]
+</p>
+<p>
+RFC 2446 iTIP November 1998
+</p>
+<p>
+1 Introduction
+</p>
+<pre>
+   This document specifies how calendaring systems use iCalendar objects
+   to interoperate with other calendar systems. In particular, it
+   specifies how to schedule events, to-dos, or daily journal entries.
+   It further specifies how to search for available busy time
+   information. It does so in a general way so as to allow multiple
+   methods of communication between systems. Subsequent documents
+   specify transport bindings between systems that use this protocol.
+
+   This protocol is based on messages sent from an originator to one or
+   more recipients. For certain types of messages, a recipient may
+   reply, in order to update their status and may also return
+   transaction/request status information. The protocol supports the
+   ability for the message originator to modify or cancel the original
+   message. The protocol also supports the ability for recipients to
+   suggest changes to the originator of a message. The elements of the
+   protocol also define the user roles for its transactions.
+</pre>
+<p>
+1.1 Formatting Conventions
+</p>
+<pre>
+   In order to refer to elements of the calendaring and scheduling
+   model, core object or interoperability protocol defined in [iCAL] and
+   [iTIP] several formatting conventions have been utilized.
+
+   The key words &quot;MUST&quot;, &quot;MUST NOT&quot;, &quot;REQUIRED&quot;, &quot;SHALL&quot;, &quot;SHALL NOT&quot;,
+   &quot;SHOULD&quot;, &quot;SHOULD NOT&quot;, &quot;RECOMMENDED&quot;, &quot;MAY&quot; and &quot;OPTIONAL&quot; in this
+   document are to be interpreted as described in [RFC-2119].
+
+   Calendaring and scheduling roles are referred to in quoted-strings of
+   text with the first character of each word in upper case. For
+   example, &quot;Organizer&quot; refers to a role of a &quot;Calendar User&quot;  (CU)
+   within the scheduling protocol defined by [iTIP]. Calendar components
+   defined by [iCAL] are referred to with capitalized, quoted-strings of
+   text. All calendar components start with the letter &quot;V&quot;. For example,
+   &quot;VEVENT&quot; refers to the event calendar component, &quot;VTODO&quot; refers to
+   the to-do calendar component and &quot;VJOURNAL&quot; refers to the daily
+   journal calendar component. Scheduling methods defined by [iTIP] are
+   referred to with capitalized, quoted-strings of text. For example,
+   &quot;REQUEST&quot; refers to the method for requesting a scheduling calendar
+   component be created or modified, &quot;REPLY&quot; refers to the method a
+   recipient of a request uses to update their status with the
+   &quot;Organizer&quot; of the calendar component.
+
+   Properties defined by [iCAL] are referred to with capitalized,
+   quoted-strings of text, followed by the word &quot;property&quot;. For example,
+   &quot;ATTENDEE&quot; property refers to the iCalendar property used to convey
+   the calendar address of a &quot;Calendar User&quot;. Property parameters
+</pre>
+<p>
+Silverberg, et. al. Standards Track [Page 5]
+</p>
+<p>
+RFC 2446 iTIP November 1998
+</p>
+<pre>
+   defined by this memo are referred to with lower case, quoted-strings
+   of text, followed by the word &quot;parameter&quot;. For example, &quot;value&quot;
+   parameter refers to the iCalendar property parameter used to override
+   the default data type for a property value. Enumerated values defined
+   by this memo are referred to with capitalized text, either alone or
+   followed by the word &quot;value&quot;.
+
+   In tables, the quoted-string text is specified without quotes in
+   order to minimize the table length.
+</pre>
+<p>
+1.2 Related Documents
+</p>
+<pre>
+   Implementers will need to be familiar with several other memos that,
+   along with this one, describe the Internet calendaring and scheduling
+   standards. This document, [iTIP], specifies an interoperability
+   protocol for scheduling between different implementations. The
+   related documents are:
+
+        [iCAL] - specifies the objects, data types, properties and
+        property parameters used in the protocols, along with the
+        methods for representing and encoding them;
+
+        [iMIP] specifies an Internet email binding for [iTIP].
+
+   This memo does not attempt to repeat the specification of concepts or
+   definitions from these other memos. Where possible, references are
+   made to the memo that provides for the specification of these
+   concepts or definitions.
+</pre>
+<p>
+1.3 ITIP Roles and Transactions
+</p>
+<pre>
+   ITIP defines methods for exchanging [iCAL] objects for the purposes
+   of group calendaring and scheduling between &quot;Calendar Users&quot; (CUs).
+   CUs take on one of two roles in iTIP. The CU who initiates an
+   exchange takes on the role of &quot;Organizer&quot;. For example, the CU who
+   proposes a group meeting is the &quot;Organizer&quot;. The CUs asked to
+   participate in the group meeting by the &quot;Organizer&quot; take on the role
+   of &quot;Attendee&quot;. Note that &quot;role&quot; is also a descriptive parameter to
+   the _ATTENDEE_ property. Its use is to convey descriptive context to
+   an &quot;Attendee&quot; such as &quot;chair&quot;, &quot;req-participant&quot; or &quot;non-participant&quot;
+   and has nothing to do with the calendaring workflow.
+</pre>
+<p>
+Silverberg, et. al. Standards Track [Page 6]
+</p>
+<p>
+RFC 2446 iTIP November 1998
+</p>
+<pre>
+   The ITIP methods are listed below and their usage and semantics are
+   defined in section 3 of this document.
+
+   +================+==================================================+
+   | Method         |  Description                                     |
+   |================+==================================================|
+   | PUBLISH        | Used to publish a calendar entry to one or more  |
+   |                | Calendar Users. There is no interactivity        |
+   |                | between the publisher and any other calendar     |
+   |                | user. An example might include a baseball team   |
+   |                | publishing its schedule to the public.           |
+   |                |                                                  |
+   | REQUEST        | Used to schedule a calendar entry with other     |
+   |                | Calendar Users. Requests are interactive in that |
+   |                | they require the receiver to respond using       |
+   |                | the Reply methods. Meeting Requests, Busy        |
+   |                | Time requests and the assignment of VTODOs to    |
+   |                | other Calendar Users are all examples.           |
+   |                | Requests are also used by the &quot;Organizer&quot; to     |
+   |                | update the status of a calendar entry.           |
+   |                |                                                  |
+   | REPLY          | A Reply is used in response to a Request to      |
+   |                | convey &quot;Attendee&quot; status to the &quot;Organizer&quot;.     |
+   |                | Replies are commonly used to respond to meeting  |
+   |                | and task requests.                               |
+   |                |                                                  |
+   | ADD            | Add one or more instances to an existing         |
+   |                | VEVENT, VTODO, or VJOURNAL.                      |
+   |                |                                                  |
+   | CANCEL         | Cancel one or more instances of an existing      |
+   |                | VEVENT, VTODO, or VJOURNAL.                      |
+   |                |                                                  |
+   | REFRESH        | The Refresh method is used by an &quot;Attendee&quot; to   |
+   |                | request the latest version of a calendar entry.  |
+   |                |                                                  |
+   | COUNTER        | The Counter method is used by an &quot;Attendee&quot; to   |
+   |                | negotiate a change in the calendar entry.        |
+   |                | Examples include the request to change a         |
+   |                | proposed Event time or change the due date for a |
+   |                | VTODO.                                           |
+   |                |                                                  |
+   | DECLINE-       | Used by the &quot;Organizer&quot; to decline the proposed  |
+   | COUNTER        | counter-proprosal.                               |
+   +================+==================================================+
+</pre>
+<p>
+Silverberg, et. al. Standards Track [Page 7]
+</p>
+<p>
+RFC 2446 iTIP November 1998
+</p>
+<pre>
+   Group scheduling in iTIP is accomplished using the set of &quot;request&quot;
+   and &quot;response&quot; methods described above. The following table shows the
+   methods broken down by who can send them.
+
+   +================+==================================================+
+   | Originator     | Methods                                          |
+   |================+==================================================|
+   | Organizer      | PUBLISH, REQUEST, ADD, CANCEL, DECLINECOUNTER    |
+   |                |                                                  |
+   | Attendee       | REPLY, REFRESH, COUNTER                          |
+   |                | REQUEST only when delegating                     |
+   +================+==================================================+
+
+   Note that for some calendar component types, the allowable methods
+   are a subset of the above set.
+</pre>
+<p>
+2 Interoperability Models
+</p>
+<pre>
+   There are two distinct protocols relevant to interoperability: an
+   &quot;Application Protocol&quot; and a &quot;Transport Protocol&quot;. The Application
+   Protocol defines the content of the iCalendar objects sent between
+   sender and receiver to accomplish the scheduling transactions listed
+   above. The Transport Protocol defines how the iCalendar objects are
+   sent between the sender and receiver. This document focuses on the
+   Application Protocol. Binding documents such as [iMIP] focus on the
+   Transport Protocol.
+
+   The connection between Sender and Receiver in the diagram below
+   refers to the Application Protocol. The iCalendar objects passed from
+   the Sender to the Receiver are presented in Section 3, Application
+   Protocol Elements.
+
+   +----------+                      +----------+
+   |          |        iTIP          |          |
+   |  Sender  |&lt;--------------------&gt;| Receiver |
+   |          |                      |          |
+   +----------+                      +----------+
+
+   There are several variations of this diagram in which the Sender and
+   Receiver take on various roles of a &quot;Calendar User Agent&quot; (CUA) or a
+   &quot;Calendar Service&quot; (CS).
+
+   The architecture of iTIP is depicted in the diagram below. An
+   application written to this specification may work with bindings for
+   the store-and-forward transport, the real time transport, or both.
+   Also note that iTIP could be bound to other transports.
+</pre>
+<p>
+Silverberg, et. al. Standards Track [Page 8]
+</p>
+<p>
+RFC 2446 iTIP November 1998
+</p>
+<pre>
+   +------------------------------------------+
+   |                   iTIP                   |
+   +------------------------------------------+
+   |Real-time | Store-and-Fwd | Other         |
+   |Transport | Transport     | Transports... |
+   +------------------------------------------+
+</pre>
+<p>
+2.1 Application Protocol
+</p>
+<pre>
+   In the iTIP model, a calendar entry is created and managed by an
+   &quot;Organizer&quot;. The &quot;Organizer&quot; interacts with other CUs by sending one
+   or more of the iTIP messages listed above. &quot;Attendees&quot; use the
+   &quot;REPLY&quot; method to communicate their status. &quot;Attendees&quot; do not make
+   direct changes to the master calendar entry. They can, however, use
+   the &quot;COUNTER&quot; method to suggest changes to the &quot;Organizer&quot;. In any
+   case, the &quot;Organizer&quot; has complete control over the master calendar
+   entry.
+</pre>
+<p>
+2.1.1 Calendar Entry State
+</p>
+<pre>
+   There are two distinct states relevant to calendar entries: the
+   overall state of the entry and the state associated with an
+   &quot;Attendee&quot; to that entry.
+
+   The state of an entry is defined by the &quot;STATUS&quot; property and is
+   controlled by the &quot;Organizer.&quot; There is no default value for the
+   &quot;STATUS&quot; property. The &quot;Organizer&quot; sets the &quot;STATUS&quot; property to the
+   appropriate value for each calendar entry.
+
+   The state of a particular &quot;Attendee&quot; relative to an entry is defined
+   by the &quot;partstat&quot; parameter in the &quot;ATTENDEE&quot; property for each
+   &quot;Attendee&quot;.  When an &quot;Organizer&quot; issues the initial entry, &quot;Attendee&quot;
+   status is unknown. The &quot;Organizer&quot; specifies this by setting the
+   &quot;partstat&quot; parameter to &quot;NEEDS-ACTION&quot;. Each &quot;Attendee&quot; modifies
+   their &quot;ATTENDEE&quot; property &quot;partstat&quot; parameter to an appropriate
+   value as part of a &quot;REPLY&quot; message sent back to the &quot;Organizer&quot;.
+</pre>
+<p>
+2.1.2 Delegation
+</p>
+<pre>
+   Delegation is defined as the process by which an &quot;Attendee&quot; grants
+   another CU (or several CUs) the right to attend on their behalf. The
+   &quot;Organizer&quot; is made aware of this change because the delegating
+   &quot;Attendee&quot; informs the &quot;Organizer&quot;. These steps are detailed in the
+   REQUEST method section.
+</pre>
+<p>
+Silverberg, et. al. Standards Track [Page 9]
+</p>
+<p>
+RFC 2446 iTIP November 1998
+</p>
+<p>
+2.1.3 Acting on Behalf of other Calendar Users
+</p>
+<pre>
+   In many organizations one user will act on behalf of another to
+   organize and/or respond to meeting requests. ITIP provides two
+   mechanisms that support these activities.
+
+   First, the &quot;Organizer&quot; is treated as a special entity, separate from
+   &quot;Attendees&quot;. All responses from &quot;Attendees&quot; flow to the &quot;Organizer&quot;,
+   making it easy to separate a calendar user organizing a meeting from
+   calendar users attending the meeting. Additionally, iCalendar
+   provides descriptive roles for each &quot;Attendee&quot;. For instance, a role
+   of &quot;chair&quot; may be ascribed to one or more &quot;Attendees&quot;. The &quot;chair&quot;
+   and the &quot;Organizer&quot; may or may not be the same calendar user. This
+   maps well to scenarios where an assistant may manage meeting
+   logistics for another individual who chairs a meeting.
+
+   Second, a &quot;sent-by&quot; parameter may be specified in either the
+   &quot;Organizer&quot; or &quot;Attendee&quot; properties. When specified, the &quot;sent-by&quot;
+   parameter indicates that the responding CU acted on behalf of the
+   specified &quot;Attendee&quot; or &quot;Organizer&quot;.
+</pre>
+<p>
+2.1.4 Component Revisions
+</p>
+<pre>
+   The &quot;SEQUENCE&quot; property is used by the &quot;Organizer&quot; to indicate
+   revisions to the calendar component. The rules for incrementing the
+   &quot;SEQUENCE&quot; number are defined in [iCAL]. For clarity, these rules are
+   paraphrased here in terms of how they are applied in [iTIP]. For a
+   given &quot;UID&quot; in a calendar component:
+
+   . For the &quot;PUBLISH&quot; and &quot;REQUEST&quot; methods, the &quot;SEQUENCE&quot; property
+      value is incremented according to the rules defined in [iCAL].
+
+   . The &quot;SEQUENCE&quot; property value MUST be incremented each time the
+      &quot;Organizer&quot; uses the &quot;ADD&quot; or &quot;CANCEL&quot; methods.
+
+   . The &quot;SEQUENCE&quot; property value MUST NOT be incremented when using
+      &quot;REPLY&quot;, &quot;REFRESH&quot;, &quot;COUNTER&quot;, &quot;DECLINECOUNTER&quot;, or when sending a
+      delegation &quot;REQUEST&quot;.
+
+   In some circumstances the &quot;Organizer&quot; may not have received responses
+   to the final revision sent out. In this situation, the &quot;Organizer&quot;
+   may wish to send an update &quot;REQUEST&quot;, and set &quot;RSVP=TRUE&quot; for all
+   &quot;Attendees&quot;, so that current responses can be collected.
+</pre>
+<p>
+Silverberg, et. al. Standards Track [Page 10]
+</p>
+<p>
+RFC 2446 iTIP November 1998
+</p>
+<pre>
+   The value of the &quot;SEQUENCE&quot; property contained in a response from an
+   &quot;Attendee&quot; may not always match the &quot;Organizer's&quot; revision.
+   Implementations may choose to have the CUA indicate to the CU that
+   the response is to an entry that has been revised and allow the CU to
+   decide whether or not to accept the response.
+</pre>
+<p>
+2.1.5 Message Sequencing
+</p>
+<pre>
+   CUAs that handle the [iTIP] application protocol must often correlate
+   a component in a calendar store with a component received in the
+   [iTIP] message. For example, an event may be updated with a later
+   revision of the same event. To accomplish this, a CUA must correlate
+   the version of the event already in its calendar store with the
+   version sent in the [iTIP] message. In addition to this correlation,
+   there are several factors that can cause [iTIP] messages to arrive in
+   an unexpected order.  That is, an &quot;Organizer&quot; could receive a reply
+   to an earlier revision of a component AFTER receiving a reply to a
+   later revision.
+
+   To maximize interoperability and to handle messages that arrive in an
+   unexpected order, use the following rules:
+
+   1.  The primary key for referencing a particular iCalendar component
+       is the &quot;UID&quot; property value. To reference an instance of a
+       recurring component, the primary key is composed of the &quot;UID&quot; and
+       the &quot;RECURRENCE-ID&quot; properties.
+
+   2.  The secondary key for referencing a component is the &quot;SEQUENCE&quot;
+       property value.  For components where the &quot;UID&quot; is the same, the
+       component with the highest numeric value for the &quot;SEQUENCE&quot;
+       property obsoletes all other revisions of the component with
+       lower values.
+
+   3.  &quot;Attendees&quot; send &quot;REPLY&quot; messages to the &quot;Organizer&quot;.  For
+       replies where the &quot;UID&quot; property value is the same, the value of
+       the &quot;SEQUENCE&quot; property indicates the revision of the component
+       to which the &quot;Attendee&quot; is replying.  The reply with the highest
+       numeric value for the &quot;SEQUENCE&quot; property obsoletes all other
+       replies with lower values.
+
+   4.  In situations where the &quot;UID&quot; and &quot;SEQUENCE&quot; properties match,
+       the &quot;DTSTAMP&quot; property is used as the tie-breaker. The component
+       with the latest &quot;DTSTAMP&quot; overrides all others. Similarly, for
+       &quot;Attendee&quot; responses where the &quot;UID&quot; property values match and
+       the &quot;SEQUENCE&quot; property values match, the response with the
+       latest &quot;DTSTAMP&quot; overrides all others.
+</pre>
+<p>
+Silverberg, et. al. Standards Track [Page 11]
+</p>
+<p>
+RFC 2446 iTIP November 1998
+</p>
+<pre>
+   Hence, CUAs must persist the following component properties: &quot;UID&quot;,
+   &quot;RECURRENCE-ID&quot;, &quot;SEQUENCE&quot;, and &quot;DTSTAMP&quot;.  Furthermore, for each
+   &quot;ATTENDEE&quot; property of a component CUAs must persist the &quot;SEQUENCE&quot;
+   and &quot;DTSTAMP&quot; property values associated with the &quot;Attendee's&quot;
+   response.
+</pre>
+<p>
+3 Application Protocol Elements
+</p>
+<pre>
+   ITIP messages are &quot;text/calendar&quot; MIME entities that contain
+   calendaring and scheduling information. The particular type of [iCAL]
+   message is referred to as the &quot;method type&quot;. Each method type is
+   identified by a &quot;METHOD&quot; property specified as part of the
+   &quot;text/calendar&quot; content type.  The table below shows various
+   combinations of calendar components and the method types that this
+   memo supports.
+
+   +=================================================+
+   |         | VEVENT | VTODO | VJOURNAL | VFREEBUSY |
+   |=================================================|
+   |Publish  |  Yes   |  Yes  |  Yes     |   Yes     |
+   |Request  |  Yes   |  Yes  |  No      |   Yes     |
+   |Refresh  |  Yes   |  Yes  |  No      |   No      |
+   |Cancel   |  Yes   |  Yes  |  Yes     |   No      |
+   |Add      |  Yes   |  Yes  |  Yes     |   No      |
+   |Reply    |  Yes   |  Yes  |  No      |   Yes     |
+   |Counter  |  Yes   |  Yes  |  No      |   No      |
+   |Decline- |        |       |          |           |
+   |Counter  |  Yes   |  Yes  |  No      |   No      |
+   +=================================================+
+
+   Each method type is defined in terms of its associated components and
+   properties. Some components and properties are required, some are
+   optional and others are excluded. The restrictions are expressed in
+   this document using a simple &quot;restriction table&quot;. The first column
+   indicates the name of a component or property. Properties of the
+   iCalendar object are not indented. Properties of a component are
+   indented. The second column contains &quot;MUST&quot; if the component or
+   property must be present, &quot;MAY&quot; if the component or property is
+   optional, and &quot;NOT&quot; if the component or property must not be present.
+   Entries in the second column sometimes contain comments for further
+   clarification.
+</pre>
+<p>
+Silverberg, et. al. Standards Track [Page 12]
+</p>
+<p>
+RFC 2446 iTIP November 1998
+</p>
+<p>
+3.1 Common Component Restriction Tables
+</p>
+<pre>
+   The restriction table below applies to properties of the iCalendar
+   object. That is, the properties at the outermost scope. The presence
+   column uses the following values to assert whether a property is
+   required, is optional and the number of times it may appear in the
+   iCalendar object.
+
+   Presence Value       Description
+   --------------------------------------------------------------
+   1                 One instance MUST be present
+   1+                At least one instance MUST be present
+   0                 Instances of this property Must NOT be present
+   0+                Multiple instances MAY be present
+   0 or 1            Up to 1 instance of this property MAY be present
+   ---------------------------------------------------------------
+
+   The tables also call out &quot;X-PROPERTY&quot; and  &quot;X-COMPONENT&quot; to show
+   where vendor-specific properties and components can appear.  The
+   tables do not lay out the restrictions of property parameters. Those
+   restrictions are defined in [iCAL].
+
+   Component/Property  Presence
+   ------------------- ----------------------------------------------
+   CALSCALE            0 or 1
+   PRODID              1
+   VERSION             1       Value MUST be &quot;2.0&quot;
+   X-PROPERTY          0+
+
+   DateTime values MAY refer to a &quot;VTIMEZONE&quot; component. The property
+   restrictions in the table below apply to any &quot;VTIMEZONE&quot; component in
+   an ITIP message.
+
+   Component/Property  Presence
+   ------------------- ----------------------------------------------
+   VTIMEZONE           0+      MUST be present if any date/time refers
+                               to timezone
+       DAYLIGHT        0+      MUST be one or more of either STANDARD or
+                               DAYLIGHT
+          COMMENT      0 or 1
+          DTSTART      1       MUST be local time format
+          RDATE        0+      if present RRULE MUST NOT be present
+          RRULE        0+      if present RDATE MUST NOT be present
+          TZNAME       0 or 1
+          TZOFFSET     1
+          TZOFFSETFROM 1
+          TZOFFSETTO   1
+</pre>
+<p>
+Silverberg, et. al. Standards Track [Page 13]
+</p>
+<p>
+RFC 2446 iTIP November 1998
+</p>
+<pre>
+          X-PROPERTY   0+
+       LAST-MODIFIED   0 or 1
+       STANDARD        0+      MUST be one or more of either STANDARD or
+                               DAYLIGHT
+          COMMENT      0 or 1
+          DTSTART      1       MUST be local time format
+          RDATE        0+      if present RRULE MUST NOT be present
+          RRULE        0+      if present RDATE MUST NOT be present
+          TZNAME       0 or 1
+          TZOFFSETFROM 1
+          TZOFFSETTO   1
+          X-PROPERTY   0+
+       TZID            1
+       TZURL           0 or 1
+       X-PROPERTY      0+
+
+   The property restrictions in the table below apply to any &quot;VALARM&quot;
+   component in an ITIP message.
+
+   Component/Property  Presence
+   ------------------- ----------------------------------------------
+   VALARM              0+
+       ACTION          1
+       ATTACH          0+
+       DESCRIPTION     0 or 1
+       DURATION        0 or 1  if present REPEAT MUST be present
+       REPEAT          0 or 1  if present DURATION MUST be present
+       SUMMARY         0 or 1
+       TRIGGER         1
+       X-PROPERTY      0+
+</pre>
+<p>
+3.2 Methods for VEVENT Calendar Components
+</p>
+<pre>
+   This section defines the property set restrictions for the method
+   types that are applicable to the &quot;VEVENT&quot; calendar component. Each
+   method is defined using a table that clarifies the property
+   constraints that define the particular method.
+</pre>
+<p>
+Silverberg, et. al. Standards Track [Page 14]
+</p>
+<p>
+RFC 2446 iTIP November 1998
+</p>
+<pre>
+   The following summarizes the methods that are defined for the
+   &quot;VEVENT&quot; calendar component.
+
+   +================+==================================================+
+   | Method         |  Description                                     |
+   |================+==================================================|
+   | PUBLISH        | Post notification of an event. Used primarily as |
+   |                | a method of advertising the existence of an      |
+   |                | event.                                           |
+   |                |                                                  |
+   | REQUEST        | Make a request for an event. This is an explicit |
+   |                | invitation to one or more &quot;Attendees&quot;. Event     |
+   |                | Requests are also used to update or change an    |
+   |                | existing event. Clients that cannot handle       |
+   |                | REQUEST may degrade the event to view it as an   |
+   |                | PUBLISH.                                         |
+   |                |                                                  |
+   | REPLY          | Reply to an event request. Clients may set their |
+   |                | status (&quot;partstat&quot;) to ACCEPTED, DECLINED,       |
+   |                | TENTATIVE, or DELEGATED.                         |
+   |                |                                                  |
+   | ADD            | Add one or more instances to an existing event.  |
+   |                |                                                  |
+   | CANCEL         | Cancel one or more instances of an existing      |
+   |                | event.                                           |
+   |                |                                                  |
+   | REFRESH        | A request is sent to an &quot;Organizer&quot; by an        |
+   |                | &quot;Attendee&quot; asking for the latest version of an   |
+   |                | event to be resent to the requester.             |
+   |                |                                                  |
+   | COUNTER        | Counter a REQUEST with an alternative proposal,  |
+   |                | Sent by an &quot;Attendee&quot; to the &quot;Organizer&quot;.        |
+   |                |                                                  |
+   | DECLINECOUNTER | Decline a counter proposal. Sent to an           |
+   |                | &quot;Attendee&quot; by the &quot;Organizer&quot;.                   |
+   +================+==================================================+
+</pre>
+<p>
+3.2.1 PUBLISH
+</p>
+<pre>
+   The &quot;PUBLISH&quot; method in a &quot;VEVENT&quot; calendar component is an
+   unsolicited posting of an iCalendar object. Any CU may add published
+   components to their calendar. The &quot;Organizer&quot; MUST be present in a
+   published iCalendar component. &quot;Attendees&quot; MUST NOT be present. Its
+   expected usage is for encapsulating an arbitrary event as an
+   iCalendar object. The &quot;Organizer&quot; may subsequently update (with
+   another &quot;PUBLISH&quot; method), add instances to (with an &quot;ADD&quot; method),
+   or cancel (with a &quot;CANCEL&quot; method) a previously published &quot;VEVENT&quot;
+   calendar component.
+</pre>
+<p>
+Silverberg, et. al. Standards Track [Page 15]
+</p>
+<p>
+RFC 2446 iTIP November 1998
+</p>
+<pre>
+   This method type is an iCalendar object that conforms to the
+   following property constraints:
+</pre>
+<p>
+Component/Property Presence
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>
