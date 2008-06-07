@@ -5,6 +5,7 @@ require 'rcal'
 #
 # Modifies the following classes:
 # * Object[link:/classes/Object.html]
+# * Class[link:/classes/Class.html]
 # * Array[link:/classes/Array.html]
 # * Date[link:/classes/Date.html]
 # * DateTime[link:/classes/DateTime.html]
@@ -23,3 +24,4 @@ require 'rcal/util/pluralize'
 require 'rcal/util/loggable'
 require 'rcal/util/typesafe_list'
 require 'rcal/util/blank'
+require 'rcal/util/class_attributes'
