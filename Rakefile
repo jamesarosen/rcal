@@ -28,7 +28,6 @@ namespace :doc do
     rdoc.rdoc_files.include('lib/**/*.rb', 'init.rb', 'doc/*.rdoc')
     rdoc.options << '--line-numbers'
     rdoc.options << '--inline-source'
-    rdoc.options << '--main' << 'lib/rcal.rb'
   end
   
 end
