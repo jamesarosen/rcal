@@ -17,3 +17,5 @@ end
 require 'rcal/util/extract_options'
 require 'rcal/util/to_ical'
 require 'rcal/util/pluralize'
+require 'rcal/util/loggable'
+require 'rcal/util/typesafe_list'
