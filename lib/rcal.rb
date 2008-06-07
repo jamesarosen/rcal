@@ -21,8 +21,8 @@
 # Property[link:/classes/Rcal/Property.html],
 # and Parameter[link:/classes/Rcal/Parameter.html] modules themselves has
 # a <tt>parser(compliance_level)</tt> class method that returns a registry
-# of all of the known individual parsers.  Users of the library can register
-# additional parsers in these registries in order to add custom parts.
+# of all of the known individual parsers.  Users of the library can add
+# additional parsers to these registries in order to add custom parts.
 #
 # == Real RFC-2445[link:/files/doc/RFC_2445_rdoc.html] Compliance:
 #

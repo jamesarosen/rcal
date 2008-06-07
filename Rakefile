@@ -24,7 +24,7 @@ namespace :doc do
   
   Rake::RDocTask.new(:rdoc) do |rdoc|
     rdoc.rdoc_dir = rdoc_dir
-    rdoc.title    = "Rcal Documentation"
+    rdoc.title    = 'Rcal Documentation'
     rdoc.rdoc_files.include('lib/**/*.rb', 'init.rb', 'doc/*.rdoc')
     rdoc.options << '--line-numbers'
     rdoc.options << '--inline-source'
