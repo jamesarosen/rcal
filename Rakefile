@@ -10,6 +10,9 @@ require 'rake/testtask'
 desc 'Run all tests'
 task :default => ['test:run']
 
+task :doc => ['doc:rdoc']
+task :test => ['test:run']
+
 namespace :doc do
   
   def rdoc_dir
@@ -25,6 +28,7 @@ namespace :doc do
   Rake::RDocTask.new(:rdoc) do |rdoc|
     rdoc.rdoc_dir = rdoc_dir
     rdoc.title    = 'Rcal Documentation'
+    rdoc.template = "doc/jamis_template.rb"
     rdoc.rdoc_files.include('lib/**/*.rb', 'init.rb', 'doc/*.rdoc')
     rdoc.options << '--line-numbers'
     rdoc.options << '--inline-source'
