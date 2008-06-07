@@ -118,6 +118,10 @@ class Rcal::Util::TypesafeList
     array.dup
   end
   
+  def to_ical
+    array.to_ical
+  end
+  
   def ==(other)
     same_kind_as?(other) && self.array == other.array
   end

@@ -98,6 +98,12 @@ class TypesafeListTest < Test::Unit::TestCase
     assert_equal original_size, symbols.size
   end
   
+  # to_ical
+  
+  def test_to_ical
+    assert_equal 'foo,bar', symbols.to_ical
+  end
+  
   # Enumerable
   
   def test_enumerable
