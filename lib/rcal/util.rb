@@ -4,6 +4,7 @@ require 'rcal'
 # and are not reloaded if Rails has already done so.
 #
 # Modifies the following classes:
+# * Object[link:/classes/Object.html]
 # * Array[link:/classes/Array.html]
 # * Date[link:/classes/Date.html]
 # * DateTime[link:/classes/DateTime.html]
@@ -21,3 +22,4 @@ require 'rcal/util/to_ical'
 require 'rcal/util/pluralize'
 require 'rcal/util/loggable'
 require 'rcal/util/typesafe_list'
+require 'rcal/util/blank'
