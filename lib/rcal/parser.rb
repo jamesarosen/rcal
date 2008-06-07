@@ -1,3 +1,5 @@
+require 'rcal'
+
 # All parsers inherit from
 # Parser::Base[link:/classes/Rcal/Parser/Base.html].
 module Rcal::Parser

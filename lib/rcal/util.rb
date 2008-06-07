@@ -1,3 +1,5 @@
+require 'rcal'
+
 # Various utility classes used throughout Rcal.  Many are taken from Rails,
 # and are not reloaded if Rails has already done so.
 #
