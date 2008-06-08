@@ -1,5 +1,4 @@
 require 'rcal/value/parser'
-require 'rcal/util'
 
 class Rcal::Value::BooleanParser < Rcal::Value::Parser
   
