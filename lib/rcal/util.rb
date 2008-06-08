@@ -15,6 +15,7 @@ require 'rcal'
 # * Symbol[link:/classes/Symbol.html]
 # * Time[link:/classes/Time.html]
 # * URI::Generic[link:/classes/URI/Generic.html]
+# * Regexp[link:/classes/Regexp.html]
 module Rcal::Util
 end
 
@@ -25,3 +26,5 @@ require 'rcal/util/loggable'
 require 'rcal/util/typesafe_list'
 require 'rcal/util/blank'
 require 'rcal/util/class_attributes'
+require 'rcal/util/pad'
+require 'rcal/util/whole_line_regex'
