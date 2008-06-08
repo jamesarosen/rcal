@@ -27,7 +27,7 @@ class Rcal::Value::DateParser < Rcal::Value::Parser
   
   # Returns +true+ iff +ical+ is an Ical Date.
   def is_parser_for?(ical)
-    ical =~ DATE
+    ical =~ DATE.to_whole_line
   end
   
   # Returns a Ruby Date.

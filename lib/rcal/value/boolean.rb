@@ -11,7 +11,7 @@ class Rcal::Value::BooleanParser < Rcal::Value::Parser
   
   # Returns +true+ iff +ical+ is "TRUE" or "FALSE".
   def is_parser_for?(ical)
-    ical =~ BOOLEAN
+    ical =~ BOOLEAN.to_whole_line
   end
   
   # Returns a Ruby Boolean (+true+ or +false+).
