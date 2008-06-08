@@ -10,7 +10,7 @@ class DateTest < Test::Unit::TestCase
     @parser = Rcal::Value::DateParser.new
   end
   
-  def test_value_type_is_BOOLEAN
+  def test_value_type_is_DATE
     assert_equal 'DATE', @parser.value_type
   end
   
