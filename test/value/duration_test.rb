@@ -72,6 +72,10 @@ class DurationTest < Test::Unit::TestCase
   
   # Parser
   
+  def test_value_type_is_TIME
+    assert_equal 'DURATION', @parser.value_type
+  end
+  
   def test_is_not_parser_for_non_durations
     assert_is_wrong_parser_for 'foo', '-9W', 'P9', '+P1D5H'
   end

@@ -22,9 +22,6 @@ class Rcal::Value::DateParser < Rcal::Value::Parser
   # 3. Day
   DATE = Regexp.new("(#{year.source})(#{month.source})(#{day.source})")
   
-  @@value_type = 'DATE'
-  cattr_reader :value_type
-  
   # Returns +true+ iff +ical+ is an Ical Date.
   def is_parser_for?(ical)
     ical =~ DATE.to_whole_line
@@ -38,6 +35,11 @@ class Rcal::Value::DateParser < Rcal::Value::Parser
     rescue ArgumentError
       error!(ical, context, "#{ical} is not a valid Date")
     end
+  end
+  
+  # Returns 'DATE'.
+  def value_type
+    'DATE'
   end
   
 end

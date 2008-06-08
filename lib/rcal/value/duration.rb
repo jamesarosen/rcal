@@ -105,11 +105,6 @@ class Rcal::Value::Duration
   class Parser < Rcal::Value::Parser
     include Rcal::Value
   
-    def self.initialize(compliance_level)
-      super(compliance_level) 
-      @value_type = 'DURATION'
-    end
-  
     # Returns +true+ iff +ical+ is an Ical DURATION.
     def is_parser_for?(ical)
       ical =~ DURATION.to_whole_line
@@ -123,6 +118,11 @@ class Rcal::Value::Duration
       rescue ArgumentError
         error!(ical, context, "#{ical} is not a valid DURATION")
       end
+    end
+    
+    # Returns 'DURATION'.
+    def value_type
+      'DURATION'
     end
     
   end

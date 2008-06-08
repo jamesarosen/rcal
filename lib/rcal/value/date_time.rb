@@ -22,9 +22,6 @@ class Rcal::Value::DateTimeParser < Rcal::Value::Parser
   # 7. Z (is_utc?)
   DATETIME = Regexp.new("#{date.source}T#{time.source}")
   
-  @@value_type = 'DATE-TIME'
-  cattr_reader :value_type
-  
   # Returns +true+ iff +ical+ is an Ical DATE-TIME.
   def is_parser_for?(ical)
     ical =~ DATETIME.to_whole_line
@@ -45,6 +42,11 @@ class Rcal::Value::DateTimeParser < Rcal::Value::Parser
     rescue ArgumentError
       error!("#{ical} is not a valid DATE-TIME")
     end
+  end
+  
+  # Returns 'DATE-TIME'.
+  def value_type
+    'DATE-TIME'
   end
   
 end

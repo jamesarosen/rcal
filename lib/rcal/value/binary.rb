@@ -14,9 +14,6 @@ class Rcal::Value::BinaryParser < Rcal::Value::Parser
   #   b-char = ALPHA / DIGIT / "+" / "/"
   BINARY = Regexp.new("(?:#{binary_char.source}{4})*(?:#{binary_end.source})?")
   
-  @@value_type = 'BINARY'
-  cattr_reader :value_type
-  
   # Returns +true+ iff +ical+ is Base64-encoded binary data.
   def is_parser_for?(ical)
     ical =~ BINARY.to_whole_line
@@ -26,6 +23,11 @@ class Rcal::Value::BinaryParser < Rcal::Value::Parser
   def parse(ical, context)
     return wrong_parser!(ical, context, "#{ical} is not Base64-encoded binary data") unless is_parser_for?(ical)
     ical
+  end
+
+  # Returns 'BINARY'.
+  def value_type
+    'BINARY'
   end
   
 end

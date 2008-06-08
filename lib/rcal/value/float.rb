@@ -6,9 +6,6 @@ class Rcal::Value::FloatParser < Rcal::Value::Parser
   #   float      = (["+"] / "-") 1*DIGIT ["." 1*DIGIT]
   FLOAT = /[\+-]?[0-9]+(?:\.[0-9]+)?/
   
-  @@value_type = 'FLOAT'
-  cattr_reader :value_type
-  
   def is_parser_for?(ical)
     ical =~ FLOAT.to_whole_line
   end
@@ -17,6 +14,11 @@ class Rcal::Value::FloatParser < Rcal::Value::Parser
   def parse(ical, context)
     return wrong_parser!(ical, context, "#{ical} is not a float") unless is_parser_for?(ical)
     ical.to_f
+  end
+  
+  # Returns 'FLOAT'.
+  def value_type
+    'FLOAT'
   end
   
 end

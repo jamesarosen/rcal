@@ -81,9 +81,6 @@ class Rcal::Value::TimeOfDay
   # Parser for TimeOfDays.
   class Parser < Rcal::Value::Parser
     include Rcal::Value
-    
-    @@value_type = 'TIME'
-    cattr_reader :value_type
   
     # Returns +true+ iff +ical+ is an Ical Time.
     def is_parser_for?(ical)
@@ -100,6 +97,11 @@ class Rcal::Value::TimeOfDay
       rescue ArgumentError
         error!("#{ical} is not a valid Time")
       end
+    end
+    
+    # Returns 'TIME'.
+    def value_type
+      'TIME'
     end
     
   end
