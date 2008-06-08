@@ -84,3 +84,5 @@
 # See Parser[link:/classes/Rcal/Parser.html] for more information on parsing.
 module Rcal
 end
+
+require 'rcal/util'
