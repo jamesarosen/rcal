@@ -352,8 +352,8 @@ In the rest of this document, descriptions of characters are of the
 form "character name (codepoint)", where "codepoint" is from the US-
 ASCII character set. The "character name" is the authoritative
 description; (codepoint) is a reference to that character in US-ASCII
-or US-ASCII compatible sets (for example the ISO-8859-x family, UTF-
-8, ISO-2022-xx, KOI8-R). If a non-US-ASCII compatible character set
+or US-ASCII compatible sets (for example the ISO-8859-x family, UTF-8,
+ISO-2022-xx, KOI8-R). If a non-US-ASCII compatible character set
 is used, appropriate code-point from that character set MUST be
 chosen instead. Use of non-US-ASCII-compatible character sets is NOT
 recommended.
@@ -442,8 +442,7 @@ The value for the "optinfo" parameter is defined as follows:
 
 ==== 3.3 Content Header Fields
 
-Optional content header fields: Any header fields defined by [RFC
-2045].
+Optional content header fields: Any header fields defined by [RFC 2045].
 
 ==== 3.4 Encoding Considerations
 
@@ -795,8 +794,8 @@ information as the location of an alternate text representation for a
 property value, the language of a text property value, the data type
 of the property value and other attributes.
 
-Property parameter values that contain the COLON (US-ASCII decimal
-58), SEMICOLON (US-ASCII decimal 59) or COMMA (US-ASCII decimal 44)
+Property parameter values that contain the COLON (US-ASCII decimal 58),
+SEMICOLON (US-ASCII decimal 59) or COMMA (US-ASCII decimal 44)
 character separators MUST be specified as quoted-string text values.
 Property parameter values MUST NOT contain the DOUBLE-QUOTE (US-ASCII
 decimal 22) character. The DOUBLE-QUOTE (US-ASCII decimal 22)
@@ -1392,8 +1391,8 @@ notation:
 Description: This parameter can be specified on properties with a
 CAL-ADDRESS value type. The parameter specifies the calendar user
 that is acting on behalf of the calendar user specified by the
-property. The parameter value MUST be a MAILTO URI as defined in [RFC
-1738]. The individual calendar address parameter values MUST each be
+property. The parameter value MUST be a MAILTO URI as defined in [RFC 1738].
+The individual calendar address parameter values MUST each be
 specified in a quoted-string.
 
 Example:
@@ -1608,8 +1607,8 @@ notation:
 
 Description: If the property permits, multiple "date" values are
 specified as a COMMA character (US-ASCII decimal 44) separated list
-of values. The format for the value type is expressed as the [ISO
-8601] complete representation, basic format for a calendar date. The
+of values. The format for the value type is expressed as the [ISO 8601]
+complete representation, basic format for a calendar date. The
 textual format specifies a four-digit year, two-digit month, and
 two-digit day of the month. There are no separator characters between
 the year, month and day component text.
@@ -1643,8 +1642,8 @@ The "DATE-TIME" data type is used to identify values that contain a
 precise calendar date and time of day. The format is based on the [ISO 8601]
 complete representation, basic format for a calendar date
 and time of day. The text format is a concatenation of the "date",
-followed by the LATIN CAPITAL LETTER T character (US-ASCII decimal
-84) time designator, followed by the "time" format.
+followed by the LATIN CAPITAL LETTER T character (US-ASCII decimal 84)
+time designator, followed by the "time" format.
 
 The "DATE-TIME" data type expresses time values in three forms:
 
@@ -1989,9 +1988,9 @@ The COUNT rule part defines the number of occurrences at which to
 range-bound the recurrence. The "DTSTART" property value, if
 specified, counts as the first occurrence.
 
-The BYSECOND rule part specifies a COMMA character (US-ASCII decimal
-44) separated list of seconds within a minute. Valid values are 0 to
-59. The BYMINUTE rule part specifies a COMMA character (US-ASCII
+The BYSECOND rule part specifies a COMMA character (US-ASCII decimal 44)
+separated list of seconds within a minute. Valid values are 0 to 59. The
+BYMINUTE rule part specifies a COMMA character (US-ASCII
 decimal 44) separated list of minutes within an hour. Valid values
 are 0 to 59. The BYHOUR rule part specifies a COMMA character (US-
 ASCII decimal 44) separated list of hours of the day. Valid values
@@ -2011,19 +2010,19 @@ month. If an integer modifier is not present, it means all days of
 this type within the specified frequency. For example, within a
 MONTHLY rule, MO represents all Mondays within the month.
 
-The BYMONTHDAY rule part specifies a COMMA character (ASCII decimal
-44) separated list of days of the month. Valid values are 1 to 31 or
--31 to -1. For example, -10 represents the tenth to the last day of
+The BYMONTHDAY rule part specifies a COMMA character (ASCII decimal 44)
+separated list of days of the month. Valid values are 1 to 31 or -31 to -1.
+For example, -10 represents the tenth to the last day of
 the month.
 
-The BYYEARDAY rule part specifies a COMMA character (US-ASCII decimal
-44) separated list of days of the year. Valid values are 1 to 366 or
--366 to -1. For example, -1 represents the last day of the year
+The BYYEARDAY rule part specifies a COMMA character (US-ASCII decimal 44)
+separated list of days of the year. Valid values are 1 to 366 or -366 to -1.
+For example, -1 represents the last day of the year
 (December 31st) and -306 represents the 306th to the last day of the
 year (March 1st).
 
-The BYWEEKNO rule part specifies a COMMA character (US-ASCII decimal
-44) separated list of ordinals specifying weeks of the year. Valid
+The BYWEEKNO rule part specifies a COMMA character (US-ASCII decimal 44)
+separated list of ordinals specifying weeks of the year. Valid
 values are 1 to 53 or -53 to -1. This corresponds to weeks according
 to week numbering as defined in [ISO 8601]. A week is defined as a
 seven day period, starting on the day of the week defined to be the
@@ -2036,8 +2035,8 @@ represents the third week of the year.
   Thursday is January 1 or if it is a leap year and Wednesday is
   January 1.
 
-The BYMONTH rule part specifies a COMMA character (US-ASCII decimal
-44) separated list of months of the year. Valid values are 1 to 12.
+The BYMONTH rule part specifies a COMMA character (US-ASCII decimal 44)
+separated list of months of the year. Valid values are 1 to 12.
 
 The WKST rule part specifies the day on which the workweek starts.
 Valid values are MO, TU, WE, TH, FR, SA and SU. This is significant
@@ -2045,10 +2044,10 @@ when a WEEKLY RRULE has an interval greater than 1, and a BYDAY rule
 part is specified. This is also significant when in a YEARLY RRULE
 when a BYWEEKNO rule part is specified. The default value is MO.
 
-The BYSETPOS rule part specifies a COMMA character (US-ASCII decimal
-44) separated list of values which corresponds to the nth occurrence
-within the set of events specified by the rule. Valid values are 1 to
-366 or -366 to -1. It MUST only be used in conjunction with another
+The BYSETPOS rule part specifies a COMMA character (US-ASCII decimal 44)
+separated list of values which corresponds to the nth occurrence
+within the set of events specified by the rule. Valid values are 1 to 366
+or -366 to -1. It MUST only be used in conjunction with another
 BYxxx rule part. For example "the last work day of the month" could
 be represented as:
 
@@ -2097,8 +2096,8 @@ at "every January, every other year". Then, "BYDAY=SU" would be
 applied to arrive at "every Sunday in January, every other year".
 Then, "BYHOUR=8,9" would be applied to arrive at "every Sunday in
 January at 8 AM and 9 AM, every other year". Then, "BYMINUTE=30"
-would be applied to arrive at "every Sunday in January at 8:30 AM and
-9:30 AM, every other year". Then, lacking information from RRULE, the
+would be applied to arrive at "every Sunday in January at 8:30 AM and 9:30 AM,
+every other year". Then, lacking information from RRULE, the
 second is derived from DTSTART, to end up in "every Sunday in January
 at 8:30:00 AM and 9:30:00 AM, every other year". Similarly, if the
 BYMINUTE, BYHOUR, BYDAY, BYMONTHDAY or BYMONTH rule part were
@@ -2164,8 +2163,8 @@ character (US-ASCII decimal 92) in a "TEXT" property value MUST be
 escaped with another BACKSLASH character. A COMMA character in a
 "TEXT" property value MUST be escaped with a BACKSLASH character
 (US-ASCII decimal 92). A SEMICOLON character in a "TEXT" property
-value MUST be escaped with a BACKSLASH character (US-ASCII decimal
-92).  However, a COLON character in a "TEXT" property value SHALL NOT
+value MUST be escaped with a BACKSLASH character (US-ASCII decimal 92).
+However, a COLON character in a "TEXT" property value SHALL NOT
 be escaped with a BACKSLASH character.Example: A multiple line value
 of:
 
@@ -2485,8 +2484,8 @@ following notation:
 Description: A "VEVENT" calendar component is a grouping of component
 properties, and possibly including "VALARM" calendar components, that
 represents a scheduled amount of time on a calendar. For example, it
-can be an activity; such as a one-hour long, department meeting from
-8:00 AM to 9:00 AM, tomorrow. Generally, an event will take up time
+can be an activity; such as a one-hour long, department meeting from 8:00 AM
+to 9:00 AM, tomorrow. Generally, an event will take up time
 on an individual calendar. Hence, the event will appear as an opaque
 interval in a search for busy time. Alternately, the event can have
 its Time Transparency set to "TRANSPARENT" in order to prevent
@@ -3065,8 +3064,8 @@ component:
 
 This is an example showing time zone information for the Eastern
 United States using "RDATE" property. Note that this is only suitable
-for a recurring event that starts on or later than April 6, 1997 at
-03:00:00 EDT (i.e., the earliest effective transition date and time)
+for a recurring event that starts on or later than April 6, 1997
+at 03:00:00 EDT (i.e., the earliest effective transition date and time)
 and ends no later than April 7, 1998 02:00:00 EST (i.e., latest valid
 date and time for EST in this scenario). For example, this can be
 used for a recurring event that occurs every Friday, 8am-9:00 AM,
@@ -5666,8 +5665,8 @@ Weekly on Tuesday and Thursday for 5 weeks:
 
  ==> (1997 9:00 AM EDT)September 2,4,9,11,16,18,23,25,30;October 2
 
-Every other week on Monday, Wednesday and Friday until December 24,
-1997, but starting on Tuesday, September 2, 1997:
+Every other week on Monday, Wednesday and Friday until December 24, 1997,
+but starting on Tuesday, September 2, 1997:
 
   DTSTART;TZID=US-Eastern:19970902T090000
   RRULE:FREQ=WEEKLY;INTERVAL=2;UNTIL=19971224T000000Z;WKST=SU;
@@ -6477,9 +6476,8 @@ are BACKSLASH character escaped because they appear in a  text value.
 The following examples are provided as an informational source of
 illustrative iCalendar objects consistent with this content type.
 
-The following example specifies a three-day conference that begins at
-8:00 AM EDT, September 18, 1996 and end at 6:00 PM EDT, September 20,
-1996.
+The following example specifies a three-day conference that begins
+at 8:00 AM EDT, September 18, 1996 and end at 6:00 PM EDT, September 20, 1996.
 
   BEGIN:VCALENDAR PRODID:-//xyz Corp//NONSGML PDA Calendar Verson
   1.0//EN VERSION:2.0 BEGIN:VEVENT DTSTAMP:19960704T120000Z
@@ -6491,8 +6489,8 @@ The following example specifies a three-day conference that begins at
    Atlanta, Georgia END:VEVENT END:VCALENDAR
 
 The following example specifies a group scheduled meeting that begin
-at 8:30 AM EST on March 12, 1998 and end at 9:30 AM EST on March 12,
-1998. The "Organizer" has scheduled the meeting with one or more
+at 8:30 AM EST on March 12, 1998 and end at 9:30 AM EST on March 12, 1998.
+The "Organizer" has scheduled the meeting with one or more
 calendar users in a group. A time zone specification for Eastern
 United States has been specified.
 
