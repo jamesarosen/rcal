@@ -8,8 +8,8 @@
 # Properties, and Parameters.  These are mapped to modules
 # (Component[link:/classes/Rcal/Component.html],
 # Property[link:/classes/Rcal/Property.html],
-# Parameter[link:/class/rcal/Parameter.html],
-# and Value[link:/class/rcal/Value.html]) in Rcal.
+# Parameter[link:/class/Rcal/Parameter.html],
+# and Value[link:/class/Rcal/Value.html]) in Rcal.
 # Components, Proprerties, and Parameters are collectively called
 # "parts" in this documentation (see Part[link:/classes/Rcal/Part.html]).
 # All non-part classes in Rcal are "support."
@@ -20,8 +20,8 @@
 # method and a +to_ical+ instance method.  Each of the
 # Component[link:/classes/Rcal/Component.html],
 # Property[link:/classes/Rcal/Property.html],
-# Parameter[link:/class/rcal/Parameter.html],
-# and Value[link:/class/rcal/Value.html]) modules themselves has
+# Parameter[link:/class/Rcal/Parameter.html],
+# and Value[link:/class/Rcal/Value.html]) modules themselves has
 # a <tt>parser(compliance_level)</tt> class method that returns a registry
 # of all of the known individual parsers.  Users of the library can add
 # additional parsers to these registries in order to add custom parts.
