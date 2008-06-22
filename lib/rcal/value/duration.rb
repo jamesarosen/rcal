@@ -98,6 +98,10 @@ class Rcal::Value::Duration
     sign != '-'
   end
   
+  def negative?
+    !positive?
+  end
+  
   # Returns a new Time that is this duration away from +time+.  Converts
   # the duration to a number of seconds.  (This is fine, since Durations
   # cannot include Months or Years, and so months having different numbers
