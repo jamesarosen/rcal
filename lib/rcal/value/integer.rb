@@ -1,16 +1,43 @@
 require 'rcal/value/parser'
 
+=begin
+4.3.8 Integer
+
+  Value Name:INTEGER
+
+  Purpose: This value type is used to identify properties that contain
+  a signed integer value.
+
+  Formal Definition: The value type is defined by the following
+  notation:
+
+  integer    = (["+"] / "-") 1*DIGIT
+
+  Description: If the property permits, multiple "integer" values are
+  specified by a COMMA character (US-ASCII decimal 44) separated list
+  of values. The valid range for "integer" is -2147483648 to
+  2147483647. If the sign is not specified, then the value is assumed
+  to be positive.
+
+  No additional content value encoding (i.e., BACKSLASH character
+  encoding) is defined for this value type.
+
+  Example:
+
+  1234567890
+  -1234567890
+  +1234567890
+  432109876
+=end
 class Rcal::Value::IntegerParser < Rcal::Value::Parser
   
-  # From {RFC 2445 Section 4.3.8}[link:/files/doc/RFC_2445_rdoc.html]:
-  #   integer    = (["+"] / "-") 1*DIGIT
   INTEGER = /[\+-]?[0-9]+/
   
   def is_parser_for?(ical)
     ical =~ INTEGER.to_whole_line
   end
   
-  # Returns a Ruby Float.
+  # Returns a Ruby Integer.
   def parse(ical, context)
     return wrong_parser!(ical, context, "#{ical} is not an integer") unless is_parser_for?(ical)
     ical.to_i

@@ -22,7 +22,13 @@ class DateTimeTest < Test::Unit::TestCase
   end
   
   def test_cannot_parse_non_date_times
-    assert_cannot_parse 'foo', '2001', '200101', '20010203', '20010203T', '20010203T04', '20010203T0405', '20010203040506'
+    non_date_times = 'foo', '2001', '200101', '20010203', '20010203T', '20010203T04', '20010203T0405', '20010203040506'
+    with_compliance_level(Rcal::Parser::STRICT) do
+      assert_cannot_parse *non_date_times
+    end
+    with_compliance_level(Rcal::Parser::LAX) do
+      assert_cannot_parse *non_date_times
+    end
   end
   
   def test_parses_date_times

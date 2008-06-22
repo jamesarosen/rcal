@@ -30,4 +30,14 @@ class BooleanTest < Test::Unit::TestCase
     assert_equal false, parse('FALSE')
   end
   
+  def test_cannot_parse_strings_with_invalid_chars
+    invalid_booleans = 'true', 'false', 't', 'f'
+    with_compliance_level(Rcal::Parser::STRICT) do
+      assert_cannot_parse *invalid_booleans
+    end
+    with_compliance_level(Rcal::Parser::LAX) do
+      assert_cannot_parse *invalid_booleans
+    end
+  end
+  
 end

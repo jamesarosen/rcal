@@ -63,7 +63,13 @@ class TimeOfDayTest < Test::Unit::TestCase
   end
   
   def test_cannot_parse_non_times_of_day
-    assert_cannot_parse 'foo', '14', '1456', 'T195445'
+    non_times_of_day = 'foo', '14', '1456', 'T195445'
+    with_compliance_level(Rcal::Parser::STRICT) do
+      assert_cannot_parse *non_times_of_day
+    end
+    with_compliance_level(Rcal::Parser::LAX) do
+      assert_cannot_parse *non_times_of_day
+    end
   end
   
   def test_parses_times_of_day

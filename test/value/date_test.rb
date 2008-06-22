@@ -22,8 +22,16 @@ class DateTest < Test::Unit::TestCase
     assert_is_wrong_parser_for '2005', '1565012', 'December 3, 2000'
   end
   
-  def test_error_parsing_invalid_date
-    assert_cannot_parse '20000631', '20070431', '20050229'
+  def test_cannot_parse_invalid_date
+    invalid_dates = ['20000631', '20070431', '20050229']
+    def test_cannot_parse_strings_with_invalid_chars
+      with_compliance_level(Rcal::Parser::STRICT) do
+        assert_cannot_parse *invalid_dates
+      end
+      with_compliance_level(Rcal::Parser::LAX) do
+        assert_cannot_parse *invalid_dates
+      end
+    end
   end
   
   def test_parses_dates

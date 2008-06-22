@@ -38,7 +38,7 @@ module ParserTestCase
     values.each do |v|
       with_compliance_level(STRICT) do
         assert_nothing_raised("Should be able to parse #{v}") do
-          param = parse(v)
+          param = parse(v).to_s
           # TODO: implement .to_ical
           # assert_equal v, param.to_ical
         end
@@ -47,11 +47,12 @@ module ParserTestCase
   end
   
   def assert_cannot_parse(*values)
-    values.each do |v|
-      with_compliance_level(STRICT) do
+    if parser.compliance_level = STRICT
+      values.each do |v|
         assert_raises(ParseError, "Parsing #{v} at level strict should raise a ParseError") { parse(v) }
       end
-      with_compliance_level(LAX) do
+    else
+      values.each do |v|
         assert_nil parse(v), "Parsing #{v} at level lax should return nil"
       end
     end

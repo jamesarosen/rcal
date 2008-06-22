@@ -1,19 +1,45 @@
 require 'rcal/value/parser'
 
-# Value class representing a duration.
+=begin
+4.3.6   Duration
+
+Value Name: DURATION
+
+Purpose: This value type is used to identify properties that contain
+a duration of time.
+
+Formal Definition: The value type is defined by the following
+notation:
+
+  dur-value  = (["+"] / "-") "P" (dur-date / dur-time / dur-week)
+
+  dur-date   = dur-day [dur-time]
+  dur-time   = "T" (dur-hour / dur-minute / dur-second)
+  dur-week   = 1*DIGIT "W"
+  dur-hour   = 1*DIGIT "H" [dur-minute]
+  dur-minute = 1*DIGIT "M" [dur-second]
+  dur-second = 1*DIGIT "S"
+  dur-day    = 1*DIGIT "D"
+
+Description: If the property permits, multiple "duration" values are
+specified by a COMMA character (US-ASCII decimal 44) separated list
+of values. The format is expressed as the [ISO 8601] basic format for
+the duration of time. The format can represent durations in terms of
+weeks, days, hours, minutes, and seconds.
+
+No additional content value encoding (i.e., BACKSLASH character
+encoding) are defined for this value type.
+
+Example: A duration of 15 days, 5 hours and 20 seconds would be:
+
+  P15DT5H0M20S
+
+A duration of 7 weeks would be:
+
+  P7W
+=end
 class Rcal::Value::Duration
 
-  # From {RFC 2445 4.3.6}[link:/files/doc/RFC_2445_rdoc.html]:
-  #   dur-value  = (["+"] / "-") "P" (dur-date / dur-time / dur-week)
-  #   
-  #   dur-date   = dur-day [dur-time]
-  #   dur-time   = "T" (dur-hour / dur-minute / dur-second)
-  #   dur-week   = 1*DIGIT "W"
-  #   dur-hour   = 1*DIGIT "H" [dur-minute]
-  #   dur-minute = 1*DIGIT "M" [dur-second]
-  #   dur-second = 1*DIGIT "S"
-  #   dur-day    = 1*DIGIT "D"
-  # 
   # Matchdata:
   # 0. Whole duration string
   # 1. Sign ('+', '-' or +nil+)
@@ -62,7 +88,11 @@ class Rcal::Value::Duration
       weeks > 0 && [days, hours, minutes, seconds].any? { |u| u > 0 }
     raise ArgumentError.new("Durations must have at least one of [weeks, days, hours, minutes, seconds]") if
       [weeks, days, hours, minutes, seconds].all? { |u| u == 0 }
+    raise ArgumentError.new("Use sign instead of negative values for negative durations") if
+      [weeks, days, hours, minutes, seconds].any? { |u| u < 0 }
   end
+
+  private :validate!
   
   def positive?
     sign != '-'
@@ -77,6 +107,13 @@ class Rcal::Value::Duration
   def from(time)
     raise ArgumentError.new("#{time} is not a Time") unless time.kind_of?(Time)
     time + in_seconds
+  end
+  
+  # Returns a Range(Time..Time) that starts at +time+ and has length of
+  # <tt>self.in_seconds</tt> seconds.  The returned Range is exclusive
+  # if +exclusive+ is +true+ (it is +false+ by default).
+  def starting_at(time, exclusive = false)
+    Range.new(time, self.from(time), exclusive)
   end
   
   # Returns this duration as an Integer number of seconds.
@@ -97,8 +134,6 @@ class Rcal::Value::Duration
     result << "#{seconds}S" if seconds > 0
     return result
   end
-  
-  private :validate!
     
   
   # Parser for Durations.

@@ -82,7 +82,12 @@ class BinaryTest < Test::Unit::TestCase
   end
   
   def test_cannot_parse_strings_with_invalid_chars
-    assert_cannot_parse *@invalid_chars
+    with_compliance_level(Rcal::Parser::STRICT) do
+      assert_cannot_parse *@invalid_chars
+    end
+    with_compliance_level(Rcal::Parser::LAX) do
+      assert_cannot_parse *@invalid_chars
+    end
   end
   
   
