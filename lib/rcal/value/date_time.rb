@@ -136,7 +136,7 @@ class Rcal::Value::DateTimeParser < Rcal::Value::Parser
         Time.local(*time)
       end
     rescue ArgumentError
-      error!("#{ical} is not a valid DATE-TIME")
+      error!(ical, context, "#{ical} is not a valid DATE-TIME")
     end
   end
   
